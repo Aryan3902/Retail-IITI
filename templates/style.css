@@ -1,0 +1,131 @@
+*{
+    border: 0%;
+    margin: 0%;
+    box-sizing: border-box;
+}
+html{
+    font-size: 62.5%;
+}
+body{
+    min-height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+ 
+    
+}
+.head{
+    background: #131c21;
+    /* position: sticky; */
+    top: 0%;
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+}
+.header{
+    display: flex;
+    min-height: 10vh;
+    margin-left: 2%;
+    align-items: center;
+    box-shadow: 0px 0px 20px rgba(0,0, 0, 0.5);
+    
+}
+.logout{
+    flex: 1 1 40rem;
+    position: absolute;
+    right: 5%;
+}
+.welcome{
+    font-size: 2.5rem;
+    flex: 1 1 40rem;
+    color:white;
+}
+.center{
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.box{
+    width: 40vh;
+    height: 40vh;
+     /* background: chartreuse; */
+     color: white;
+     margin: 2rem;
+     display: flex;
+     align-items: center;
+     font-size: 1.5rem;
+     justify-content: center;
+     border-radius: 7px;
+     transition: all 0.5s ease;
+ }
+.box1:hover,
+.box3:hover{
+    box-shadow: 5px 0px 15px rgba(0,0, 0, 0.5);
+    cursor: pointer;
+}
+.box2:hover,
+.box4:hover{
+    box-shadow: -5px 0px 15px rgba(0,0, 0, 0.5);
+    cursor: pointer;
+}
+.one,
+.two{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+@media  screen and (max-width:472px) {
+    .one{
+        display: flex;
+    
+        flex-direction: column;
+    }
+    .two{
+    
+        display: flex;
+        flex-direction: column;
+    }
+    .box{
+        width: 90%;
+    }
+}
+li{
+    list-style: none;
+    flex:1 1 20rem;
+    margin-top: 2rem;
+}
+.footer{
+    min-height: 10vh;
+    background-color: whitesmoke;
+    box-shadow: 0px 0px 5px rgba(0,0, 0, 0.5) ;
+  position: sticky;
+  /* border-radius: 7px; */
+  /* margin: 1rem; */
+  bottom: 0%;
+    /* display: flex;
+    align-items: center; */
+}
+.foot{
+   display: flex; 
+}
+.hi{
+    position: absolute;
+    right: 5%;
+}
+.ho{
+    position: absolute;
+  right: 50%;
+}
+.box1{
+    background-color: grey;
+}
+.box2{
+    background-color: red;
+}
+.box3{
+    background-color: yellow;
+    color: indigo;
+}
+.box4{
+    background-color: indigo;
+}
