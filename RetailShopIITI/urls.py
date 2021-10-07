@@ -15,9 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from shopapp.views import homeview
+from login.views import homeview,forgetview, openview ,signupauth, login
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', homeview),
+    path('signupauth/', signupauth),
+    path('login/',login),
+
+    path('home/',openview),
+    path('resetpassword/', forgetview),
 ]

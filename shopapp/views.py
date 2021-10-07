@@ -1,5 +1,3 @@
 from django.shortcuts import render
 
 # Create your views here.
-def homeview(request, *args,**kwargs):
-    return render(request, 'login-register.html')
