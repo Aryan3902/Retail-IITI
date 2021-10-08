@@ -15,22 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-<<<<<<< HEAD
-from shopapp import views
+from login import views
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.home, name='home'),
-=======
-from login.views import homeview,forgetview, openview ,signupauth, login
-
-urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', homeview),
-    path('signupauth/', signupauth),
-    path('login/',login),
-
-    path('home/',openview),
-    path('resetpassword/', forgetview),
->>>>>>> 6124250bd817dd5d1ccb286844ecc66b9327e110
+    path('sign-in/', views.homeview),
+    path('signupauth/', views.signupauth),
+    path('login/', views.login),
+    path('', views.welcome),
+    path('home/', views.openview),
+    path('resetpassword/', views.forgetview),
 ]
