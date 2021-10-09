@@ -26,4 +26,5 @@ urlpatterns = [
     path('', views.welcome),
     path('home/', views.openview),
     path('resetpassword/', views.forgetview),
+    path('ticket/', views.ticket, name='ticket')
 ]
