@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Page</title>
+</head>
+
+<body>
+    <section class="head">
+        <nav class="header">
+            <h1 class="welcome">Hello {{userMain}} </h1>
+            <a class="logout" href=""><i class="fa fa-sign-out" style="font-size:48px;color:white"></i></a>
+        </nav>
+    </section>
+    <section class="center">
+        <div class="one">
+            <div class="box1 box">
+                <h1>Featured</h1>
+            </div>
+            <div class="box2 box">
+                <h1>Contact Us</h1>
+            </div>
+        </div>
+        <div class="two">
+            <div class="box3 box">
+                <h1>Shop</h1>
+            </div>
+            <div class="box4 box">
+                <h1>My Cart</h1>
+            </div>
+        </div>
+    </section>
+    <section class="footer">
+        <ul class="foot">
+            <li><a href="#"><i class="fa fa-facebook-f" style="font-size:36px"></i></a></li>
+            <li><a href="#" class="ho"><i class="fa fa-instagram" style="font-size:36px;color:red"></i></a></li>
+            <li><a href="#" class="hi"><i class="fa fa-twitter" style="font-size:36px"></i></a></li>
+        </ul>
+    </section>
+</body>
+
+</html>

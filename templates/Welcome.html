@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register | Retail-IIT</title>
+    <meta class="description" content="It is the official website of IIT Indore where students and teachers of the university can register to order
+     the stationary and items of daily basic needs .">
+    <meta class="robots" content="index,follow">
+    <link href="https://fonts.googleapis.com/css2?family=Italianno&display=swap" rel="stylesheet">
+    <link rel="icon" href="/img/4014657-buy-cell-online-phone-store_112888.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Amaranth&display=swap" rel="stylesheet">
+</head>
+<style>
+    .fill {
+        font-size: 20px;
+        font-weight: 200;
+        letter-spacing: 1px;
+        padding: 30px 100px 30px;
+        outline: 0;
+        border: 1px solid black;
+        cursor: pointer;
+        margin: 5rem;
+        position: relative;
+        background-color: rgba(0, 0, 0, 0);
+    }
+
+    .fill::after {
+        content: "";
+        background-color: #ffe54c;
+        width: 100%;
+        z-index: -1;
+        position: absolute;
+        height: 100%;
+        top: 7px;
+        left: 7px;
+        transition: 0.2s;
+    }
+
+    .fill:hover::after {
+        top: 0px;
+        left: 0px;
+    }
+
+    .mainTitle {
+        margin: 3rem !important;
+        font-family: 'Amaranth', sans-serif;
+        text-align: center;
+        font-size: 4rem;
+    }
+
+    .OR {
+        align-self: center;
+    }
+</style>
+
+<body>
+    <div class="main-head">
+        <h1 class="mainTitle">WELCOME TO
+            🆁🅴🆃🅰🅸🅻 - 🅸🅸🆃🅸
+        </h1>
+    </div>
+    <hr>
+    <div class="mainTitle">Continue as:</div>
+    <hr>
+    <div style="display:flex; justify-content: space-evenly;">
+        <a href="/sign-in/?next=/student/">
+            <button type="button" class="fill">Student</button>
+        </a>
+
+        <h1 class="mainTitle OR">OR</h1>
+        <a href="/sign-in/?next=/retailer/">
+            <button type="button" class="fill">Retailer</button>
+        </a>
+
+    </div>
+</body>
+
+</html>
