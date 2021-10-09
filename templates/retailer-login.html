@@ -1,10 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Forgot | Retail-IIT</title>
+    <title>Retailer-Login | Retail-IIT</title>
     <meta class="description" content="It is the official website of IIT Indore where students and teachers of the university can register to order
      the stationary and items of daily basic needs .">
     <meta class="robots" content="index,follow">
@@ -32,18 +33,25 @@
     <div class="main-head">
         <h1>🆁🅴🆃🅰🅸🅻 - 🅸🅸🆃🅸</h1>
     </div>
+    <div class="heading">
+		<h1>Join as - Retailer</h1>
+	</div>
 <div class="middle-part">
 	<div class="container" id="container">
-		<div class="form-container sign-up-container">
+		<div class="form-container sign-in-container">
 			<form action="#">
-				<h1>Forgot Password</h1>
-				<span>Your new password is ...</span>
-				<h3 id="password">Password:- ${forgot_password();}</h3>
-                <h2>Back to <a href="">Login</a> 
-                </h2>
+				<h1>Sign in</h1>
+				<span>to sell your items to a bigger community ...</span>
+				<input type="email" placeholder="Email" required/>
+				<input type="password" placeholder="Password" required/>
+				<a href="">Forgot your password?</a>
+				<button>Sign In</button>
 			</form>
 		</div>
 	</div>
+</div>
+<div class="footer">
+    <h1>To get the ticket to Retail <a href="">Click Here</a></h1>
 </div>
 
 <style>
@@ -54,7 +62,7 @@
 	}
 	
 	span{
-		margin-bottom: 1rem;
+		margin-bottom: 2rem;
 	}
 
 	button{
@@ -120,7 +128,7 @@
 		letter-spacing: 1px;
 		text-transform: uppercase;
 		transition: transform 80ms ease-in;
-        margin-top: 2rem;
+        margin-top: 1rem;
         margin-bottom: 1rem;
 	}
 
@@ -189,9 +197,19 @@
     /* text-shadow: 10px 0px 10px rgba(0, 0, 0, 0.8); */
   }
 
+  .heading{
+      padding-top: 0rem;
+      text-align: center;
+  }
+
+  .heading h1{
+      font-size: 2.5rem;
+      color: forestgreen;
+  }
+
 
 	.container {
-        padding-top: 7rem;
+        padding-top: 5rem;
 		background-color: #fff;
 		border-radius: 10px;
 		box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
@@ -201,11 +219,24 @@
 		width: 568px;
 		max-width: 100%;
 		min-height: 480px;
-		margin-top: 2rem;
+		margin-top: 1rem;
 	}
 
     .container h1{
         margin-bottom: 1rem;
+    }
+
+    .footer{
+        text-align: center;
+        margin-top: 2rem;
+    }
+
+    .footer h1{
+        font-size: 1.5rem;
+    }
+
+    .footer a{
+        font-size: 1.2rem;
     }
 
 	@media screen and (max-width:824px){

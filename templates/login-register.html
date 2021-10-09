@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register | Retail-IIT</title>
+    <title>Customer-Login | Retail-IIT</title>
     <meta class="description" content="It is the official website of IIT Indore where students and teachers of the university can register to order
      the stationary and items of daily basic needs .">
     <meta class="robots" content="index,follow">
     <link href="https://fonts.googleapis.com/css2?family=Italianno&display=swap" rel="stylesheet">
-    <link rel="icon" href="/img/4014657-buy-cell-online-phone-store_112888.png">
+    <link rel="icon" href="/Retail-IITI/templates/img/4014657-buy-cell-online-phone-store_112888.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
         .e-mail i,.password i {
@@ -31,12 +31,15 @@
     <div class="main-head">
         <h1>🆁🅴🆃🅰🅸🅻 - 🅸🅸🆃🅸</h1>
     </div>
+	<div class="heading">
+		<h1>Join as - Customer</h1>
+	</div>
 <div class="middle-part">
 	<div class="container" id="container">
 		<div class="form-container sign-up-container">
 			<form action="#">
 				<h1>Create Account</h1>
-				<span>to get your order at home ...</span>
+				<span>to bring the best products to your home ...</span>
 				<input type="text" placeholder="Name" required/>
 				<input type="email" placeholder="Email" required/>
 				<input type="password" placeholder="Password" required/>
@@ -58,17 +61,20 @@
 			<div class="overlay">
 				<div class="overlay-panel overlay-left">
 					<h1>Welcome Back!</h1>
-					<p>To keep connected with us please login with your personal info</p>
+					<p>To get the best onsite services please login with your personal info</p>
 					<button class="ghost" id="signIn">Sign In</button>
 				</div>
 				<div class="overlay-panel overlay-right">
-					<h1>Hello, Friend!</h1>
-					<p>Enter your personal details and start ordering from your place</p>
+					<h1>New Here ?</h1>
+					<p>Provide your personal details and start ordering from your place</p>
 					<button class="ghost" id="signUp">Sign Up</button>
 				</div>
 			</div>
 		</div>
 	</div>
+</div>
+<div class="footer">
+	<h1>Quality is our Investment</h1>
 </div>
 
 <style>
@@ -201,10 +207,29 @@
 	  padding-bottom: 1%;
 	  color: #191d19e1;
 	margin: auto;
-    font-size: 4.5rem;
+    font-size: 4rem;
     /* text-shadow: 10px 0px 10px rgba(0, 0, 0, 0.8); */
   }
 
+  .heading{
+      padding-top: 0rem;
+      text-align: center;
+  }
+
+  .heading h1{
+      font-size: 2.5rem;
+      color: forestgreen;
+  }
+
+  .footer{
+        text-align: center;
+        margin-top: 2rem;
+		color: rgb(86, 116, 207);
+    }
+
+    .footer h1{
+        font-size: 1.5rem;
+    }
 
 	.container {
 		background-color: #fff;
@@ -216,7 +241,7 @@
 		width: 768px;
 		max-width: 100%;
 		min-height: 480px;
-		margin-top: 2rem;
+		margin-top: 1rem;
 	}
 
 	.form-container {
