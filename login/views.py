@@ -58,3 +58,6 @@ def login(request, *args, **kwargs):
     else:
         messages.info(request, 'Worng password')
         return redirect('../')
+
+def welcome(request, *args, **kwargs):
+    return render(request, 'Welcome.html')
