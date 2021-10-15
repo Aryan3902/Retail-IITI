@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/ticket-style.css' %}">
+    <script src="{% static 'js/ticket-script.js' %}"></script>
+    <title>Submit a Ticket</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Register</h1>
+        <form class="registration-form" method="POST">
+            {% csrf_token %}
+            <label class="col-one-half">
+                <span class="label-text">First Name</span>
+                <input type="text" name="firstName">
+            </label>
+            <label class="col-one-half">
+                <span class="label-text">Last Name</span>
+                <input type="text" name="lastName">
+            </label>
+            <label>
+                <span class="label-text">Company Name</span>
+                <input type="text" name="company">
+            </label>
+            <label>
+                <span class="label-text">Products</span>
+                <input type="text" name="products">
+            </label>
+            <label>
+                <span class="label-text">Why you?</span>
+                <input type="text" name="why">
+            </label>
+            <label>
+                <span class="label-text">Email</span>
+                <input type="text" name="email">
+            </label>
+            <label>
+                <span class="label-text">GST Number</span>
+                <input type="text" name="gstin">
+            </label>
+            <label class="password">
+                <span class="label-text">Password</span>
+                <button class="toggle-visibility" title="toggle password visibility" tabindex="-1">
+                    <span class="glyphicon glyphicon-eye-close"></span>
+                </button>
+                <input type="password" name="password">
+            </label>
+            <div class="text-center">
+                <button class="submit" name="register">SUBMIT TICKET</button>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

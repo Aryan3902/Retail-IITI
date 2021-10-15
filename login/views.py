@@ -1,6 +1,7 @@
 from django.contrib import messages
+from django.http.response import HttpResponse
 from django.shortcuts import render, redirect
-
+from django.core.mail import send_mail
 from django.contrib.auth.hashers import make_password, check_password
 from .models import User
 
@@ -17,6 +18,15 @@ def forgetview(request, *args, **kwargs):
 
 def openview(request, *args, **kwargs):
     return render(request, 'index.html')
+
+
+def ticket(request, *args, **kwargs):
+    if request.method == 'POST':
+        send_mail('Retailer Request', 'LET ME INNNNNNNNNNNNNN',
+                  'retailiiti@gmail.com', ['retailiiti@gmail.com'], fail_silently=False)
+        return HttpResponse('Your request is sent to the admins.')
+    else:
+        return render(request, 'ticket.html')
 
 
 def signupauth(request, *args, **kwargs):
@@ -56,8 +66,9 @@ def login(request, *args, **kwargs):
         # return redirect('../home/', {'userMain': userA['name']})
 
     else:
-        messages.info(request, 'Worng password')
+        messages.info(request, 'Wrong password')
         return redirect('../')
+
 
 def welcome(request, *args, **kwargs):
     return render(request, 'Welcome.html')
