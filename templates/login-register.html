@@ -47,24 +47,26 @@
 	<div class="middle-part">
 		<div class="container" id="container">
 			<div class="form-container sign-up-container">
-				<form action="#">
+				<form action="/sign-in/signupauth/" method="post">
+					{% csrf_token %}
 					<h1>Create Account</h1>
 					<span>to bring the best products to your home ...</span>
-					<input type="text" placeholder="Name" required />
-					<input type="email" placeholder="Email" required />
-					<input type="password" placeholder="Password" required />
-					<input type="confirm-password" placeholder="Confirm Password" required />
-					<button>Sign Up</button>
+					<input type="text" placeholder="Name" name = "Name" required />
+					<input type="email" placeholder="Email" name = "email" required />
+					<input type="password" placeholder="Password" name = "password" required />
+					<input type="password" placeholder="Confirm Password" name = "password1" required />
+					<button type="submit">Sign Up</button>
 				</form>
 			</div>
 			<div class="form-container sign-in-container">
-				<form action="#">
+				<form action="/sign-in/login/" method="post">
+					{% csrf_token %}
 					<h1>Sign in</h1>
 					<span>to place your order ...</span>
-					<input type="email" placeholder="Email" required />
-					<input type="password" placeholder="Password" required />
+					<input type="email" placeholder="Email" name = "email" required />
+					<input type="password" placeholder="Password" name = "password" required />
 					<a href="">Forgot your password?</a>
-					<button>Sign In</button>
+					<button type="submit">Sign In</button>
 				</form>
 			</div>
 			<div class="overlay-container">
@@ -90,10 +92,10 @@
 	<div class="middle-part">
 		<div class="container" id="container">
 			<div class="form-container sign-up-container">
-				<form action="#">
+				<form action="/ticket/">
 					<h1>Submit ticket</h1>
 					<span>to get authorized from the admins and start selling today!</span>
-					<a href="/ticket/"><button>Send Ticket</button></a>
+					<a href=""><button>Send Ticket</button></a>
 				</form>
 			</div>
 			<div class="form-container sign-in-container">
