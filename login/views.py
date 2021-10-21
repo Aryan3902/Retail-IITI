@@ -57,11 +57,12 @@ def signupauth(request, *args, **kwargs):
 def login(request, *args, **kwargs):
     email = request.POST.get('email')
     password = request.POST.get('password')
-    username = request.POST.get('Name')
+    # username = request.POST.get('Name')
     userlist = User.objects.filter(email=email).values()
+    # print(userlist)
     userA = userlist[0]
     if check_password(password, userA['password']):
-        print(userA['name'])
+        # print(userA['name'])
         return render(request, 'index.html', {'userMain': userA['name']})
         # return redirect('../home/', {'userMain': userA['name']})
 
