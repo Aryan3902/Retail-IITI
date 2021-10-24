@@ -1,0 +1,268 @@
+*{
+    border: 0%;
+    margin: 0%;
+    box-sizing: border-box;
+}
+.returns{
+    margin-right: 1rem;
+   transform: translateX(-20%);
+}
+.accounts{
+    margin-right: 1rem;
+    transform: translateX(-200%);
+}
+.fa-shopping-cart{
+    margin:1rem;
+    transform: translateX(-90%);
+}
+.header{
+    display: flex;
+    min-height:10vh ;
+    background-color: #131c21;
+    color: white;
+    align-items: center;
+    justify-content: space-between;
+}
+.header h1{
+    margin-left: 0.3rem;
+}
+.options{
+display: flex;
+align-items: center;
+justify-content: space-between;
+}
+.options a{
+    color: white;
+    text-decoration: none;
+    margin: 1rem;
+}
+.options .fa{
+    margin-right: 0.3rem;
+}
+.search_box input{
+    padding: 0.7rem 0rem;
+    width: 50%;
+    top: 3%;
+    position: absolute;
+    text-align: center;
+}
+input::placeholder{
+    font-size: 1rem;
+}
+ul{
+    list-style: none;
+}
+ul a{
+    text-decoration: none;
+    color: white;
+}
+.search_box .fa{
+    cursor: pointer;
+    position: absolute;
+    top: 3%;
+    padding: 0.55rem;
+    transform: translateX(-10%)translateY(0%);
+    background-color: green;
+}
+.options a:hover{
+    border-style: solid;
+    padding: 0.5rem;
+    transition:  all 0.5s ease;
+    background-color: white;
+    color: #131c21;
+    border-radius: 7px;
+}
+.search_box{
+    transform: translateX(20%);
+    position: absolute;
+    width: 90%;
+    right: 0%;
+    top: 3%;
+}
+.fa{
+    cursor: pointer;
+}
+.navbar{
+    color: white;
+    min-height: 5vh;
+    background-color:indigo;
+    align-items: center;
+    display: flex;
+}
+.itemslist li{
+    margin: 0rem 3rem;
+}
+.burger{
+    cursor: pointer;
+    z-index: 100000000;
+}
+.burger span{
+    background-color:white;
+    padding: 0.14rem 1rem;
+    margin: 0.2rem;
+    display: block;
+    margin-left: 0.3rem;
+}
+.navbar li{
+    margin-right: 1rem;
+}
+
+li a:hover{
+    border-style: solid;
+    padding: 0.2rem;
+    transition:  all 0.5s ease;
+    border-width: 1px;
+    border-color: white;
+}
+li{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+    color: white;
+}
+.container{
+    display: flex;
+flex-direction: column;
+width:90% ;
+}
+.main{
+    display: flex;
+}
+.box{
+    display: flex;
+    background: pink;
+    min-height: 40vh;
+    margin-bottom: 0.1rem;
+}
+.itemslist{
+    display: flex;
+}
+.product{
+    width: 20%;
+    background: yellow;
+}
+.description{
+    display: flex;
+    flex-direction:column;
+  justify-content: space-evenly;
+ }
+ .description h1{
+     margin-left: 1rem;
+ }
+.searchbyoptions{
+    min-height: 100vh;
+    width: 30%;
+    background-color: white;
+}
+.burger{
+    transition: all 0.5s ease;
+} 
+body{
+    overflow-x: hidden;
+}
+.fa{
+    border-bottom-left-radius: 3px;
+    border-top-left-radius: 3px;
+}
+input{
+    border-bottom-right-radius: 3px;
+    border-top-right-radius: 3px;   
+}
+span{
+    /* transition: all 0.5s ease; */
+    z-index: 1000000000000;
+}
+.toggle .line1{
+    transform: translateY(85%) rotateZ(45deg);
+
+}
+.toggle .line2{
+  display: none;
+}
+.toggle .line3{
+    transform: translateY(-85%) rotateZ(-45deg);
+}
+.menu{
+    display: flex;
+    flex-direction: column;
+padding: 1rem 1rem;
+  
+    background-color: pink;
+}
+.account{
+    display: flex;
+}
+.trending{
+    display: flex;
+    flex-direction: column;
+}
+.shopbydept{
+    display: flex;
+    flex-direction: column;
+}
+.help{
+    display: flex;
+    flex-direction: column;
+}
+.menu a{
+text-decoration: none;
+color: black;
+}
+.menu a{
+    margin: 0.5rem;
+}
+.icon{
+    transform: translateY(10%);
+    margin-right: 0rem;
+}
+.account{
+    margin-bottom: 1rem;
+}
+.menu{
+    position: absolute;
+    z-index: 1000;
+    transition: all 0.5s ease;
+    left: -264px;
+}
+.menu a:hover{
+    color: blue;
+}
+.menu h1{
+    margin: 0.5rem;
+    left: 100%;
+}
+.closemenu{
+left: 0;
+}
+.hiburger{
+    transform: translateX(550%) translateY(-400%);
+}
+
+.dropdown{
+    display: flex;
+    flex-direction: column;
+    background-color: #131c21;
+    position: absolute;
+    display: none;
+    transition: all 0.5s ease;
+    color: white;
+}
+.dropdown li{
+   
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+.dropdown li a{
+    color: white;
+}
+.comedown{
+    display: block;
+    top: 10vh;
+}
+.dropdown a:hover{
+    border: none;
+    padding: 0.2rem;
+    color: blue;
+}
