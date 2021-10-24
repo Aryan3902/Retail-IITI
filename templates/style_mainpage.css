@@ -133,7 +133,7 @@ width:90% ;
     display: flex;
     background: pink;
     min-height: 40vh;
-    margin-bottom: 0.1rem;
+    margin-bottom: 0.5rem;
 }
 .itemslist{
     display: flex;
