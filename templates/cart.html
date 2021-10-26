@@ -9,16 +9,6 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/style_mainpage.css' %}">
 	<link rel="icon" href="{% static 'img/4014657-buy-cell-online-phone-store_112888.png' %}">
-    <script src="{% static 'js/app.js' %}"></script>
-    <style>
-        .product{
-            border-color: blue;
-        }
-        .product img{
-            height: 100%;
-            width: 100%;
-        }
-    </style>
 </head>
 <body>
     <section class="menu">
@@ -97,15 +87,16 @@
 
             {% for x in product %}
                 <div class="box">
-                    <div class="product" >
-                        <img src="{{ x.image }}" alt="">
-                    </div>
+                    <div class="product"></div>
                     <div class="description">
-                        <h1><i>Product ID</i> : {{ x.product_id }}</h1>
-                        <h1><i>Product Name</i> : {{ x.product_name }}</h1>
-                        <h1><i>Price</i> : {{ x.price }}</h1>
-                        <h1><i>Company Name</i> : {{ x.company_name }}</h1>
-                        <h1><i>Availability</i> : {{ x.availability }}</h1>
+                        <h1><i>Product ID</i> : {{ x.product.product_id }}</h1>
+                        <h1><i>Product Name</i> : {{ x.product.product_name }}</h1>
+                        <h1><i>Company Name</i> : {{ x.product.company_name }}</h1>
+                        <h1><i>Availability</i> : {{ x.product.availability }}</h1>
+                        <h1><i>Quantity</i> : {{ x.quantity }}</h1>
+                        <h1><i>Price_ht</i> : {{ x.price_ht }}</h1>
+                        <h1><i>Created At</i> : {{ x.cart.created_at }}</h1>
+                        <h1><i>Added At</i> : {{ x.added_at }}</h1>
                     </div>
                 </div>
             {% endfor %}
@@ -114,6 +105,6 @@
 
     </section>  
     </section>
-    
+    <script src="app.js"></script>
 </body>
 </html>
