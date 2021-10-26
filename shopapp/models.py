@@ -11,6 +11,7 @@ class Product(models.Model):
     price = models.IntegerField(null=False, blank=False)
     company_name = models.CharField(max_length=128,null=False, blank=False)
     availability = models.CharField(max_length=128,null=False, blank=False)
+    image = models.URLField(max_length=5000, default="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjw8YPUNzXPoROoi5DbrP2LEXL5Fs4txr3Aw&usqp=CAU")
     
 
     def __str__(self):
@@ -30,6 +31,7 @@ class CartItem(models.Model):
     quantity = models.IntegerField(default=1)
     price_ht = models.FloatField(blank=True)
     cart = models.ForeignKey('Cart', on_delete=models.CASCADE)
+    added_at = models.DateTimeField(default=datetime.now)
 
     # TAX_AMOUNT = 19.25
 
