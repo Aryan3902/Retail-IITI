@@ -32,6 +32,7 @@ class CartItem(models.Model):
     price_ht = models.FloatField(blank=True)
     cart = models.ForeignKey('Cart', on_delete=models.CASCADE)
     added_at = models.DateTimeField(default=datetime.now)
+    
 
     # TAX_AMOUNT = 19.25
 
