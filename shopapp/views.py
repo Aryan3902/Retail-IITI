@@ -18,8 +18,10 @@ def main_page(request, *args, **kwargs):
     return render(request, 'index_mainpage.html', context=context)
 
 def cart(request, *args, **kwargs):
-    product_item = CartItem.objects.all()
+    eid = request.session.get('eid')
+    product_item = CartItem.objects.filter(user_id=eid)
     context = {
-        "product": product_item
+        "product": product_item,
+        "id": eid
     }
     return render(request, 'cart.html', context=context)
