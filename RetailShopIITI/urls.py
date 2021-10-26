@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from login import views
+from shopapp.views import main_page
 
 
 urlpatterns = [
@@ -26,5 +27,6 @@ urlpatterns = [
     path('', views.welcome),
     path('home/', views.openview),
     path('resetpassword/', views.forgetview),
-    path('ticket/', views.ticket, name='ticket')
+    path('ticket/', views.ticket, name='ticket'),
+    path('main-page/', main_page)
 ]

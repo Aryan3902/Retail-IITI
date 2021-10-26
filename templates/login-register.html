@@ -10,7 +10,7 @@
      the stationary and items of daily basic needs .">
 	<meta class="robots" content="index,follow">
 	<link href="https://fonts.googleapis.com/css2?family=Italianno&display=swap" rel="stylesheet">
-	<link rel="icon" href="/img/4014657-buy-cell-online-phone-store_112888.png">
+
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<style>
 		.e-mail i,
@@ -30,6 +30,8 @@
 			margin-right: auto;
 		}
 	</style>
+	{% load static %}
+	<link rel="icon" href="{% static 'img/4014657-buy-cell-online-phone-store_112888.png' %}">
 </head>
 
 <body>
@@ -47,24 +49,26 @@
 	<div class="middle-part">
 		<div class="container" id="container">
 			<div class="form-container sign-up-container">
-				<form action="#">
+				<form action="/sign-in/signupauth/" method="post">
+					{% csrf_token %}
 					<h1>Create Account</h1>
 					<span>to bring the best products to your home ...</span>
-					<input type="text" placeholder="Name" required />
-					<input type="email" placeholder="Email" required />
-					<input type="password" placeholder="Password" required />
-					<input type="confirm-password" placeholder="Confirm Password" required />
-					<button>Sign Up</button>
+					<input type="text" placeholder="Name" name = "Name" required />
+					<input type="email" placeholder="Email" name = "email" required />
+					<input type="password" placeholder="Password" name = "password" required />
+					<input type="password" placeholder="Confirm Password" name = "password1" required />
+					<button type="submit">Sign Up</button>
 				</form>
 			</div>
 			<div class="form-container sign-in-container">
-				<form action="#">
+				<form action="/sign-in/login/" method="post">
+					{% csrf_token %}
 					<h1>Sign in</h1>
 					<span>to place your order ...</span>
-					<input type="email" placeholder="Email" required />
-					<input type="password" placeholder="Password" required />
-					<a href="">Forgot your password?</a>
-					<button>Sign In</button>
+					<input type="email" placeholder="Email" name = "email" required />
+					<input type="password" placeholder="Password" name = "password" required />
+					<a href="/resetpassword/">Forgot your password?</a>
+					<button type="submit">Sign In</button>
 				</form>
 			</div>
 			<div class="overlay-container">
@@ -90,10 +94,10 @@
 	<div class="middle-part">
 		<div class="container" id="container">
 			<div class="form-container sign-up-container">
-				<form action="#">
+				<form action="/ticket/">
 					<h1>Submit ticket</h1>
 					<span>to get authorized from the admins and start selling today!</span>
-					<a href="/ticket/"><button>Send Ticket</button></a>
+					<a href=""><button>Send Ticket</button></a>
 				</form>
 			</div>
 			<div class="form-container sign-in-container">

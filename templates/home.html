@@ -10,13 +10,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Main Page</title>
+    {% load static %}
+	<link rel="icon" href="{% static 'img/4014657-buy-cell-online-phone-store_112888.png' %}">
 </head>
 
 <body>
     <section class="head">
         <nav class="header">
             <h1 class="welcome">Hello {{userMain}} </h1>
-            <a class="logout" href=""><i class="fa fa-sign-out" style="font-size:48px;color:white"></i></a>
+            <a class="logout" href="Welcome.html"><i class="fa fa-sign-out" style="font-size:48px;color:white"></i></a>
         </nav>
     </section>
     <section class="center">

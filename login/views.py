@@ -4,6 +4,7 @@ from django.shortcuts import render, redirect
 from django.core.mail import send_mail
 from django.contrib.auth.hashers import make_password, check_password
 from .models import User
+import random
 
 # Create your views here.
 
@@ -13,7 +14,30 @@ def homeview(request, *args, **kwargs):
 
 
 def forgetview(request, *args, **kwargs):
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        name = request.POST.get('name')
+        
+        userlist = User.objects.filter(name=name, email=email).values()
+
+        if len(userlist)>0:
+            users = User.objects.get(email=email)
+
+            password = ""
+            given="QWERTYUIOPLKJHGFDSAZXCVBNMqwertyuioplkjhgfdsazxcvbnm1234567890"
+            for x in range(10):
+                password += random.choice(given)
+            users.password = password
+            users.save()
+            context = {
+                "user": users
+            }
+            return render(request, 'forgot-password1.html', context=context)
+        
+        else:
+            messages.info(request, 'Wrong password')
     return render(request, 'forgot-password.html')
+
 
 
 def openview(request, *args, **kwargs):
@@ -57,12 +81,16 @@ def signupauth(request, *args, **kwargs):
 def login(request, *args, **kwargs):
     email = request.POST.get('email')
     password = request.POST.get('password')
-    username = request.POST.get('Name')
+    # username = request.POST.get('Name')
     userlist = User.objects.filter(email=email).values()
+    # print(userlist)
     userA = userlist[0]
-    if check_password(password, userA['password']):
-        print(userA['name'])
-        return render(request, 'index.html', {'userMain': userA['name']})
+  
+    # if check_password(password, userA['password']):
+    if password == userA['password']:
+        # print(userA['name'])
+        # return render(request, 'index_mainpage.html', {'userMain': userA['name']})
+        return redirect('/main-page/')
         # return redirect('../home/', {'userMain': userA['name']})
 
     else:
@@ -72,3 +100,4 @@ def login(request, *args, **kwargs):
 
 def welcome(request, *args, **kwargs):
     return render(request, 'Welcome.html')
+
