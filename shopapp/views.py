@@ -12,7 +12,8 @@ from .models import Product, Cart, CartItem
 def main_page(request, *args, **kwargs):
     product_item = Product.objects.all()
     context = {
-        "product": product_item
+        "product": product_item,
+        # "userid": userid
     }
     return render(request, 'index_mainpage.html', context=context)
 

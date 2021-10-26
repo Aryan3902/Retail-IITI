@@ -57,6 +57,13 @@
 					<input type="email" placeholder="Email" name = "email" required />
 					<input type="password" placeholder="Password" name = "password" required />
 					<input type="password" placeholder="Confirm Password" name = "password1" required />
+					
+					<div>
+						{% for message in messages %}
+						<h3 center style="color: red;font-size: 1rem;margin-bottom: 0rem;margin-top: 0rem;">{{message}}</h3>
+						{% endfor %}
+					</div>
+
 					<button type="submit">Sign Up</button>
 				</form>
 			</div>
@@ -68,6 +75,13 @@
 					<input type="email" placeholder="Email" name = "email" required />
 					<input type="password" placeholder="Password" name = "password" required />
 					<a href="/resetpassword/">Forgot your password?</a>
+					
+					<div>
+						{% for message in messages %}
+						<h3 center style="color: red;font-size: 1rem;margin-bottom: 0rem;margin-top: 0rem;">{{message}}</h3>
+						{% endfor %}
+					</div>
+					
 					<button type="submit">Sign In</button>
 				</form>
 			</div>
