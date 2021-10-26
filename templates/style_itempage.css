@@ -289,7 +289,7 @@ left: 0;
     background-color:white;
     align-items: center;
     display: flex;
-    flex-direction: column;
+    justify-content: space-around;
 }
 .information a{
    text-align: center;
@@ -321,9 +321,12 @@ width: 10%;
 .buynow{
     padding: 0.5rem;
 }
-.addtocart i{
-    margin-left: 1rem;
+.addtocart {
+    padding: 0.5rem;
 }
 .buttons a{
     font-size: 1.1rem;
+}
+.buttons{
+    display: flex;
 }
