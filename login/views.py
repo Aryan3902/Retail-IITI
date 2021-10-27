@@ -84,18 +84,18 @@ def login(request, *args, **kwargs):
     # username = request.POST.get('Name')
     userlist = User.objects.filter(email=email).values()
     # print(userlist)
-    userA = userlist[0]
+    
     # print("1234567890")
 
     if len(userlist)>0:
-
+        userA = userlist[0]
         # if check_password(password, userA['password']):
         if password == userA['password']:
             # print(userA['name'])
             context = {
                 "userid": email
             }
-           
+            request.session['eid'] = userA['id']
             # return render(request, 'index_mainpage.html', {'userMain': userA['name']})
             return redirect('/main-page/', context=context)
             # return redirect('../home/', {'userMain': userA['name']})
