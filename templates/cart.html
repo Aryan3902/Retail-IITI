@@ -88,14 +88,19 @@
             <li><a href="#">Item1</a></li>
         </div>
     </section>
+   
     <section class="main">
         <div class="searchbyoptions"></div>
+        <!-- <h1>{{id}}</h1>
+        <h1>{{eid}}</h1>
+        <h1>{{cart}}</h1> -->
+        
 
 
         <div class="container">
 
             {% for x in product %}
-                <a style="color: black;" href="/sign-in/">
+                <a style="color: black;" href="/main-page/cart/{{ x.product_id }}/">
                     <div class="box">
                         <div class="product"><img src="{{ x.product.image }}" alt=""></div>
                         <div class="description">
@@ -111,7 +116,12 @@
                     </div>
                 </a>
             {% endfor %}
-            
+            <div class="box"style="min-height: 10vh;">
+                <!-- <div class="product"><img src="{{ x.product.image }}" alt=""></div> -->
+                <div class="description">
+                    <h1 style="width: 100%;display: flex;text-align: center;align-items: center;justify-content: center;"><i>Total Price</i> : {{ total }}</h1>
+                </div>
+            </div>
         </div>
 
     </section>  

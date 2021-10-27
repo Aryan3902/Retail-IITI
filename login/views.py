@@ -89,8 +89,8 @@ def login(request, *args, **kwargs):
 
     if len(userlist)>0:
         userA = userlist[0]
-        # if check_password(password, userA['password']):
-        if password == userA['password']:
+        if check_password(password, userA['password']):
+        # if password == userA['password']:
             # print(userA['name'])
             context = {
                 "userid": email
