@@ -35,7 +35,7 @@ def forgetview(request, *args, **kwargs):
             return render(request, 'forgot-password1.html', context=context)
         
         else:
-            messages.info(request, 'Wrong password')
+            messages.info(request, 'EmailID is not registered')
     return render(request, 'forgot-password.html')
 
 
@@ -84,17 +84,28 @@ def login(request, *args, **kwargs):
     # username = request.POST.get('Name')
     userlist = User.objects.filter(email=email).values()
     # print(userlist)
-    userA = userlist[0]
-  
-    # if check_password(password, userA['password']):
-    if password == userA['password']:
-        # print(userA['name'])
-        # return render(request, 'index_mainpage.html', {'userMain': userA['name']})
-        return redirect('/main-page/')
-        # return redirect('../home/', {'userMain': userA['name']})
+    
+    # print("1234567890")
+
+    if len(userlist)>0:
+        userA = userlist[0]
+        # if check_password(password, userA['password']):
+        if password == userA['password']:
+            # print(userA['name'])
+            context = {
+                "userid": email
+            }
+            request.session['eid'] = userA['id']
+            # return render(request, 'index_mainpage.html', {'userMain': userA['name']})
+            return redirect('/main-page/', context=context)
+            # return redirect('../home/', {'userMain': userA['name']})
+
+        else:
+            messages.info(request, 'Wrong password')
+            return redirect('../')
 
     else:
-        messages.info(request, 'Wrong password')
+        messages.info(request, 'User is not registered')
         return redirect('../')
 
 

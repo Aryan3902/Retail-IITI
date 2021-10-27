@@ -139,7 +139,7 @@ width:90% ;
     display: flex;
 }
 .product{
-    width: 28%;
+    width: 20%;
     background: yellow;
 }
 .description{
@@ -148,7 +148,7 @@ width:90% ;
   justify-content: space-evenly;
  }
  .description h1{
-     margin-left: 4rem;
+     margin-left: 1rem;
  }
 .searchbyoptions{
     min-height: 100vh;
@@ -265,4 +265,68 @@ left: 0;
     border: none;
     padding: 0.2rem;
     color: blue;
+}
+.productimage{
+    width: 30%;
+    height: 60vh;
+    background-color:pink;
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.1);
+    margin: 0rem 1.5rem;
+}
+.information{
+    width: 45%;
+    height: 60vh;
+    background-color:white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.1);
+}
+.information h1{
+    margin-left: 1rem;
+}
+.buttons{
+    background-color:white;
+    align-items: center;
+    display: flex;
+    justify-content: space-around;
+}
+.information a{
+   text-align: center;
+    width: 40%;
+    margin-top: 1rem;
+}
+.information a{
+    text-decoration: none;
+    color: white;
+    background-color: rgb(253, 75, 10,1);
+    border-radius: 7px;
+}
+.main{
+    border-radius: 5px;
+    box-shadow: 0px 5px 5px 5px rgba(0, 0, 0, 0.1);
+    margin-left: 3rem;
+    margin-right: 3rem;
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    min-height: 85vh;
+}
+.selectoptions{
+width: 10%;
+}
+.buttons a:hover{
+    box-shadow: 0px 5px 5px 3px rgba(0, 0, 0, 0.2);
+}
+.buynow{
+    padding: 0.5rem;
+}
+.addtocart {
+    padding: 0.5rem;
+}
+.buttons a{
+    font-size: 1.1rem;
+}
+.buttons{
+    display: flex;
 }
