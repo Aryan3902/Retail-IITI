@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style_itempage.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/style_mainpage.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style_itempage.css' %}">
 	<link rel="icon" href="{% static 'img/4014657-buy-cell-online-phone-store_112888.png' %}">
-    <script src="{% static 'js/app.js' %}"></script>
     <style>
         .product{
             border-color: blue;
         }
-        .product img{
+        .productimage img{
             height: 100%;
             width: 100%;
         }
@@ -24,7 +24,7 @@
     <section class="menu">
         <div class="account">
             <div class="icon">
-         <a href=""> <i class="fa fa-user" style="font-size:36px"></i></a>
+         <a href="#"> <i class="fa fa-user" style="font-size:36px"></i></a>
       </div>
          <h1>Hello,User</h1>
          <div class="burger2">
@@ -35,14 +35,14 @@
         </div>
         <div class="trending">
             <h1>Trending</h1>
-      <a href="">Best Sellers</a>
-      <a href="">Best Offers</a>
+      <a href="#">Best Sellers</a>
+      <a href="#">Best Offers</a>
         </div>
         <div class="shopbydept">
             <h1>Shop By Department</h1>
-            <a href="">Mobiles,Computers</a>
-            <a href="">TV,Appliances,Electronics</a>
-            <a href="">Men's Fashion</a>
+            <a href="#">Mobiles,Computers</a>
+            <a href="#">TV,Appliances,Electronics</a>
+            <a href="#">Men's Fashion</a>
         </div>
         <div class="help">
             <h1>Help & Settings</h1>
@@ -71,7 +71,7 @@
     </ul>
 </div>
     <a class="returns" href="#">Returns &Orders</a>
-    <a class="shopping" href="/main-page/cart/"><i class="fa fa-shopping-cart" style="font-size:24px"></i></a>
+    <i class="fa fa-shopping-cart" style="font-size:24px"></i>
 </div>
     </section>
     <section class="navbar">
@@ -89,48 +89,51 @@
             <li><a href="#">Item1</a></li>
         </div>
     </section>
-    <section class="main">
-        <div class="searchbyoptions"></div>
 
 
-        <div class="container">
-
-            {% for x in product %}
-                <a style="color: black;" href="/main-page/{{ x.product_id }}/">
-                    <div class="box">
-                        <div class="product" >
-                            <img src="{{ x.image }}" alt="">
-                        </div>
-                        <div class="description">
-                            <h1><i>Product ID</i> : {{ x.product_id }}</h1>
-                            <h1><i>Product Name</i> : {{ x.product_name }}</h1>
-                            <h1><i>Price</i> : {{ x.price }}</h1>
-                            <h1><i>Company Name</i> : {{ x.company_name }}</h1>
-                            <h1><i>Availability</i> : {{ x.availability }}</h1>
-                        </div>
-                    </div>
-                </a>
-            {% endfor %}
-            
+    <!-- <section class="main">
+        <div class="selectoptions"></div>  
+        <div class="productimage"></div>
+        <div class="information">
+            <h1>Title:</h1>
+            <h1>Price:</h1>
+            <h1>Name:</h1>
+            <div class="buttons">
+           <a class="buynow" href="#">Buy Now</a>
+           <a class="addtocart" href="#">Add to Cart </a>
+          </div>
         </div>
+      </section> -->
 
-    </section>  
-    </section>
 
-<style>
-    .box:hover{
-        z-index: 10;
-        box-shadow: 10px 10px 10px rgb(0,0,0,0.8);
-    }
-    .box{
-        margin-bottom: 1rem;
-    }
-    .product:hover{
-        z-index: 20;
-        box-shadow: 10px 10px 10px rgb(0,0,0,0.8);
-    }
-    
-</style>
-    
+      {% for x in product %}
+        <section class="main">
+        <div class="selectoptions"> </div>  
+        <div class="productimage"> <img src="{{ x.image }}" alt=""></div>
+        <div class="information">
+            <!-- <h1>Title:</h1>
+            <h1>Price:</h1>
+            <h1>Name:</h1> -->
+            <h1><i>Product ID</i> : {{ x.product_id }}</h1>
+            <h1><i>Product Name</i> : {{ x.product_name }}</h1>
+            <h1><i>Price</i> : {{ x.price }}</h1>
+            <h1><i>Company Name</i> : {{ x.company_name }}</h1>
+            <h1><i>Availability</i> : {{ x.availability }}</h1>
+            <div class="buttons">
+
+            <form action="/main-page/cart/" method="POST">
+                {% csrf_token %}
+                <a class="buynow" href="#">Buy Now</a>
+                <a class="addtocart" href="/main-page/cart/">
+                    <button type="submit" style="border: none;background-color: rgb(253, 75, 10,1);color: white;font-size: 1.1rem;" name="remove" value="{{ x.product_id }}">Remove from Cart</button>
+                </a>
+            </form>
+
+          </div>
+        </div>
+      </section>
+      {% endfor %}
+
+    <script src="app_itempage.js"></script>
 </body>
 </html>

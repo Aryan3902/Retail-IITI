@@ -11,6 +11,7 @@ class Product(models.Model):
     price = models.IntegerField(null=False, blank=False)
     company_name = models.CharField(max_length=128,null=False, blank=False)
     availability = models.CharField(max_length=128,null=False, blank=False)
+    image = models.URLField(max_length=5000, default="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjw8YPUNzXPoROoi5DbrP2LEXL5Fs4txr3Aw&usqp=CAU")
     
 
     def __str__(self):
@@ -30,6 +31,8 @@ class CartItem(models.Model):
     quantity = models.IntegerField(default=1)
     price_ht = models.FloatField(blank=True)
     cart = models.ForeignKey('Cart', on_delete=models.CASCADE)
+    added_at = models.DateTimeField(default=datetime.now)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=12345)
 
     # TAX_AMOUNT = 19.25
 
@@ -37,4 +40,4 @@ class CartItem(models.Model):
     #     return self.price_ht * (1 + TAX_AMOUNT/100.0)
 
     def __str__(self):
-        return  self.cart.user.name + " - " + self.product.product_name
+        return   self.cart.user.name + " - " + self.product.product_name 

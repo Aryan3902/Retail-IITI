@@ -9,7 +9,6 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/style_mainpage.css' %}">
 	<link rel="icon" href="{% static 'img/4014657-buy-cell-online-phone-store_112888.png' %}">
-    <script src="{% static 'js/app.js' %}"></script>
     <style>
         .product{
             border-color: blue;
@@ -71,7 +70,7 @@
     </ul>
 </div>
     <a class="returns" href="#">Returns &Orders</a>
-    <a class="shopping" href="/main-page/cart/"><i class="fa fa-shopping-cart" style="font-size:24px"></i></a>
+    <i class="fa fa-shopping-cart" style="font-size:24px"></i>
 </div>
     </section>
     <section class="navbar">
@@ -89,48 +88,59 @@
             <li><a href="#">Item1</a></li>
         </div>
     </section>
+   
     <section class="main">
         <div class="searchbyoptions"></div>
+        <!-- <h1>{{id}}</h1>
+        <h1>{{eid}}</h1>
+        <h1>{{cart}}</h1> -->
+        
 
 
         <div class="container">
 
             {% for x in product %}
-                <a style="color: black;" href="/main-page/{{ x.product_id }}/">
+                <a style="color: black;" href="/main-page/cart/{{ x.product_id }}/">
                     <div class="box">
-                        <div class="product" >
-                            <img src="{{ x.image }}" alt="">
-                        </div>
+                        <div class="product"><img src="{{ x.product.image }}" alt=""></div>
                         <div class="description">
-                            <h1><i>Product ID</i> : {{ x.product_id }}</h1>
-                            <h1><i>Product Name</i> : {{ x.product_name }}</h1>
-                            <h1><i>Price</i> : {{ x.price }}</h1>
-                            <h1><i>Company Name</i> : {{ x.company_name }}</h1>
-                            <h1><i>Availability</i> : {{ x.availability }}</h1>
+                            <h1><i>Product ID</i> : {{ x.product.product_id }}</h1>
+                            <h1><i>Product Name</i> : {{ x.product.product_name }}</h1>
+                            <h1><i>Company Name</i> : {{ x.product.company_name }}</h1>
+                            <h1><i>Availability</i> : {{ x.product.availability }}</h1>
+                            <h1><i>Quantity</i> : {{ x.quantity }}</h1>
+                            <h1><i>Price_ht</i> : {{ x.price_ht }}</h1>
+                            <!-- <h1><i>Created At</i> : {{ x.cart.created_at }}</h1> -->
+                            <h1><i>Added At</i> : {{ x.added_at }}</h1>
                         </div>
                     </div>
                 </a>
             {% endfor %}
-            
+            <div class="box"style="min-height: 10vh;">
+                <!-- <div class="product"><img src="{{ x.product.image }}" alt=""></div> -->
+                <div class="description">
+                    <h1 style="width: 100%;display: flex;text-align: center;align-items: center;justify-content: center;"><i>Total Price</i> : {{ total }}</h1>
+                </div>
+            </div>
         </div>
 
     </section>  
     </section>
+    <script src="app.js"></script>
 
-<style>
-    .box:hover{
-        z-index: 10;
-        box-shadow: 10px 10px 10px rgb(0,0,0,0.8);
-    }
-    .box{
-        margin-bottom: 1rem;
-    }
-    .product:hover{
-        z-index: 20;
-        box-shadow: 10px 10px 10px rgb(0,0,0,0.8);
-    }
-    
-</style>
-    
+    <style>
+        .box:hover{
+            z-index: 10;
+            box-shadow: 10px 10px 10px rgb(0,0,0,0.8);
+        }
+        .box{
+            margin-bottom: 1rem;
+        }
+        .product:hover{
+            z-index: 20;
+            box-shadow: 10px 10px 10px rgb(0,0,0,0.8);
+        }
+    </style>
+
 </body>
 </html>
