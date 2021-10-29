@@ -40,7 +40,7 @@ class CartItem(models.Model):
     #     return self.price_ht * (1 + TAX_AMOUNT/100.0)
 
     def __str__(self):
-        return  str(self.product.product_id)#self.cart.user.name + " - " + self.product.product_name + " - " +
+        return  self.cart.user.name + " - " + self.product.product_name + " - " +
 
 class Orders(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
