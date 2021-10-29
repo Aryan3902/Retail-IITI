@@ -179,6 +179,8 @@ def orders(request, *args, **kwargs):
             list.user_id = eid
             list.save()
 
+        delete_all = CartItem.objects.filter(user_id=eid).delete()
+
 
     product_item = Orders.objects.filter(user_id=eid)
 
