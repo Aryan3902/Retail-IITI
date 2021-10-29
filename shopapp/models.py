@@ -40,4 +40,16 @@ class CartItem(models.Model):
     #     return self.price_ht * (1 + TAX_AMOUNT/100.0)
 
     def __str__(self):
-        return   self.cart.user.name + " - " + self.product.product_name 
+        return  str(self.product.product_id)#self.cart.user.name + " - " + self.product.product_name + " - " +
+
+class Orders(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    quantity = models.IntegerField(default=1)
+    price_ht = models.FloatField(blank=True)
+    # cart = models.ForeignKey('Cart', on_delete=models.CASCADE)
+    added_at = models.DateTimeField(default=datetime.now)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=12345)
+
+
+    def __str__(self):
+        return  str(self.id) #self.user.name + " - " + self.product.product_name 
