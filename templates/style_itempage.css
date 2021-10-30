@@ -64,13 +64,20 @@ ul a{
     transform: translateX(-10%)translateY(0%);
     background-color: green;
 }
-.options a:hover{
+.list a:hover{
     border-style: solid;
     padding: 0.5rem;
     transition:  all 0.5s ease;
     background-color: white;
     color: #131c21;
     border-radius: 7px;
+}
+.returns:hover{
+    padding: 0.5rem;
+    background-color: white;
+    border-radius: 5px;
+    color: #131c21;
+    transition: all 0.5s ease;
 }
 .search_box{
     transform: translateX(20%);
