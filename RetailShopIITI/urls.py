@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from login import views
-from shopapp.views import main_page, cart, main_page_product, main_page_cart_product
+from shopapp.views import main_page, cart, main_page_product, main_page_cart_product, orders, main_page_order_product
 
 
 urlpatterns = [
@@ -31,5 +31,7 @@ urlpatterns = [
     path('main-page/', main_page),
     path('main-page/<int:id>/', main_page_product),
     path('main-page/cart/<int:id>/', main_page_cart_product),
-    path('main-page/cart/', cart)
+    path('main-page/orders/<int:id>/', main_page_order_product),
+    path('main-page/cart/', cart),
+    path('main-page/orders/', orders)
 ]
