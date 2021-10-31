@@ -99,7 +99,59 @@
     </section>
 
 
+    {% for x in product %}
+    <section class="main">
+        <div class="selectoptions"> </div>  
+        <div class="productimage"> <img src="{{ x.product.image }}" alt=""></div>
+        <div class="information" style="text-align: center;">
+            <!-- <h1>Title:</h1>
+            <h1>Price:</h1>
+            <h1>Name:</h1> -->
+            <h1><i>Order ID</i> : {{ x.id }}</h1>
+            <h1><i>Product ID</i> : {{ x.product.product_id }}</h1>
+            <h1><i>Product Name</i> : {{ x.product.product_name }}</h1>
+            <h1><i>Price</i> : {{ x.product.price }}</h1>
+            <h1><i>Quantity</i> : {{ x.quantity }}</h1>
+            <h1><i>Company Name</i> : {{ x.product.company_name }}</h1>
+            <h1><i>Availability</i> : {{ x.product.availability }}</h1>
+            <div class="buttons">
 
+            <!-- <form action="/main-page/cart/" method="POST">
+                {% csrf_token %}
+                <a class="buynow" href="#">Buy Now</a>
+                <a class="addtocart" href="/main-page/cart/">
+                    <button type="submit" style="border: none;background-color: rgb(253, 75, 10,1);color: white;font-size: 1.1rem;" name="remove" value="{{ x.product_id }}">Remove from Cart</button>
+                </a>
+            </form> -->
+
+            <form style="margin-left: 20%;" action="/main-page/orders/" method="POST">
+                {% csrf_token %}
+                <!-- <a class="buynow" href="#">Buy Now</a> -->
+                <a class="buynow" href="/main-page/orders/">
+                    <button type="submit" style="border: none;background-color: rgb(253, 75, 10, 1);color: white;font-size: 1.1rem;" name="cancel" value="{{ x.id }}">Cancel Order</button>
+                </a>
+                <!-- <a class="addtocart" href="/main-page/cart/">
+                    <button type="submit" style="border: none;background-color: rgb(253, 75, 10, 1);color: white;font-size: 1.1rem;" name="name" value="{{ x.product_id }}">Add to Cart</button>
+                </a> -->
+                
+            </form>
+
+        <form action="/main-page/cart/" style="margin-right: 20%;" method="POST">
+            {% csrf_token %}
+            <!-- <a class="buynow" href="#">Buy Now</a> -->
+            <!-- <a class="buynow" href="/main-page/orders/">
+                <button type="submit" style="border: none;background-color: rgb(253, 75, 10, 1);color: white;font-size: 1.1rem;" name="order" value="{{ x.product_id }}">Buy Now</button>
+            </a> -->
+            <a class="addtocart" href="/main-page/cart/">
+                <button type="submit" style="border: none;background-color: rgb(253, 75, 10, 1);color: white;font-size: 1.1rem;" name="name" value="{{ x.product_id }}">Add to Cart</button>
+            </a>
+            
+        </form>
+
+        </div>
+        </div>
+    </section>  
+    {% endfor %}
       
 
     <script src="app_itempage.js"></script>
