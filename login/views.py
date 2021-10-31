@@ -27,10 +27,10 @@ def forgetview(request, *args, **kwargs):
             given="QWERTYUIOPLKJHGFDSAZXCVBNMqwertyuioplkjhgfdsazxcvbnm1234567890"
             for x in range(10):
                 password += random.choice(given)
-            users.password = password
+            users.password = make_password(password)
             users.save()
             context = {
-                "user": users
+                "user": password
             }
             return render(request, 'forgot-password1.html', context=context)
         
