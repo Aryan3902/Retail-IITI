@@ -3,7 +3,7 @@ from django.http.response import HttpResponse
 from django.shortcuts import render, redirect
 from django.core.mail import send_mail
 from django.contrib.auth.hashers import make_password, check_password
-from .models import User
+from .models import User,Retailer
 import random
 
 # Create your views here.
@@ -106,6 +106,37 @@ def login(request, *args, **kwargs):
 
     else:
         messages.info(request, 'User is not registered')
+        return redirect('../')
+
+
+def relogin(request, *args, **kwargs):
+    email = request.POST.get('email')
+    password = request.POST.get('password')
+    # username = request.POST.get('Name')
+    userlist = Retailer.objects.filter(email=email).values()
+    # print(userlist)
+    
+    # print("1234567890")
+
+    if len(userlist)>0:
+        userA = userlist[0]
+        if check_password(password, userA['password']):
+        # if password == userA['password']:
+            # print(userA['name'])
+            context = {
+                "userid": email
+            }
+            request.session['rid'] = userA['Retailer_ID']
+            # return render(request, 'index_mainpage.html', {'userMain': userA['name']})
+            return redirect('/Retailer', context=context)
+            # return redirect('../home/', {'userMain': userA['name']})
+
+        else:
+            messages.info(request, 'Wrong password')
+            return redirect('../')
+
+    else:
+        messages.info(request, 'Retailer is not registered')
         return redirect('../')
 
 
