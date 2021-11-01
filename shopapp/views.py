@@ -10,6 +10,48 @@ from .models import Product, Cart, CartItem, Orders
 
 
 def main_page(request, *args, **kwargs):
+
+    if 'search' in request.POST:
+        query = request.POST.get('search')
+        try:
+            int(query)
+            check = True
+        except:
+            check = False
+        if check:
+            product_item = Product.objects.filter(product_id=query).values()
+            context = {
+                "product": product_item
+                # "userid": userid
+            }
+            return render(request, 'index_mainpage.html', context=context)
+
+        else:
+            product_item1 = Product.objects.filter(product_name=query).values()
+            product_item2 = Product.objects.filter(company_name=query).values()
+            product_item3 = Product.objects.filter(availability=query).values()
+            if len(product_item1)>0:
+                context = {
+                "product": product_item1,
+                # "userid": userid
+                }
+                return render(request, 'index_mainpage.html', context=context)
+            
+            elif len(product_item2)>0:
+                context = {
+                "product": product_item2,
+                # "userid": userid
+                }
+                return render(request, 'index_mainpage.html', context=context)
+            
+            else:
+                context = {
+                "product": product_item3,
+                # "userid": userid
+                }
+                return render(request, 'index_mainpage.html', context=context)
+
+            
     product_item = Product.objects.all()
     context = {
         "product": product_item,
@@ -21,6 +63,26 @@ def main_page(request, *args, **kwargs):
 def cart(request, *args, **kwargs):
     id = None
     eid = request.session.get('eid')
+
+    if 'search' in request.POST:
+        query = request.POST.get('search')
+        try:
+            int(query)
+            check = True
+        except:
+            check = False
+        if check:
+            product_item = CartItem.objects.filter(product_id=query, user_id=eid)
+            context = {
+                "product": product_item
+                # "userid": userid
+            }
+            return render(request, 'cart.html', context=context)
+
+        else:
+            return render(request, 'cart.html')
+
+
     if 'name' in request.POST:
         id = request.POST.get('name')
 
@@ -116,6 +178,25 @@ def main_page_order_product(request, id=None, *args, **kwargs):
 def orders(request, *args, **kwargs):
     id = None
     eid = request.session.get('eid')
+
+    if 'search' in request.POST:
+        query = request.POST.get('search')
+        try:
+            int(query)
+            check = True
+        except:
+            check = False
+        if check:
+            product_item = Orders.objects.filter(product_id=query, user_id=eid)
+            context = {
+                "product": product_item
+                # "userid": userid
+            }
+            return render(request, 'orders.html', context=context)
+
+        else:
+            return render(request, 'orders.html')
+
     if 'order' in request.POST:
         id = request.POST.get('order')
 
