@@ -1,4 +1,7 @@
 from django.shortcuts import render
+from django.core import mail
+from django.conf import settings
+from django.core.mail import send_mail
 
 from django.contrib import messages
 from django.http.response import HttpResponse
@@ -28,6 +31,7 @@ def main_page(request, *args, **kwargs):
 
         else:
             product_item1 = Product.objects.filter(product_name=query).values()
+            # product_item1 = Product.objects.filter(query in product_name).values()
             product_item2 = Product.objects.filter(company_name=query).values()
             product_item3 = Product.objects.filter(availability=query).values()
             if len(product_item1)>0:
@@ -207,6 +211,7 @@ def orders(request, *args, **kwargs):
         product1 = product_list[0]
         product = product1['product_name']
         price_ht = product1['price']
+        company = product1['company_name']
 
         list = Orders()
         list.product_id = id
@@ -215,6 +220,38 @@ def orders(request, *args, **kwargs):
         list.user_id = eid
         list.save()
 
+        order2 = Orders.objects.all().last()
+
+        email = User.objects.filter(id=eid)
+        email1 = email[0]
+        email2 = email1.email
+        user2 = email1.name
+        # send_mail('Order Placed', 'rerhthhr',
+        #     'retailiiti@gmail.com', [eid], fail_silently=False)
+
+        # with mail.get_connection() as connection:
+        #     mail.EmailMessage(
+        #         eid, eid, 'retailiiti@gmail.com', ['cse200001043@iiti.ac.in'],
+        #         connection=connection,
+        #     ).send()
+        subject = 'Order Placed'
+        message =f'''
+        Hi {user2}, your order has been placed. 
+
+        Order Details: 
+
+        Order Id: { order2.id }
+        Product Id: { id }
+        Product Name: { product }
+        Company Name: { company }
+        '''
+        email_from = settings.EMAIL_HOST_USER
+        recipient_list = [email2, ]
+        send_mail( subject, message, email_from, recipient_list )
+
+        delete_all = CartItem.objects.filter(user_id=eid, product_id=id).delete()
+
+
     if 'cancel' in request.POST:
         id = request.POST.get('cancel')
 
@@ -222,8 +259,33 @@ def orders(request, *args, **kwargs):
         user1 = user_list[0]
         user = user1['name']
 
+        order_to = Orders.objects.filter(id=id).values()
+        order2 = order_to[0]
+        product_id = order2['product_id']
+        product_to_cancel = Product.objects.filter(product_id=product_id).values()
+        product12 = product_to_cancel[0]
         final_list = Orders.objects.filter(id=id).delete()
     #     # final_list1 = final_list
+
+        email = User.objects.filter(id=eid)
+        email1 = email[0]
+        email2 = email1.email
+        user2 = email1.name
+
+        subject = 'Order Cancelled'
+        message =f'''
+        Hi {user2}, your order has been cancelled. 
+
+        Order Details: 
+        
+        Order Id: { order2['id'] }
+        Product Id: { product_id }
+        Product Name: { product12['product_name'] }
+        Company Name: { product12['company_name'] }
+        '''
+        email_from = settings.EMAIL_HOST_USER
+        recipient_list = [email2, ]
+        send_mail( subject, message, email_from, recipient_list )
 
 
         product_item = Orders.objects.filter(user_id=eid)
@@ -245,6 +307,7 @@ def orders(request, *args, **kwargs):
         user_list = User.objects.filter(id=eid).values()
         user1 = user_list[0]
         user = user1['name']
+        total_order = ''''''
         for x in range(len(list1)):
             abc = list1[x]
             abcd = abc['id']
@@ -252,6 +315,10 @@ def orders(request, *args, **kwargs):
             cart_item1 = cart_item[0]
             id1 = cart_item1['product_id']
             price_ht = cart_item1['price_ht']
+            product_find = Product.objects.filter(product_id=id1).values()
+            product_find1 = product_find[0]
+            name_product = product_find1['product_name']
+            company = product_find1['company_name']
 
             list = Orders()
             list.product_id = id1
@@ -259,6 +326,31 @@ def orders(request, *args, **kwargs):
             list.price_ht = price_ht
             list.user_id = eid
             list.save()
+
+            order2 = Orders.objects.all().last()
+
+            total_order += f'''
+            { x+1 }. Order Id: { order2.id }
+                Product Id: { id1 }
+                Product Name: { name_product }
+                Company Name: { company }
+            '''
+        
+        email = User.objects.filter(id=eid)
+        email1 = email[0]
+        email2 = email1.email
+        user2 = email1.name
+
+        subject = 'Order Placed'
+        message =f'''
+        Hi {user2}, your order has been placed. 
+
+        Order Details: 
+        { total_order }
+        '''
+        email_from = settings.EMAIL_HOST_USER
+        recipient_list = [email2, ]
+        send_mail( subject, message, email_from, recipient_list )
 
         delete_all = CartItem.objects.filter(user_id=eid).delete()
 
