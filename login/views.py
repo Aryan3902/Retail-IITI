@@ -1,4 +1,7 @@
 from django.contrib import messages
+from django.core import mail
+from django.conf import settings
+from django.core.mail import send_mail
 from django.http.response import HttpResponse
 from django.shortcuts import render, redirect
 from django.core.mail import send_mail
@@ -46,8 +49,34 @@ def openview(request, *args, **kwargs):
 
 def ticket(request, *args, **kwargs):
     if request.method == 'POST':
-        send_mail('Retailer Request', 'LET ME INNNNNNNNNNNNNN',
-                  'retailiiti@gmail.com', ['retailiiti@gmail.com'], fail_silently=False)
+        first_name = request.POST.get('firstName')
+        last_name = request.POST.get('lastName')
+        company_name = request.POST.get('company')
+        products = request.POST.get('products')
+        why_you = request.POST.get('why')
+        email = request.POST.get('email')
+        gst_no = request.POST.get('gstin')
+
+        # send_mail('Retailer Request', 'LET ME INNNNNNNNNNNNNN',
+        #           'retailiiti@gmail.com', ['retailiiti@gmail.com'], fail_silently=False)
+        # return HttpResponse('Your request is sent to the admins.')
+        subject = 'Retailer Request'
+        message =f'''
+        Hi , there is a retailer waiting for a response. 
+
+        Retailer Info: 
+
+        Name:  { first_name } { last_name }
+        Company Name: { company_name }
+        Products: { products }
+        Why You: { why_you }
+        Email: { email }
+        GST No.: { gst_no }
+        '''
+        email_from = settings.EMAIL_HOST_USER
+        recipient_list = ['retailiiti@gmail.com', ]
+        send_mail( subject, message, email_from, recipient_list )
+
         return HttpResponse('Your request is sent to the admins.')
     else:
         return render(request, 'ticket.html')
