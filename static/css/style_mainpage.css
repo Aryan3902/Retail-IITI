@@ -2,15 +2,9 @@
     border: 0%;
     margin: 0%;
     box-sizing: border-box;
+    font-family: 'Source Sans Pro', sans-serif;
 }
-.returns{
-    margin-right: 1rem;
-   transform: translateX(-20%);
-}
-.accounts{
-    margin-right: 1rem;
-    transform: translateX(-200%);
-}
+
 .fa-shopping-cart{
     margin:1rem;
     transform: translateX(-90%);
@@ -18,18 +12,20 @@
 .header{
     display: flex;
     min-height:10vh ;
-    background-color: #131c21;
+    background-color: #071116;
     color: white;
     align-items: center;
-    justify-content: space-between;
+    
 }
 .header h1{
-    margin-left: 0.3rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
 }
 .options{
+    margin-left: 1rem;
 display: flex;
 align-items: center;
-justify-content: space-between;
+
 }
 .options a{
     color: white;
@@ -40,11 +36,11 @@ justify-content: space-between;
     margin-right: 0.3rem;
 }
 .search_box input{
-    padding: 0.7rem 0rem;
-    width: 50%;
-    top: 3%;
-    position: absolute;
+    
+    width: 100%;
+    margin-right: 2rem;
     text-align: center;
+    padding: 0.8rem;
 }
 input::placeholder{
     font-size: 1rem;
@@ -58,26 +54,16 @@ ul a{
 }
 .search_box .fa{
     cursor: pointer;
-    position: absolute;
     top: 3%;
     padding: 0.55rem;
-    transform: translateX(-10%)translateY(0%);
     background-color: green;
 }
-.options a:hover{
-    border-style: solid;
-    padding: 0.5rem;
-    transition:  all 0.5s ease;
-    background-color: white;
-    color: #131c21;
-    border-radius: 7px;
+.list div:hover{
+    color: rgb(126, 61, 0);
 }
 .search_box{
-    transform: translateX(20%);
-    position: absolute;
-    width: 90%;
-    right: 0%;
-    top: 3%;
+    /* transform: translateX(20%); */
+    flex: 1;
 }
 .fa{
     cursor: pointer;
@@ -85,7 +71,7 @@ ul a{
 .navbar{
     color: white;
     min-height: 5vh;
-    background-color:indigo;
+    background-color:#131c21;
     align-items: center;
     display: flex;
 }
@@ -131,7 +117,6 @@ width:90% ;
 }
 .box{
     display: flex;
-    background: pink;
     min-height: 40vh;
     margin-bottom: 0.5rem;
 }
@@ -139,17 +124,25 @@ width:90% ;
     display: flex;
 }
 .product{
-    width: 28%;
-    background: yellow;
+    width: 20rem;
+    height: 20rem;
+}
+
+.prImage{
+    
+    object-fit: contain;
 }
 .description{
     display: flex;
     flex-direction:column;
-  justify-content: space-evenly;
+    flex: 1;
  }
- .description h1{
-     margin-left: 4rem;
- }
+.prName{
+    font-size: 2rem;
+    margin: 1rem;
+    margin-left: 0rem;
+    margin-bottom: 0.5rem;
+}
 .searchbyoptions{
     min-height: 100vh;
     width: 30%;
@@ -190,9 +183,7 @@ padding: 1rem 1rem;
   
     background-color: pink;
 }
-.account{
-    display: flex;
-}
+
 .trending{
     display: flex;
     flex-direction: column;
@@ -266,3 +257,10 @@ left: 0;
     padding: 0.2rem;
     color: blue;
 }
+.prName:hover{
+    color: rgb(196, 95, 0);
+}
+
+
+
+
