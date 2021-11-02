@@ -8,9 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Retail-IITI</title>
     {% load static %}
+
     <link rel="stylesheet" href="{% static 'css/style_mainpage.css' %}">
     <link rel="icon" href="{% static 'img/4014657-buy-cell-online-phone-store_112888.png' %}">
-    <script src="{% static '/js/app.js' %}" type="text/javascript"></script>
     <style>
         .product {
             border-color: blue;
@@ -152,7 +152,22 @@
     </section>
     </section>
 
+    <style>
+        .box:hover {
+            z-index: 10;
+            box-shadow: 10px 10px 10px rgb(0, 0, 0, 0.8);
+        }
 
+        .box {
+            margin-bottom: 1rem;
+        }
+
+        .product:hover {
+            z-index: 20;
+            box-shadow: 10px 10px 10px rgb(0, 0, 0, 0.8);
+        }
+    </style>
+    <script src="{% static 'js/app.js' %}"></script>
 </body>
 
 </html>
