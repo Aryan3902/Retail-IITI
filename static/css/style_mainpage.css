@@ -266,6 +266,7 @@ left: 0;
     padding: 0.2rem;
     color: blue;
 }
+<<<<<<< HEAD
 .prName:hover{
     color: rgb(196, 95, 0);
 }
@@ -273,3 +274,28 @@ left: 0;
 
 
 
+=======
+button{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: all 0.5s ease;
+    width: 100%;
+    color: white;
+    font-size: 1.3rem;
+    padding: 1rem;
+    border: none;
+    background-color: blue;
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+    cursor: pointer;
+}
+button:hover{
+    background-color: white;
+    color: #131c21;
+}
+.buttons{
+    background-color:white;
+    align-items: center;
+    display: flex;
+    justify-content: space-around;
+}
+>>>>>>> Aryan-MailCheck-And-BasicChanges

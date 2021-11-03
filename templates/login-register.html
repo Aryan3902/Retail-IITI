@@ -115,13 +115,19 @@
 				</form>
 			</div>
 			<div class="form-container sign-in-container">
-				<form action="#">
+				<form action="/sign-in/Re_login/" method="post">
+					{% csrf_token %}
 					<h1 style="margin: 1rem!important;">Sign Back in</h1>
-					<input type="email" placeholder="Email" required />
-					<input type="password" placeholder="Password" required />
+					<input type="email" name ="email" placeholder="Email" required />
+					<input type="password" name="password" placeholder="Password" required />
 					<a href="">Forgot your password?</a>
-					<button>Sign In</button>
+					<button type="submit">Sign In</button>
 				</form>
+				<div>
+					{% for message in messages %}
+					<h3 center style="color: red;font-size: 1rem;margin-bottom: 0rem;margin-top: 0rem;">{{message}}</h3>
+					{% endfor %}
+				</div>
 			</div>
 			<div class="overlay-container">
 				<div class="overlay">

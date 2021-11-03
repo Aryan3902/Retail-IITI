@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     # my app
     'login',
     'shopapp',
+    'Retailer'
 ]
 
 MIDDLEWARE = [

@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import datetime
 
 # Create your models here.
 class User(models.Model):
@@ -18,6 +19,8 @@ class Retailer(models.Model):
     gstNo = models.TextField(null=False, blank=False,unique=True)
     whyyou = models.TextField(null=False, blank=False)
     Products = models.TextField(null=False, blank=False) 
+    Retailer_ID = models.AutoField(primary_key=True)
+    created_at = models.DateTimeField(default=datetime.now)
 
     def __str__(self):
-        return self.Products
+        return self.Retailer_ID.__str__()

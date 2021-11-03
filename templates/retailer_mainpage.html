@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style_mainpage.css' %}">
+	<link rel="icon" href="{% static 'img/4014657-buy-cell-online-phone-store_112888.png' %}">
+    <script src="{% static 'js/app.js' %}"></script>
+    <style>
+        .product{
+            border-color: blue;
+        }
+        .product img{
+            height: 100%;
+            width: 100%;
+        }
+        .product:hover{
+        z-index: 20;
+        box-shadow: 10px 10px 10px rgb(0,0,0,0.8);
+    }
+    .qwer:hover{
+        background-color: white;
+        color: black;
+    }
+    </style>
+</head>
+<body>
+    <section class="menu">
+        <div class="account">
+            <div class="icon">
+         <a href=""> <i class="fa fa-user" style="font-size:36px"></i></a>
+      </div>
+         <h1>Hello,User</h1>
+         <div class="burger2">
+             <span class="lines1"></span>
+             <span class="lines2"></span>
+             <span class="lines3"></span>
+         </div>
+        </div>
+        <div class="trending">
+            <h1>Trending</h1>
+      <a href="">Best Sellers</a>
+      <a href="">Best Offers</a>
+        </div>
+        <div class="shopbydept">
+            <h1>Shop By Department</h1>
+            <a href="">Mobiles,Computers</a>
+            <a href="">TV,Appliances,Electronics</a>
+            <a href="">Men's Fashion</a>
+        </div>
+        <div class="help">
+            <h1>Help & Settings</h1>
+            <a href="#">Your Account</a>
+            <a href="#">Customer Service</a>
+            <a href="#">Sign Out</a>
+        </div>
+    </section>
+    <section class="header">
+        <h1>Retail IITI</h1>
+        <div class="search_box">
+        <input type="text" placeholder="Search Products Here">
+        <i class="fa fa-search" style="font-size:24px"></i>
+    </div>
+    <div class="options">
+        <div class="list">
+    <a href="#" class="accounts"> Accounts & Lists</a>
+    <ul class="dropdown">
+        <li><a href="#">Browsing History</a></li>
+        <li><a href="#">Your Account</a></li>
+        <li><a href="#">Your Orders</a></li>
+        <li><a href="#">Your Wishlist</a></li>
+        <li><a href="#">Create a Wishlist</a></li>
+        <li><a href="#">Switch Accounts</a></li>
+        <li><a href="#">Sign Out</a></li>
+    </ul>
+</div>
+    <a class="returns" href="#">Returns &Orders</a>
+    <a class="shopping" href="/main-page/cart/"><i class="fa fa-shopping-cart" style="font-size:24px"></i></a>
+</div>
+    </section>
+    <section class="navbar">
+        <div class="burger">
+            <span class="line1"></span>
+            <span class="line2"></span>
+            <span class="line3"></span>
+        </div>
+        <div class="itemslist">
+            <li><a style="background-color: white;color: black;padding: 0.25rem 0.4rem;" class="qwer" href="/Retailer/">Home</a></li>
+            <li><a class="qwer" href="/Retailer/add/">Add New Products</a></li>
+            <li><a class="qwer" href="/Retailer/update/">Update Existing products</a></li>
+            <li><a class="qwer" href="/Retailer/Profile/">Profile</a></li>
+        </div>
+    </section>
+    <section class="main">
+        <div class="searchbyoptions"></div>
+        <div class="container">
+            {% for x in product %}
+                <div class="box" style="height: 2rem;">
+                    <div class="product" >
+                        <img src="{{ x.image }}" alt="">
+                    </div>
+                    <div class="description">
+                        <h1><i>Product ID</i> : {{ x.product_id }}</h1>
+                        <h1><i>Product Name</i> : {{ x.product_name }}</h1>
+                        <h1><i>Price</i> : {{ x.price }}</h1>
+                        <h1><i>Company Name</i> : {{ x.company_name }}</h1>
+                        <h1><i>Quantity</i> : {{ x.Quantity }}</h1>
+                    </div>
+                    <div class="buttons">
+                        <form style="margin-left: 20%;" action="/Retailer/update/" method="post">
+                            {% csrf_token %}
+                            <!-- <a class="buynow" href="/Retailer/update/"> -->
+                                <button type="submit" style="border: none;background-color: rgb(84, 236, 14);color: white;font-size: 1.1rem;" name="id" value="{{ x.product_id }}">Update</button>
+                            <!-- </a> -->
+                        </form>
+                        <form style="margin-left: 20%;" action="/Retailer/delete/" method="POST">
+                            {% csrf_token %}
+                            <a class="buynow" href="/Retailer/delete/">
+                                <button type="submit" onclick="return confirm('Are you sure you want to delete this item?');" style="border: none;background-color: rgb(236, 14, 14);color: white;font-size: 1.1rem;" name="id" value="{{ x.product_id }}">Delete</button>
+                            </a>
+                        </form>
+                </div>
+                </div>
+            {% endfor %}
+            
+        </div>
+
+    </section>  
+    </section>
+    <div>
+        {% for message in messages %}
+        <h3 center style="color: green;font-size: 1rem;margin-bottom: 0rem;margin-top: 0rem;">{{message}}</h3>
+        {% endfor %}
+    </div>
+<style>
+    .box:hover{
+        z-index: 10;
+        box-shadow: 10px 10px 10px rgb(0,0,0,0.8);
+    }
+    .box{
+        margin-bottom: 1rem;
+    }
+    .product:hover{
+        z-index: 20;
+        box-shadow: 10px 10px 10px rgb(0,0,0,0.8);
+    }
+    
+</style>
+    
+</body>
+</html>
