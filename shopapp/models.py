@@ -17,6 +17,7 @@ class Product(models.Model):
         max_length=5000, default="https://bitsofco.de/content/images/2018/12/broken-1.png")
     Retailer_ID = models.ForeignKey(Retailer, on_delete=models.CASCADE)
     availability = models.CharField(max_length=128, default="Out of Stock")
+    category = models.CharField(max_length=128, default="General")
 
     def __str__(self):
         return self.product_name + " ( product id "+self.product_id.__str__()+" ) "+" by "+self.company_name

@@ -70,7 +70,7 @@
             <div class="list">
                 <a href="#">
                     <div class="accounts">
-                        <p style="font-size: 0.8rem;">Hello, {{user}}</p>
+                        <p style="font-size: 0.8rem;">Hello, {{user1}}</p>
                         <strong>
                             Account Info
                         </strong>
@@ -100,18 +100,22 @@
         </div>
     </section>
     <section class="navbar">
-
+        <div class="burger">
+            <span class="line1"></span>
+            <span class="line2"></span>
+            <span class="line3"></span>
+        </div>
         <div class="itemslist">
+            <li><a class="qwer"  href="/main-page/">Home</a></li>
             <li><a style="background-color: white;color: black;padding: 0.25rem 0.4rem;" class="qwer"
-                    href="/main-page/">Home</a></li>
-            <li><a class="qwer" href="/main-page/electronics/">Electronics</a></li>
+                 href="/main-page/electronics/">Electronics</a></li>
             <li><a class="qwer" href="/main-page/stationary/">Stationary</a></li>
             <li><a class="qwer" href="/main-page/household/">Household</a></li>
             <li><a class="qwer" href="/main-page/fashion/">Fashion</a></li>
             <li><a class="qwer" href="/main-page/cart/">Cart</a></li>
             <li><a class="qwer" href="/main-page/orders/">Orders</a></li>
             <li><a class="qwer" href="/main-page/cart/">Profile</a></li>
-            <li><a class="qwer" href="/main-page/aboutUs/">About Us</a></li>
+            <li><a class="qwer" href="/main-page/cart/">About Us</a></li>
         </div>
     </section>
     <section class="main">
@@ -139,7 +143,6 @@
                     <!-- <h1><i>Product ID</i> : {{ x.product_id }}</h1> -->
 
                     <p style="font-size: 1.5rem;">{{ x.company_name }}</p>
-
                     <p style="font-size: 2rem;">Currently <strong>{{ x.availability }}</strong></p>
                 </div>
 
@@ -153,8 +156,18 @@
     </section>
 
     <style>
+        .box:hover {
+            z-index: 10;
+            box-shadow: 10px 10px 10px rgb(0, 0, 0, 0.8);
+        }
+
         .box {
             margin-bottom: 1rem;
+        }
+
+        .product:hover {
+            z-index: 20;
+            box-shadow: 10px 10px 10px rgb(0, 0, 0, 0.8);
         }
     </style>
     <script src="{% static 'js/app.js' %}"></script>

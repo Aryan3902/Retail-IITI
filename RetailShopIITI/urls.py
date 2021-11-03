@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from login import views
-from shopapp.views import main_page, cart, main_page_product, main_page_cart_product, orders, main_page_order_product, aboutus
+from shopapp.views import main_page, cart, main_page_product, main_page_cart_product, orders, main_page_order_product, aboutus, main_page_electronics, main_page_stationary, main_page_household, main_page_fashion
 from Retailer.views import mainpage, update_product, add_product_form, add_product, update_product_form, delete_product
 
 urlpatterns = [
@@ -30,6 +30,10 @@ urlpatterns = [
     path('resetpassword/', views.forgetview),
     path('ticket/', views.ticket, name='ticket'),
     path('main-page/', main_page),
+    path('main-page/electronics/', main_page_electronics),
+    path('main-page/stationary/', main_page_stationary),
+    path('main-page/household/', main_page_household),
+    path('main-page/fashion/', main_page_fashion),
     path('main-page/<int:id>/', main_page_product),
     path('main-page/cart/<int:id>/', main_page_cart_product),
     path('main-page/orders/<int:id>/', main_page_order_product),
