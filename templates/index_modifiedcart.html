@@ -1,33 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet"> 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="style_modifiedcart.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Retail-IITI</title>
-    {% load static %}
-
-    <link rel="stylesheet" href="{% static 'css/style_mainpage.css' %}">
-    <link rel="icon" href="{% static 'img/4014657-buy-cell-online-phone-store_112888.png' %}">
-    <style>
-        .product {
-            border-color: blue;
-        }
-
-        .product img {
-            height: 100%;
-            width: 100%;
-        }
-    </style>
+    <title>Document</title>
 </head>
-
 <body>
-    <!-- <section class="menu">
+     <section class="menu">
         <div class="account">
             <div class="icon">
-                <a href=""> <i class="fa fa-user" style="font-size:36px"></i></a>
+                <a href="#"> <i class="fa fa-user" style="font-size:36px"></i></a>
             </div>
             <h1>Hello,User</h1>
             <div class="burger2">
@@ -53,7 +40,7 @@
             <a href="#">Customer Service</a>
             <a href="#">Sign Out</a>
         </div>
-    </section> -->
+    </section>
     <section class="header">
         <h1>🆁🅴🆃🅰🅸🅻 - 🅸🅸🆃🅸</h1>
         <div class="search_box">
@@ -114,60 +101,70 @@
             <li><a class="qwer" href="/main-page/cart/">About Us</a></li>
             <li><a class="qwer" href="/main-page/cart/">Item1</a></li>
         </div>
-    </section>
-    <section class="main">
-        <!-- <div class="searchbyoptions"></div> -->
+    </section> 
+    <div class="headercart">
+        <h1>Shopping Cart</h1>
+        
+    </div>
+
+<hr>
+    <div class="cart">
+        
+<div class="image">
+    <img src="https://m.media-amazon.com/images/I/81Ne5qKmE8L._SL1500_.jpg" alt="">
+</div>
+<div class="descriptionproduct">
+    <div class="text">
+<h2>HP 15 10th Gen Intel Core i3 Thin and Light 15.6 inches FHD Laptop (8GB/1TB <br> HDD/M.2 Slot/Windows 10/MS Office/Jet Black, 1.74 kg) 15s-du1066TU</h1>
+    <h3>Price</h3>
+</div>
+
+<h3>Availability</h2>
+<div class="cartoptions">
+    <select name="" id="">
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+    </select>
+  
+    <a href="#">Delete</a>
+    <a href="#">Save For Later</a>
+</div>
+</div>
+
+</div>
 
 
-        <div class="container">
+<hr>
 
-            {% for x in product %}
-
-            <div class="box" style="height: 2rem;">
-                <div class="product">
-                    <a href="/main-page/{{ x.product_id }}/">
-                        <img class="prImage" src="{{ x.image }}" alt="">
-                    </a>
-
-                </div>
-                <div class="description">
-                    <div style="flex: 0.75;">
-                        <a style="color: black;" href="/main-page/{{ x.product_id }}/">
-                            <p class="prName">{{ x.product_name }}</p>
-                        </a>
-                        <p style="font-size: 2.4rem; color: rgb(139, 74, 0);"> &#8377; {{ x.price }}</p>
-                    </div>
-                    <!-- <h1><i>Product ID</i> : {{ x.product_id }}</h1> -->
-
-                    <p style="font-size: 1.5rem;">{{ x.company_name }}</p>
-                    <p style="font-size: 2rem;">Currently <strong>{{ x.availability }}</strong></p>
-                </div>
-
-            </div>
-            <hr>
-            {% endfor %}
-
-        </div>
-
-    </section>
-    </section>
-
-    <style>
-        .box:hover {
-            z-index: 10;
-            box-shadow: 10px 10px 10px rgb(0, 0, 0, 0.8);
-        }
-
-        .box {
-            margin-bottom: 1rem;
-        }
-
-        .product:hover {
-            z-index: 20;
-            box-shadow: 10px 10px 10px rgb(0, 0, 0, 0.8);
-        }
-    </style>
-    <script src="{% static 'js/app.js' %}"></script>
+<!-- <div class="proceed">
+    <h2>Subtotal : </h2>
+    <button>Proceed to Buy</button>
+</div> -->
+   
 </body>
-
+<script>
+    const burger=document.querySelector('.burger')
+const menu=document.querySelector('.menu')
+const dropdown =document.querySelector('.dropdown')
+const list=document.querySelector('.list')
+burger.addEventListener('click',function(){
+    burger.classList.toggle('toggle');
+    burger.classList.toggle('hiburger');
+    menu.classList.toggle('closemenu')
+});
+const accounts=document.querySelector('.accounts')
+accounts.addEventListener('click',function(){
+dropdown.classList.toggle('comedown')
+list.classList.toggle('addcolor')
+})
+</script>
 </html>
