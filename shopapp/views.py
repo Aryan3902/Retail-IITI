@@ -65,6 +65,51 @@ def main_page(request, *args, **kwargs):
     return render(request, 'index_mainpage.html', context=context)
 
 
+
+def main_page_electronics(request, *args, **kwargs):
+
+            
+    product_item = Product.objects.filter(category="Electronics")
+    context = {
+        "product": product_item,
+        # "userid": userid
+    }
+    return render(request, 'category_electronics.html', context=context)
+
+
+def main_page_stationary(request, *args, **kwargs):
+
+            
+    product_item = Product.objects.filter(category="Stationary")
+    context = {
+        "product": product_item,
+        # "userid": userid
+    }
+    return render(request, 'category_stationary.html', context=context)
+
+
+def main_page_household(request, *args, **kwargs):
+
+            
+    product_item = Product.objects.filter(category="Household")
+    context = {
+        "product": product_item,
+        # "userid": userid
+    }
+    return render(request, 'category_household.html', context=context)
+
+
+def main_page_fashion(request, *args, **kwargs):
+
+            
+    product_item = Product.objects.filter(category="Fashion")
+    context = {
+        "product": product_item,
+        # "userid": userid
+    }
+    return render(request, 'category_fashion.html', context=context)
+
+
 def cart(request, *args, **kwargs):
     id = None
     eid = request.session.get('eid')
