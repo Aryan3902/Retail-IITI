@@ -11,6 +11,7 @@ class Product(models.Model):
     price = models.IntegerField(null=False, blank=False)
     company_name = models.CharField(max_length=128,null=False, blank=False)
     availability = models.CharField(max_length=128,null=False, blank=False)
+    category = models.CharField(max_length=128, default="General")
     image = models.URLField(max_length=5000, default="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjw8YPUNzXPoROoi5DbrP2LEXL5Fs4txr3Aw&usqp=CAU")
     
 
