@@ -144,6 +144,7 @@ width:90% ;
     display: flex;
     flex-direction:column;
     flex: 1;
+    margin: 1rem;
  }
 .prName{
     font-size: 2rem;
@@ -266,7 +267,6 @@ left: 0;
     padding: 0.2rem;
     color: blue;
 }
-<<<<<<< HEAD
 .prName:hover{
     color: rgb(196, 95, 0);
 }
@@ -274,7 +274,6 @@ left: 0;
 
 
 
-=======
 button{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     transition: all 0.5s ease;
@@ -298,4 +297,3 @@ button:hover{
     display: flex;
     justify-content: space-around;
 }
->>>>>>> Aryan-MailCheck-And-BasicChanges

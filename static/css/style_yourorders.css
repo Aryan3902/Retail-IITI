@@ -12,11 +12,9 @@ img{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    flex: 1;
 }
-.text{
-    display: flex;
-   
-}
+
 body{
     overflow: hidden;
 }
@@ -28,13 +26,8 @@ body{
     width: 10rem;
     background-color: black;
 }
-.text h3{
-    position: absolute;
-    right: 10%;
-}
-.cart{
-    display: flex;
-}
+
+
 .cartoptions{
     display: flex;
     margin-bottom:0.3rem;

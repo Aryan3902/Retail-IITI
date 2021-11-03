@@ -1,31 +1,33 @@
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
-   <meta charset="UTF-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"/>
-   <link rel="stylesheet" href="style.css">
-   <title>Creative Our Team Section Using HTML & CSS | CSS Neumorphism</title>
 
-   <!-- Created by S-Tech04 -->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Creative Our Team Section Using HTML & CSS | CSS Neumorphism</title>
+
+    <!-- Created by S-Tech04 -->
 
 </head>
+
 <body>
     <div class="header">
-        <h1>Meet Our Team</h1>
+        <h1 style="font-size: 4rem;">Meet Our Team</h1>
         <hr>
     </div>
     <div class="container">
         <div class="card">
             <div class="content">
                 <div class="imgBx">
-                    <img src="image/WhatsApp Image 2021-11-01 at 12.20.57(1).jpeg" alt="">
+                    <img src="{% static 'img/image/WhatsApp Image 2021-11-01 at 12.20.57(1).jpeg' %}" alt="">
                 </div>
                 <div class="contentBx">
-                    <h4>Yashwanth</h4>
-                   <h5>Managed Frontend part of Retail-IITI </h5>
+                    <h2>Yashwanth</h2>
+                    <h3>Managed Frontend part of Retail-IITI </h3>
                 </div>
                 <!-- <div class="sci">
                     <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
@@ -37,11 +39,11 @@
         <div class="card">
             <div class="content">
                 <div class="imgBx">
-                    <img src="image/WhatsApp Image 2021-10-31 at 14.20.48(1).jpeg" alt="">
+                    <img src="{% static 'img/image/WhatsApp Image 2021-10-31 at 14.20.48(1).jpeg' %}" alt="">
                 </div>
                 <div class="contentBx">
-                    <h4>Mayank Tayal</h4>
-   <h5>Worked on Login Register forms and Database part</h5>
+                    <h2>Mayank Tayal</h2>
+                    <h3>Worked on Login Register forms and Database part</h3>
                 </div>
                 <!-- <div class="sci">
                     <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
@@ -53,11 +55,11 @@
         <div class="card">
             <div class="content">
                 <div class="imgBx">
-                    <img src="image/WhatsApp Image 2021-11-01 at 18.09.00(1).jpeg" alt="">
+                    <img src="{% static 'img/image/WhatsApp Image 2021-11-01 at 18.09.00(1).jpeg' %}" alt="">
                 </div>
                 <div class="contentBx">
-                    <h4>Aryan Yadav</h4>
-                   <h5>Managed Backend ,mainly API part </h5>
+                    <h2>Aryan Yadav</h2>
+                    <h3>Managed Backend ,mainly API part </h3>
                 </div>
                 <!-- <div class="sci">
                     <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
@@ -69,11 +71,11 @@
         <div class="card">
             <div class="content">
                 <div class="imgBx">
-                    <img src="image/WhatsApp Image 2021-11-02 at 09.01.55.jpeg" alt="">
+                    <img src="{% static 'img/image/WhatsApp Image 2021-11-02 at 09.01.55.jpeg' %}" alt="">
                 </div>
                 <div class="contentBx">
-                    <h4>Vipul Mahajan</h4>
-                  <h5>Managed Backend mainly on Admin autherization</h5>
+                    <h2>Vipul Mahajan</h2>
+                    <h3>Managed Backend mainly on Admin autherization</h3>
                 </div>
                 <!-- <div class="sci">
                     <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
@@ -85,4 +87,5 @@
 
     </div>
 </body>
+
 </html>

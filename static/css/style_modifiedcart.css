@@ -12,11 +12,9 @@ img{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    
 }
-.text{
-    display: flex;
-   
-}
+
 body{
     overflow: hidden;
 }
@@ -28,13 +26,7 @@ body{
     width: 10rem;
     background-color: black;
 }
-.text h3{
-    position: absolute;
-    right: 10%;
-}
-.cart{
-    display: flex;
-}
+
 .cartoptions{
     display: flex;
     margin-bottom:0.3rem;
@@ -239,13 +231,7 @@ span{
 .toggle .line3{
     transform: translateY(-85%) rotateZ(-45deg);
 }
-.menu{
-    display: flex;
-    flex-direction: column;
-padding: 1rem 1rem;
-  
-    background-color: pink;
-}
+
 
 .trending{
     display: flex;

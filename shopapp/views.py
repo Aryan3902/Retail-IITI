@@ -11,9 +11,8 @@ from login.models import User
 from .models import Product, Cart, CartItem, Orders
 
 
-
 def main_page(request, *args, **kwargs):
-
+    eid = request.session.get('eid')
     if 'search' in request.POST:
         query = request.POST.get('search')
         try:
@@ -34,31 +33,33 @@ def main_page(request, *args, **kwargs):
             # product_item1 = Product.objects.filter(query in product_name).values()
             product_item2 = Product.objects.filter(company_name=query).values()
             product_item3 = Product.objects.filter(availability=query).values()
-            if len(product_item1)>0:
+            if len(product_item1) > 0:
                 context = {
-                "product": product_item1,
-                # "userid": userid
-                }
-                return render(request, 'index_mainpage.html', context=context)
-            
-            elif len(product_item2)>0:
-                context = {
-                "product": product_item2,
-                # "userid": userid
-                }
-                return render(request, 'index_mainpage.html', context=context)
-            
-            else:
-                context = {
-                "product": product_item3,
-                # "userid": userid
+                    "product": product_item1,
+                    # "userid": userid
                 }
                 return render(request, 'index_mainpage.html', context=context)
 
-            
+            elif len(product_item2) > 0:
+                context = {
+                    "product": product_item2,
+                    # "userid": userid
+                }
+                return render(request, 'index_mainpage.html', context=context)
+
+            else:
+                context = {
+                    "product": product_item3,
+                    # "userid": userid
+                }
+                return render(request, 'index_mainpage.html', context=context)
+
     product_item = Product.objects.all()
+    username = User.objects.filter(id=eid)
+    user = username[0]
     context = {
         "product": product_item,
+        'user': user
         # "userid": userid
     }
     return render(request, 'index_mainpage.html', context=context)
@@ -76,7 +77,8 @@ def cart(request, *args, **kwargs):
         except:
             check = False
         if check:
-            product_item = CartItem.objects.filter(product_id=query, user_id=eid)
+            product_item = CartItem.objects.filter(
+                product_id=query, user_id=eid)
             context = {
                 "product": product_item
                 # "userid": userid
@@ -85,7 +87,6 @@ def cart(request, *args, **kwargs):
 
         else:
             return render(request, 'cart.html')
-
 
     if 'name' in request.POST:
         id = request.POST.get('name')
@@ -101,7 +102,7 @@ def cart(request, *args, **kwargs):
         final_list = CartItem.objects.filter(product_id=id, user_id=eid)
         final_list1 = final_list
 
-        if len(final_list)==0:
+        if len(final_list) == 0:
 
             list = CartItem()
             list.product_id = id
@@ -109,8 +110,6 @@ def cart(request, *args, **kwargs):
             list.price_ht = price_ht
             list.user_id = eid
             list.save()
-
-
 
     if 'remove' in request.POST:
         id = request.POST.get('remove')
@@ -122,25 +121,25 @@ def cart(request, *args, **kwargs):
         product1 = product_list[0]
         product = product1['product_name']
 
-        final_list = CartItem.objects.filter(product_id=id, user_id=eid).delete()
-
-
+        final_list = CartItem.objects.filter(
+            product_id=id, user_id=eid).delete()
 
     product_item = CartItem.objects.filter(user_id=eid)
     # cart1 = product_item[0]
     total_price = 0
     for x in product_item:
         total_price += x.product.price
+    username = User.objects.filter(id=eid)
+    user = username[0]
     context = {
         "product": product_item,
         "id": id,
-        "eid":eid,
-        "total": total_price
+        "eid": eid,
+        "total": total_price,
+        "user": user
         # "cart": cart1
     }
     return render(request, 'cart.html', context=context)
-
-
 
 
 def main_page_product(request, id=None, *args, **kwargs):
@@ -186,7 +185,7 @@ def main_page_cart_product(request, id=None, *args, **kwargs):
         cart_id = cart[0]['id']
         cart_quantity = cart[0]['quantity']
         product_item = CartItem.objects.filter(user_id=eid, product_id=id)
-        
+
         context = {
             "product": product_item,
             "cart_quantity": cart_quantity
@@ -270,7 +269,7 @@ def orders(request, *args, **kwargs):
         #         connection=connection,
         #     ).send()
         subject = 'Order Placed'
-        message =f'''
+        message = f'''
         Hi {user2}, your order has been placed. 
 
         Order Details: 
@@ -282,10 +281,10 @@ def orders(request, *args, **kwargs):
         '''
         email_from = settings.EMAIL_HOST_USER
         recipient_list = [email2, ]
-        send_mail( subject, message, email_from, recipient_list )
+        send_mail(subject, message, email_from, recipient_list)
 
-        delete_all = CartItem.objects.filter(user_id=eid, product_id=id).delete()
-
+        delete_all = CartItem.objects.filter(
+            user_id=eid, product_id=id).delete()
 
     if 'cancel' in request.POST:
         id = request.POST.get('cancel')
@@ -297,7 +296,8 @@ def orders(request, *args, **kwargs):
         order_to = Orders.objects.filter(id=id).values()
         order2 = order_to[0]
         product_id = order2['product_id']
-        product_to_cancel = Product.objects.filter(product_id=product_id).values()
+        product_to_cancel = Product.objects.filter(
+            product_id=product_id).values()
         product12 = product_to_cancel[0]
         final_list = Orders.objects.filter(id=id).delete()
     #     # final_list1 = final_list
@@ -308,7 +308,7 @@ def orders(request, *args, **kwargs):
         user2 = email1.name
 
         subject = 'Order Cancelled'
-        message =f'''
+        message = f'''
         Hi {user2}, your order has been cancelled. 
 
         Order Details: 
@@ -320,8 +320,7 @@ def orders(request, *args, **kwargs):
         '''
         email_from = settings.EMAIL_HOST_USER
         recipient_list = [email2, ]
-        send_mail( subject, message, email_from, recipient_list )
-
+        send_mail(subject, message, email_from, recipient_list)
 
         product_item = Orders.objects.filter(user_id=eid)
         # # cart1 = product_item[0]
@@ -330,15 +329,14 @@ def orders(request, *args, **kwargs):
         #     total_price += x.product.price
         context = {
             "product": product_item,
-            "eid":eid,
-            "id":id
+            "eid": eid,
+            "id": id
         }
         return render(request, 'orders.html', context=context)
 
-    
     if 'buyall' in request.POST:
         list1 = CartItem.objects.filter(user_id=eid).values()
-        
+
         user_list = User.objects.filter(id=eid).values()
         user1 = user_list[0]
         user = user1['name']
@@ -370,14 +368,14 @@ def orders(request, *args, **kwargs):
                 Product Name: { name_product }
                 Company Name: { company }
             '''
-        
+
         email = User.objects.filter(id=eid)
         email1 = email[0]
         email2 = email1.email
         user2 = email1.name
 
         subject = 'Order Placed'
-        message =f'''
+        message = f'''
         Hi {user2}, your order has been placed. 
 
         Order Details: 
@@ -385,16 +383,19 @@ def orders(request, *args, **kwargs):
         '''
         email_from = settings.EMAIL_HOST_USER
         recipient_list = [email2, ]
-        send_mail( subject, message, email_from, recipient_list )
+        send_mail(subject, message, email_from, recipient_list)
 
         delete_all = CartItem.objects.filter(user_id=eid).delete()
-
 
     product_item = Orders.objects.filter(user_id=eid)
 
     context = {
         "product": product_item,
         # "id": id,
-        "eid":eid
+        "eid": eid
     }
     return render(request, 'orders.html', context=context)
+
+
+def aboutus(request):
+    return render(request, 'index_aboutus.html')

@@ -34,36 +34,7 @@
 </head>
 
 <body>
-    <section class="menu">
-        <div class="account">
-            <div class="icon">
-                <a href="#"> <i class="fa fa-user" style="font-size:36px"></i></a>
-            </div>
-            <h1>Hello,User</h1>
-            <div class="burger2">
-                <span class="lines1"></span>
-                <span class="lines2"></span>
-                <span class="lines3"></span>
-            </div>
-        </div>
-        <div class="trending">
-            <h1>Trending</h1>
-            <a href="#">Best Sellers</a>
-            <a href="#">Best Offers</a>
-        </div>
-        <div class="shopbydept">
-            <h1>Shop By Department</h1>
-            <a href="#">Mobiles,Computers</a>
-            <a href="#">TV,Appliances,Electronics</a>
-            <a href="#">Men's Fashion</a>
-        </div>
-        <div class="help">
-            <h1>Help & Settings</h1>
-            <a href="#">Your Account</a>
-            <a href="#">Customer Service</a>
-            <a href="#">Sign Out</a>
-        </div>
-    </section>
+
     <section class="header">
         <h1>Retail IITI</h1>
         <div class="search_box">
@@ -88,18 +59,14 @@
         </div>
     </section>
     <section class="navbar">
-        <div class="burger">
-            <span class="line1"></span>
-            <span class="line2"></span>
-            <span class="line3"></span>
-        </div>
+
         <div class="itemslist">
             <li><a class="qwer" href="/main-page/">Home</a></li>
             <li><a class="qwer" href="/main-page/cart/">Cart</a></li>
             <li><a class="qwer" href="/main-page/orders/">Orders</a></li>
             <li><a class="qwer" href="/main-page/cart/">Profile</a></li>
-            <li><a class="qwer" href="/main-page/cart/">About Us</a></li>
-            <li><a class="qwer" href="/main-page/cart/">Item1</a></li>
+            <li><a class="qwer" href="/main-page/aboutUs/">About Us</a></li>
+            <li><a class="qwer" href="/main-page/aboutUs/">Item1</a></li>
         </div>
     </section>
 
@@ -113,25 +80,25 @@
             <!-- <h1>{{price}}</h1>
             <h1><i>Product ID</i> : {{ x.product_id }}</h1>
             <h1><i>Product Name</i> : {{ x.product_name }}</h1> -->
-            
+
             <h1><i>Product ID</i> : {{ x.product.product_id }}</h1>
             <h1><i>Product Name</i> : {{ x.product.product_name }}</h1>
             <h1><i>Company Name</i> : {{ x.product.company_name }}</h1>
             <h1><i>Availability</i> : {{ x.product.availability }}</h1>
-            
-            <form action="/main-page/cart/{{ x.product_id }}/" method="POST">
-                {% csrf_token %}
-                <label for="quantity">Quantity : </label>
-                
 
-                <select name="quantity" id="cars">
+            <!-- <form action="/main-page/cart/{{ x.product_id }}/" method="POST">
+                {% csrf_token %}
+                <label for="quantity">Quantity : </label> -->
+
+
+            <!-- <select name="quantity" id="cars">
                 {% for i in '0123456789'|make_list %}
                     
                     <button type="submit"><option value="{{ forloop.counter }}">{{ forloop.counter }}</option></button>
                 {% endfor %}
                 
-                <option selected value="{{ x.quantity }}">{{ x.quantity }}</option>
-                <!-- <button type="submit"><option value="1">1</option></button>
+                <option selected value="{{ x.quantity }}">{{ x.quantity }}</option> -->
+            <!-- <button type="submit"><option value="1">1</option></button>
                 <button type="submit"><option value="2">2</option></button>
                 <button type="submit"><option value="3">3</option></button>
                 <button type="submit"><option value="4">4</option></button>
@@ -141,11 +108,11 @@
                 <button type="submit"><option value="8">8</option></button>
                 <button type="submit"><option value="9">9</option></button>
                 <button type="submit"><option value="10">10</option></button> -->
-                <input type="submit" value="submit">
-                </select>
+            <!-- <input type="submit" value="submit">
+            </select>
 
-                <!-- <input type="text" name="search" placeholder="Search Products Here"> -->
-            </form>
+            <input type="text" name="search" placeholder="Search Products Here">
+            </form> -->
 
             <h1><i>Total Price</i> : {{ x.price_ht }}</h1>
             <!-- <h1><i>Created At</i> : {{ x.cart.created_at }}</h1> -->
@@ -153,7 +120,7 @@
             <!-- <h1><i>Price per unit</i> : {{ x.price }}</h1>
             <h1><i>Company Name</i> : {{ x.company_name }}</h1>
             <h1><i>Availability</i> : {{ x.availability }}</h1> -->
-            
+
             <div class="buttons">
 
                 <!-- <form action="/main-page/cart/" method="POST">

@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="style_modifiedcart.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style_modifiedcart.css' %}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-     <section class="menu">
+    <section class="menu">
         <div class="account">
             <div class="icon">
                 <a href="#"> <i class="fa fa-user" style="font-size:36px"></i></a>
@@ -101,70 +102,71 @@
             <li><a class="qwer" href="/main-page/cart/">About Us</a></li>
             <li><a class="qwer" href="/main-page/cart/">Item1</a></li>
         </div>
-    </section> 
+    </section>
     <div class="headercart">
         <h1>Shopping Cart</h1>
-        
+
     </div>
 
-<hr>
+    <hr>
     <div class="cart">
-        
-<div class="image">
-    <img src="https://m.media-amazon.com/images/I/81Ne5qKmE8L._SL1500_.jpg" alt="">
-</div>
-<div class="descriptionproduct">
-    <div class="text">
-<h2>HP 15 10th Gen Intel Core i3 Thin and Light 15.6 inches FHD Laptop (8GB/1TB <br> HDD/M.2 Slot/Windows 10/MS Office/Jet Black, 1.74 kg) 15s-du1066TU</h1>
-    <h3>Price</h3>
-</div>
 
-<h3>Availability</h2>
-<div class="cartoptions">
-    <select name="" id="">
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-        <option value="10">10</option>
-    </select>
-  
-    <a href="#">Delete</a>
-    <a href="#">Save For Later</a>
-</div>
-</div>
+        <div class="image">
+            <img src="https://m.media-amazon.com/images/I/81Ne5qKmE8L._SL1500_.jpg" alt="">
+        </div>
+        <div class="descriptionproduct">
+            <div class="text">
+                <h2>HP 15 10th Gen Intel Core i3 Thin and Light 15.6 inches FHD Laptop (8GB/1TB <br> HDD/M.2
+                    Slot/Windows 10/MS Office/Jet Black, 1.74 kg) 15s-du1066TU</h1>
+                    <h3>Price</h3>
+            </div>
 
-</div>
+            <h3>Availability</h2>
+                <div class="cartoptions">
+                    <select name="" id="">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+
+                    <a href="#">Delete</a>
+                </div>
+        </div>
+
+    </div>
 
 
-<hr>
+    <hr>
 
-<!-- <div class="proceed">
+    <!-- <div class="proceed">
     <h2>Subtotal : </h2>
     <button>Proceed to Buy</button>
 </div> -->
-   
+
 </body>
 <script>
-    const burger=document.querySelector('.burger')
-const menu=document.querySelector('.menu')
-const dropdown =document.querySelector('.dropdown')
-const list=document.querySelector('.list')
-burger.addEventListener('click',function(){
-    burger.classList.toggle('toggle');
-    burger.classList.toggle('hiburger');
-    menu.classList.toggle('closemenu')
-});
-const accounts=document.querySelector('.accounts')
-accounts.addEventListener('click',function(){
-dropdown.classList.toggle('comedown')
-list.classList.toggle('addcolor')
-})
+    const burger = document.querySelector('.burger')
+    const menu = document.querySelector('.menu')
+    const dropdown = document.querySelector('.dropdown')
+    const list = document.querySelector('.list')
+    burger.addEventListener('click', function () {
+        burger.classList.toggle('toggle');
+        burger.classList.toggle('hiburger');
+        menu.classList.toggle('closemenu')
+    });
+    const accounts = document.querySelector('.accounts')
+    accounts.addEventListener('click', function () {
+        dropdown.classList.toggle('comedown')
+        list.classList.toggle('addcolor')
+    })
 </script>
+
 </html>
