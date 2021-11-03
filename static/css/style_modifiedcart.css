@@ -1,3 +1,63 @@
+img{
+    width: 12rem;
+    height: 12rem;
+  
+    margin-right: 3rem;
+    /* background-position: center; */
+    /* background-size: cover; */
+    object-fit: cover;
+   
+}
+.descriptionproduct{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.text{
+    display: flex;
+   
+}
+body{
+    overflow: hidden;
+}
+.bigcontainer{
+    display: flex;
+}
+.proceed{
+    min-height: 100vh;
+    width: 10rem;
+    background-color: black;
+}
+.text h3{
+    position: absolute;
+    right: 10%;
+}
+.cart{
+    display: flex;
+}
+.cartoptions{
+    display: flex;
+    margin-bottom:0.3rem;
+}
+
+.cartoptions a{
+
+ text-decoration: underline;  
+    color: rgba(0, 0, 0, 0.5);
+   margin-left: 1.5rem;
+}
+.headercart h1{
+    color: rgba(0, 0, 0, 0.8);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.cart h2{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.3rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.cart{
+    background-color: white;
+}
 *{
     border: 0%;
     margin: 0%;
@@ -67,6 +127,9 @@ ul a{
 }
 .fa{
     cursor: pointer;
+}
+.dropdown{
+    z-index: 1000;
 }
 .navbar{
     color: white;
@@ -238,7 +301,11 @@ left: 0;
     display: none;
     transition: all 0.5s ease;
     color: white;
-    z-index: 100;
+}
+
+.headercart{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 .dropdown li{
    
@@ -261,7 +328,4 @@ left: 0;
 .prName:hover{
     color: rgb(196, 95, 0);
 }
-
-
-
 

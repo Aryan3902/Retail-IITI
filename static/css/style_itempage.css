@@ -16,6 +16,9 @@
     margin:1rem;
     transform: translateX(-90%);
 }
+.dropdown{
+    z-index: 1000;
+}
 .header{
     display: flex;
     min-height:10vh ;
