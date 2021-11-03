@@ -147,6 +147,7 @@ def main_page_product(request, id=None, *args, **kwargs):
     # article_obj = None
     if id is not None:
         product_item = Product.objects.filter(product_id=id)
+        
         context = {
             "product": product_item
             # "userid": userid
@@ -156,10 +157,39 @@ def main_page_product(request, id=None, *args, **kwargs):
 
 def main_page_cart_product(request, id=None, *args, **kwargs):
     # article_obj = None
-    if id is not None:
-        product_item = Product.objects.filter(product_id=id)
+    eid = request.session.get('eid')
+    if 'quantity' in request.POST:
+        value = request.POST.get('quantity')
+        product_item1 = Product.objects.filter(product_id=id).values()
+        product1 = product_item1[0]
+        product_item2 = product1['price']
+        cart = CartItem.objects.get(user_id=eid, product_id=id)
+        # product_item = CartItem.objects.filter(user_id=eid, product_id=id)
+        product_item = CartItem.objects.filter(user_id=eid, product_id=id)
+
+        # cart_id = cart['id']
+        cart.quantity = value
+        cart.price_ht = int(product_item2) * int(value)
+        cart.save()
+
         context = {
-            "product": product_item
+            "product": product_item,
+            "cart_quantity": cart.quantity,
+            "price": cart.price_ht
+            # "userid": userid
+        }
+        return render(request, 'index_itempage1.html', context=context)
+
+    if id is not None:
+        product_item1 = Product.objects.filter(product_id=id)
+        cart = CartItem.objects.filter(user_id=eid, product_id=id).values()
+        cart_id = cart[0]['id']
+        cart_quantity = cart[0]['quantity']
+        product_item = CartItem.objects.filter(user_id=eid, product_id=id)
+        
+        context = {
+            "product": product_item,
+            "cart_quantity": cart_quantity
             # "userid": userid
         }
         return render(request, 'index_itempage1.html', context=context)
@@ -210,12 +240,17 @@ def orders(request, *args, **kwargs):
         product_list = Product.objects.filter(product_id=id).values()
         product1 = product_list[0]
         product = product1['product_name']
-        price_ht = product1['price']
+        # price_ht = product1['price']
         company = product1['company_name']
+        Cart = CartItem.objects.filter(user_id=eid, product_id=id).values()
+        cart = Cart[0]
+        quantity = cart['quantity']
+        price_ht = cart['price_ht']
 
         list = Orders()
         list.product_id = id
         # list.cart_id = 1
+        list.quantity = quantity
         list.price_ht = price_ht
         list.user_id = eid
         list.save()
