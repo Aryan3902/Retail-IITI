@@ -16,15 +16,29 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from login import views
-
+from shopapp.views import main_page, cart, main_page_product, main_page_cart_product, orders, main_page_order_product
+from Retailer.views import mainpage,update_product,add_product_form,add_product,update_product_form,delete_product
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('sign-in/', views.homeview),
     path('sign-in/signupauth/', views.signupauth),
     path('sign-in/login/', views.login),
+    path('sign-in/Re_login/', views.relogin),
     path('', views.welcome),
     path('home/', views.openview),
     path('resetpassword/', views.forgetview),
-    path('ticket/', views.ticket, name='ticket')
+    path('ticket/', views.ticket, name='ticket'),
+    path('main-page/', main_page),
+    path('main-page/<int:id>/', main_page_product),
+    path('main-page/cart/<int:id>/', main_page_cart_product),
+    path('main-page/orders/<int:id>/', main_page_order_product),
+    path('main-page/cart/', cart),
+    path('main-page/orders/', orders),
+    path('Retailer/',mainpage ),
+    path('Retailer/add/', add_product_form),
+    path('Retailer/add/a/', add_product),
+    path('Retailer/update/', update_product_form),
+    path('Retailer/update/u/', update_product),
+    path('Retailer/delete/', delete_product)
 ]
