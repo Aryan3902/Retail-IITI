@@ -108,16 +108,52 @@
     {% for x in product %}
     <section class="main">
         <div class="selectoptions"> </div>
-        <div class="productimage"> <img src="{{ x.image }}" alt=""></div>
+        <div class="productimage"> <img src="{{ x.product.image }}" alt=""></div>
         <div class="information" style="text-align: center;">
-            <!-- <h1>Title:</h1>
-            <h1>Price:</h1>
-            <h1>Name:</h1> -->
+            <!-- <h1>{{price}}</h1>
             <h1><i>Product ID</i> : {{ x.product_id }}</h1>
-            <h1><i>Product Name</i> : {{ x.product_name }}</h1>
-            <h1><i>Price</i> : {{ x.price }}</h1>
+            <h1><i>Product Name</i> : {{ x.product_name }}</h1> -->
+            
+            <h1><i>Product ID</i> : {{ x.product.product_id }}</h1>
+            <h1><i>Product Name</i> : {{ x.product.product_name }}</h1>
+            <h1><i>Company Name</i> : {{ x.product.company_name }}</h1>
+            <h1><i>Availability</i> : {{ x.product.availability }}</h1>
+            
+            <form action="/main-page/cart/{{ x.product_id }}/" method="POST">
+                {% csrf_token %}
+                <label for="quantity">Quantity : </label>
+                
+
+                <select name="quantity" id="cars">
+                {% for i in '0123456789'|make_list %}
+                    
+                    <button type="submit"><option value="{{ forloop.counter }}">{{ forloop.counter }}</option></button>
+                {% endfor %}
+                
+                <option selected value="{{ x.quantity }}">{{ x.quantity }}</option>
+                <!-- <button type="submit"><option value="1">1</option></button>
+                <button type="submit"><option value="2">2</option></button>
+                <button type="submit"><option value="3">3</option></button>
+                <button type="submit"><option value="4">4</option></button>
+                <button type="submit"><option value="5">5</option></button>
+                <button type="submit"><option value="6">6</option></button>
+                <button type="submit"><option value="7">7</option></button>
+                <button type="submit"><option value="8">8</option></button>
+                <button type="submit"><option value="9">9</option></button>
+                <button type="submit"><option value="10">10</option></button> -->
+                <input type="submit" value="submit">
+                </select>
+
+                <!-- <input type="text" name="search" placeholder="Search Products Here"> -->
+            </form>
+
+            <h1><i>Total Price</i> : {{ x.price_ht }}</h1>
+            <!-- <h1><i>Created At</i> : {{ x.cart.created_at }}</h1> -->
+            <h1><i>Added At</i> : {{ x.added_at }}</h1>
+            <!-- <h1><i>Price per unit</i> : {{ x.price }}</h1>
             <h1><i>Company Name</i> : {{ x.company_name }}</h1>
-            <h1><i>Availability</i> : {{ x.availability }}</h1>
+            <h1><i>Availability</i> : {{ x.availability }}</h1> -->
+            
             <div class="buttons">
 
                 <!-- <form action="/main-page/cart/" method="POST">
