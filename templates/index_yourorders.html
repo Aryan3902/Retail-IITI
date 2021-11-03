@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="style_yourorders.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <section class="menu">
+        <div class="account">
+            <div class="icon">
+                <a href="#"> <i class="fa fa-user" style="font-size:36px"></i></a>
+            </div>
+            <h1>Hello,User</h1>
+            <div class="burger2">
+                <span class="lines1"></span>
+                <span class="lines2"></span>
+                <span class="lines3"></span>
+            </div>
+        </div>
+        <div class="trending">
+            <h1>Trending</h1>
+            <a href="">Best Sellers</a>
+            <a href="">Best Offers</a>
+        </div>
+        <div class="shopbydept">
+            <h1>Shop By Department</h1>
+            <a href="">Mobiles,Computers</a>
+            <a href="">TV,Appliances,Electronics</a>
+            <a href="">Men's Fashion</a>
+        </div>
+        <div class="help">
+            <h1>Help & Settings</h1>
+            <a href="#">Your Account</a>
+            <a href="#">Customer Service</a>
+            <a href="#">Sign Out</a>
+        </div>
+    </section>
+    <section class="header">
+        <h1>🆁🅴🆃🅰🅸🅻 - 🅸🅸🆃🅸</h1>
+        <div class="search_box">
+            <form action="/main-page/" method="POST">
+                {% csrf_token %}
+                <div style="padding: 0.7rem 0rem;">
+                    <input type="text" name="search" placeholder="Search Products Here">
+                    <!-- <i class="fa fa-search" style="font-size:24px"></i> -->
+                </div>
+
+            </form>
+        </div>
+        <div class="options">
+            <div class="list">
+                <a href="#">
+                    <div class="accounts">
+                        <p style="font-size: 0.8rem;">Hello, {{user1}}</p>
+                        <strong>
+                            Account Info
+                        </strong>
+                    </div>
+                </a>
+                <ul class="dropdown">
+                    <li><a href="#">Browsing History</a></li>
+                    <li><a href="#">Your Account</a></li>
+                    <li><a href="#">Your Orders</a></li>
+                    <li><a href="#">Your Wishlist</a></li>
+                    <li><a href="#">Create a Wishlist</a></li>
+                    <li><a href="#">Switch Accounts</a></li>
+                    <li><a href="#">Sign Out</a></li>
+                </ul>
+            </div>
+            <a href="#">
+                <div>
+                    <p style="font-size: 0.8rem;">Returns</p>
+
+                    <strong>
+
+                        &Orders
+                    </strong>
+                </div>
+            </a>
+            <a class="shopping" href="/main-page/cart/"><i class="fa fa-shopping-cart" style="font-size:24px"></i></a>
+        </div>
+    </section>
+    <section class="navbar">
+        <div class="burger">
+            <span class="line1"></span>
+            <span class="line2"></span>
+            <span class="line3"></span>
+        </div>
+        <div class="itemslist">
+            <li><a style="background-color: white;color: black;padding: 0.25rem 0.4rem;" class="qwer"
+                    href="/main-page/">Home</a></li>
+            <li><a class="qwer" href="/main-page/cart/">Cart</a></li>
+            <li><a class="qwer" href="/main-page/orders/">Orders</a></li>
+            <li><a class="qwer" href="/main-page/cart/">Profile</a></li>
+            <li><a class="qwer" href="/main-page/cart/">About Us</a></li>
+            <li><a class="qwer" href="/main-page/cart/">Item1</a></li>
+        </div>
+    </section> 
+    <div class="headercart">
+        <h1>Your Orders</h1>
+        
+    </div>
+
+<hr>
+    <div class="cart">
+        
+<div class="image">
+    <img src="https://m.media-amazon.com/images/I/71jG+e7roXL._SX679_.jpg" alt="">
+</div>
+<div class="descriptionproduct">
+    <div class="text">
+<h2>HP 15 10th Gen Intel Core i3 Thin and Light 15.6 inches FHD Laptop (8GB/1TB <br> HDD/M.2 Slot/Windows 10/MS Office/Jet Black, 1.74 kg) 15s-du1066TU</h1>
+    <h3>Price</h3>
+</div>
+
+<h2>Status</h2>
+    <h2>Quantity : </h2>
+    <h2>Total Price :</h2>
+<div class="cartoptions">
+    <!-- <select name="" id="">
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+    </select> -->
+  
+    <a href="#">Cancel Order </a>
+    <a href="#">Track Order</a>
+</div>
+</div>
+
+</div>
+
+
+<hr>
+
+<!-- <div class="proceed">
+    <h2>Subtotal : </h2>
+    <button>Proceed to Buy</button>
+</div> -->
+   
+</body>
+<script>
+    const burger=document.querySelector('.burger')
+const menu=document.querySelector('.menu')
+const dropdown =document.querySelector('.dropdown')
+const list=document.querySelector('.list')
+burger.addEventListener('click',function(){
+    burger.classList.toggle('toggle');
+    burger.classList.toggle('hiburger');
+    menu.classList.toggle('closemenu')
+});
+const accounts=document.querySelector('.accounts')
+accounts.addEventListener('click',function(){
+dropdown.classList.toggle('comedown')
+list.classList.toggle('addcolor')
+})
+</script>
+</html>
