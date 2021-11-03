@@ -10,7 +10,7 @@ class Product(models.Model):
     product_name = models.CharField(max_length=128,null=False, blank=False)
     price = models.IntegerField(null=False, blank=False)
     company_name = models.CharField(max_length=128,null=False, blank=False)
-    availability = models.CharField(max_length=128,null=False, blank=False)
+    Quantity = models.IntegerField(default=0,blank=False)
     image = models.URLField(max_length=5000, default="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjw8YPUNzXPoROoi5DbrP2LEXL5Fs4txr3Aw&usqp=CAU")
     Retailer_ID = models.ForeignKey(Retailer,on_delete=models.CASCADE)
 

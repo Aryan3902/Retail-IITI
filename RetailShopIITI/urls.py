@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from login import views
 from shopapp.views import main_page, cart, main_page_product, main_page_cart_product, orders, main_page_order_product
-from Retailer.views import mainpage,update_product,add_product_form,add_product,update_product_form
+from Retailer.views import mainpage,update_product,add_product_form,add_product,update_product_form,delete_product
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -37,5 +37,8 @@ urlpatterns = [
     path('main-page/orders/', orders),
     path('Retailer/',mainpage ),
     path('Retailer/add/', add_product_form),
+    path('Retailer/add/a/', add_product),
     path('Retailer/update/', update_product_form),
+    path('Retailer/update/u/', update_product),
+    path('Retailer/delete/', delete_product)
 ]
