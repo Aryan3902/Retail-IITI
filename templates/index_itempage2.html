@@ -82,19 +82,20 @@
     <a class="shopping" href="/main-page/cart/"><i class="fa fa-shopping-cart" style="font-size:24px"></i></a>
 </div>
     </section>
+
     <section class="navbar">
-        <div class="burger">
-            <span class="line1"></span>
-            <span class="line2"></span>
-            <span class="line3"></span>
-        </div>
+
         <div class="itemslist">
-            <li><a class="qwer" href="/main-page/">Home</a></li>
+            <li><a
+                    href="/main-page/">Home</a></li>
+            <li><a class="qwer" href="/main-page/electronics/">Electronics</a></li>
+            <li><a class="qwer" href="/main-page/stationary/">Stationary</a></li>
+            <li><a class="qwer" href="/main-page/household/">Household</a></li>
+            <li><a class="qwer" href="/main-page/fashion/">Fashion</a></li>
             <li><a class="qwer" href="/main-page/cart/">Cart</a></li>
             <li><a class="qwer" href="/main-page/orders/">Orders</a></li>
             <li><a class="qwer" href="/main-page/cart/">Profile</a></li>
-            <li><a class="qwer" href="/main-page/cart/">About Us</a></li> 
-            <li><a class="qwer" href="/main-page/cart/">Item1</a></li>
+            <li><a class="qwer" href="/main-page/aboutUs/">About Us</a></li>
         </div>
     </section>
 
@@ -113,7 +114,7 @@
             <h1><i>Total Price</i> : {{ x.price_ht }}</h1>
             <h1><i>Quantity</i> : {{ x.quantity }}</h1>
             <h1><i>Company Name</i> : {{ x.product.company_name }}</h1>
-            <h1><i>Availability</i> : {{ x.product.availability }}</h1>
+            <!-- <h1><i>Availability</i> : {{ x.product.availability }}</h1> -->
             <div class="buttons">
 
             <!-- <form action="/main-page/cart/" method="POST">
