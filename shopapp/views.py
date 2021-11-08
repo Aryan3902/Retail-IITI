@@ -147,11 +147,14 @@ def cart(request, *args, **kwargs):
         final_list = CartItem.objects.filter(product_id=id, user_id=eid)
         final_list1 = final_list
 
+        cart = Cart.objects.last()
+        cart_id = cart.id
+
         if len(final_list) == 0:
 
             list = CartItem()
             list.product_id = id
-            list.cart_id = 1
+            list.cart_id = cart_id
             list.price_ht = price_ht
             list.user_id = eid
             list.save()
@@ -256,6 +259,55 @@ def main_page_order_product(request, id=None, *args, **kwargs):
 def orders(request, *args, **kwargs):
     id = None
     eid = request.session.get('eid')
+
+
+    if 'order1' in request.POST:
+        id = request.POST.get('order1')
+
+        user_list = User.objects.filter(id=eid).values()
+        user1 = user_list[0]
+        user = user1['name']
+        product_list = Product.objects.filter(product_id=id).values()
+        product1 = product_list[0]
+        product = product1['product_name']
+        
+        company = product1['company_name']
+        
+        price_ht = product1['price']
+
+        list = Orders()
+        list.product_id = id
+        # list.cart_id = 1
+        list.quantity = 1
+        list.price_ht = price_ht
+        list.user_id = eid
+        list.save()
+
+        order2 = Orders.objects.all().last()
+
+        email = User.objects.filter(id=eid)
+        email1 = email[0]
+        email2 = email1.email
+        user2 = email1.name
+
+        subject = 'Order Placed'
+        message = f'''
+        Hi {user2}, your order has been placed. 
+
+        Order Details: 
+
+        Order Id: { order2.id }
+        Product Id: { id }
+        Product Name: { product }
+        Company Name: { company }
+        '''
+        email_from = settings.EMAIL_HOST_USER
+        recipient_list = [email2, ]
+        send_mail(subject, message, email_from, recipient_list)
+
+
+
+
 
     if 'search' in request.POST:
         query = request.POST.get('search')

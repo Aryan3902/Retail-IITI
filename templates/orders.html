@@ -84,14 +84,14 @@
         {% for x in product %}
         <div style="display: flex;">
             <div>
-                <a href="/main-page/{{ x.product_id }}/">
+                <a href="/main-page/orders/{{ x.id }}/">
                     <img class="prImage" src="{{ x.product.image }}" alt="">
                 </a>
             </div>
 
             <div class="descriptionproduct">
                 <div class="text">
-                    <a style="color: black;" href="/main-page/{{ x.product_id }}/">
+                    <a style="color: black;" href="/main-page/orders/{{ x.id }}/">
                         <h2>{{ x.product.product_name }}</h2>
                     </a>
                     <br>
