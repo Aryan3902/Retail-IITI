@@ -300,6 +300,7 @@ def orders(request, *args, **kwargs):
         Product Id: { id }
         Product Name: { product }
         Company Name: { company }
+        Quantity: 1
         '''
         email_from = settings.EMAIL_HOST_USER
         recipient_list = [email2, ]
@@ -375,6 +376,7 @@ def orders(request, *args, **kwargs):
         Product Id: { id }
         Product Name: { product }
         Company Name: { company }
+        Quantity: { quantity }
         '''
         email_from = settings.EMAIL_HOST_USER
         recipient_list = [email2, ]
@@ -444,6 +446,7 @@ def orders(request, *args, **kwargs):
             cart_item = CartItem.objects.filter(id=abcd).values()
             cart_item1 = cart_item[0]
             id1 = cart_item1['product_id']
+            quantity123 = cart_item['quantity']
             price_ht = cart_item1['price_ht']
             product_find = Product.objects.filter(product_id=id1).values()
             product_find1 = product_find[0]
@@ -464,6 +467,7 @@ def orders(request, *args, **kwargs):
                 Product Id: { id1 }
                 Product Name: { name_product }
                 Company Name: { company }
+                Quantity: { quantity123 }
             '''
 
         email = User.objects.filter(id=eid)
