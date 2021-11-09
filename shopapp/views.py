@@ -500,3 +500,121 @@ def orders(request, *args, **kwargs):
 
 def aboutus(request):
     return render(request, 'index_aboutus.html')
+
+
+def profile(request, id=None, *args, **kwargs):
+
+    eid = request.session.get('eid')
+
+    form_name = None
+    form_email = None
+    form_password = None
+    form_new_password = None
+    form_confirm_password = None
+    form_gender = None
+    form_hostel = None
+    form_room = None
+    form_phone = None
+
+    if 'save' in request.POST:
+        form_name = request.POST.get('name')
+        form_email = request.POST.get('email')
+        form_password = request.POST.get('password')
+        form_new_password = request.POST.get('new-password')
+        form_confirm_password = request.POST.get('confirm-password')
+        form_gender = request.POST.get('gender')
+        form_hostel = request.POST.get('hostel')
+        form_room = request.POST.get('room')
+        form_phone = request.POST.get('phone')
+
+        edit_user = User.objects.get(id=eid)
+
+        if form_name:
+            edit_user.name = form_name
+
+        if form_email:
+            if check_password(form_password, edit_user.password):
+                edit_user.email = form_email
+            else:
+                if form_password:
+                    messages.info(request, 'Incorrect Password')
+                else:
+                    messages.info(request, 'Enter your Password')
+
+        if form_new_password:
+            if form_new_password == form_confirm_password:
+                P = make_password(form_new_password)
+                edit_user.password = P
+            else:
+                messages.info(request, "Password doesn't match")
+
+        if form_gender:
+            edit_user.gender = form_gender
+
+        if form_hostel:
+            edit_user.hostel = form_hostel
+
+        if form_room:
+            edit_user.room = form_room
+
+        if form_phone:
+            edit_user.phone = form_phone
+
+        
+        edit_user.save()
+
+
+    user_list = User.objects.filter(id=eid).values()
+    room = None
+    phone = None
+    gender = None
+    hostel1 = None
+    hostel2 = None
+    hostel3 = None
+    hostel4 = None
+    hostel5 = None
+
+    if user_list[0]['phone']!='None':
+        phone = user_list[0]['phone']
+    if user_list[0]['room']!='None':
+        room = user_list[0]['room']
+    if user_list[0]['gender']=='Female':
+        gender = user_list[0]['gender']
+    if user_list[0]['hostel']=='A. P. J ABDUL KALAM':
+        hostel1 = user_list[0]['hostel']
+    if user_list[0]['hostel']=='HOMI JEHANGIR BHABHA':
+        hostel2 = user_list[0]['hostel']
+    if user_list[0]['hostel']=='VIKRAM SARABHAI':
+        hostel3 = user_list[0]['hostel']
+    if user_list[0]['hostel']=='DEVI AHILYA':
+        hostel4 = user_list[0]['hostel']
+    if user_list[0]['hostel']=='C. V. RAMAN':
+        hostel5 = user_list[0]['hostel']
+
+    # context = {
+    #     "name": user_list[0]['name'],
+    #     "email": user_list[0]['email'],
+    #     "room": room,
+    #     "phone": phone,
+    #     "gender": gender,
+    #     "hostel1": hostel1,
+    #     "hostel2": hostel2,
+    #     "hostel3": hostel3,
+    #     "hostel4": hostel4,
+    #     "hostel5": hostel5
+    # }
+    # return render(request, 'student_profile.html', context=context)
+
+    context = {
+    "name": user_list[0]['name'],
+    "email": user_list[0]['email'],
+    "room": room,
+    "phone": phone,
+    "gender": gender,
+    "hostel1": hostel1,
+    "hostel2": hostel2,
+    "hostel3": hostel3,
+    "hostel4": hostel4,
+    "hostel5": hostel5
+    }
+    return render(request, 'student_profile.html', context=context)
