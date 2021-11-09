@@ -122,15 +122,26 @@
             <h1><i>Company Name</i> : {{ x.company_name }}</h1>
             <h1><i>Availability</i> : {{ x.availability }}</h1>
             <div class="buttons">
-
-                <form style="margin-left: 20%;" action="/main-page/orders/" method="POST">
-                    {% csrf_token %}
-                    <!-- <a class="buynow" href="#">Buy Now</a> -->
-                    <a class="buynow" href="/main-page/orders/">
-                        <button type="submit"
-                            style="border: none;background-color: rgb(253, 75, 10, 1);color: white;font-size: 1.1rem;"
-                            name="order1" value="{{ x.product_id }}">Buy Now</button>
-                    </a>
+                
+                    {% if can_buy %}
+                        <form style="margin-left: 20%;" action="/main-page/orders/" method="POST">
+                            {% csrf_token %}
+                            <a class="buynow" href="/main-page/orders/">
+                                <button type="submit"
+                                    style="border: none;background-color: rgb(253, 75, 10, 1);color: white;font-size: 1.1rem;"
+                                    name="order1" value="{{ x.product_id }}">Buy Now</button>
+                            </a>
+                        </form>
+                    {% else %}
+                        <form style="margin-left: 20%;" action="">
+                            {% csrf_token %}
+                            <a style="background-color: silver;" class="buynow" href="">
+                                <button 
+                                    style="border: none;background-color: silver;color: white;font-size: 1.1rem;"
+                                    value="{{ x.product_id }}">Buy Now</button>
+                            </a>
+                        </form>
+                    {% endif %}
                     <!-- <a class="addtocart" href="/main-page/cart/">
                         <button type="submit" style="border: none;background-color: rgb(253, 75, 10, 1);color: white;font-size: 1.1rem;" name="name" value="{{ x.product_id }}">Add to Cart</button>
                     </a> -->

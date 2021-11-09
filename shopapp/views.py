@@ -194,9 +194,12 @@ def main_page_product(request, id=None, *args, **kwargs):
     # article_obj = None
     if id is not None:
         product_item = Product.objects.filter(product_id=id)
-
+        can_buy = None
+        if product_item[0].availability!='Out of Stock':
+            can_buy = product_item[0].availability
         context = {
-            "product": product_item
+            "product": product_item,
+            "can_buy": can_buy
             # "userid": userid
         }
         return render(request, 'index_itempage.html', context=context)
@@ -219,10 +222,15 @@ def main_page_cart_product(request, id=None, *args, **kwargs):
         cart.price_ht = int(product_item2) * int(value)
         cart.save()
 
+        can_buy = False
+        if product_item1[0]['availability']!='Out of Stock':
+            can_buy = True
+
         context = {
             "product": product_item,
             "cart_quantity": cart.quantity,
-            "price": cart.price_ht
+            "price": cart.price_ht,
+            "can_buy": can_buy
             # "userid": userid
         }
         return render(request, 'index_itempage1.html', context=context)
@@ -234,9 +242,13 @@ def main_page_cart_product(request, id=None, *args, **kwargs):
         cart_quantity = cart[0]['quantity']
         product_item = CartItem.objects.filter(user_id=eid, product_id=id)
 
+        can_buy = None
+        if product_item1[0].availability!='Out of Stock':
+            can_buy = product_item[0].availability
         context = {
             "product": product_item,
-            "cart_quantity": cart_quantity
+            "cart_quantity": cart_quantity,
+            "can_buy": can_buy
             # "userid": userid
         }
         return render(request, 'index_itempage1.html', context=context)
