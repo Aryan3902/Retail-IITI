@@ -90,33 +90,23 @@
             <h1><i>Company Name</i> : {{ x.product.company_name }}</h1>
             <h1><i>Availability</i> : {{ x.product.availability }}</h1>
 
-            <!-- <form action="/main-page/cart/{{ x.product_id }}/" method="POST">
+            <form action="/main-page/cart/{{ x.product_id }}/" method="POST">
                 {% csrf_token %}
-                <label for="quantity">Quantity : </label> -->
+                <label for="quantity">Quantity : </label>
+                
 
-
-            <!-- <select name="quantity" id="cars">
+                <select name="quantity" id="cars">
                 {% for i in '0123456789'|make_list %}
                     
                     <button type="submit"><option value="{{ forloop.counter }}">{{ forloop.counter }}</option></button>
                 {% endfor %}
                 
-                <option selected value="{{ x.quantity }}">{{ x.quantity }}</option> -->
-            <!-- <button type="submit"><option value="1">1</option></button>
-                <button type="submit"><option value="2">2</option></button>
-                <button type="submit"><option value="3">3</option></button>
-                <button type="submit"><option value="4">4</option></button>
-                <button type="submit"><option value="5">5</option></button>
-                <button type="submit"><option value="6">6</option></button>
-                <button type="submit"><option value="7">7</option></button>
-                <button type="submit"><option value="8">8</option></button>
-                <button type="submit"><option value="9">9</option></button>
-                <button type="submit"><option value="10">10</option></button> -->
-            <!-- <input type="submit" value="submit">
-            </select>
+                <option selected value="{{ x.quantity }}">{{ x.quantity }}</option>
+                <input type="submit" value="submit">
+                </select>
 
-            <input type="text" name="search" placeholder="Search Products Here">
-            </form> -->
+                <!-- <input type="text" name="search" placeholder="Search Products Here"> -->
+            </form>
 
             <h1><i>Total Price</i> : {{ x.price_ht }}</h1>
             <!-- <h1><i>Created At</i> : {{ x.cart.created_at }}</h1> -->
