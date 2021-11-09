@@ -3,6 +3,7 @@ from django.contrib import messages
 from shopapp.models import Product
 from login.models import Retailer
 from django.http import HttpResponse
+from django.contrib.auth.hashers import make_password, check_password
 # Create your views here.
 
 def mainpage(request, *args, **kwargs):
@@ -67,3 +68,122 @@ def delete_product(request, *args, **kwargs):
     a = Product.objects.get(product_id=Id)
     a.delete()
     return redirect('/Retailer/')
+
+
+
+def retailer_profile(request, id=None, *args, **kwargs):
+
+    eid = request.session.get('rid')
+
+    form_fname = None
+    form_lname = None
+    form_email = None
+    form_password = None
+    form_new_password = None
+    form_confirm_password = None
+    form_company = None
+    form_gstno = None
+    form_products = None
+    form_address = None
+    form_city = None
+    form_state = None
+    form_phone = None
+
+    if 'save' in request.POST:
+        form_fname = request.POST.get('fname')
+        form_lname = request.POST.get('lname')
+        form_email = request.POST.get('email')
+        form_password = request.POST.get('password')
+        form_new_password = request.POST.get('new-password')
+        form_confirm_password = request.POST.get('confirm-password')
+        form_company = request.POST.get('company')
+        form_gstno = request.POST.get('gstno')
+        form_products = request.POST.get('products')
+        form_address = request.POST.get('address')
+        form_city = request.POST.get('city')
+        form_state = request.POST.get('state')
+        form_phone = request.POST.get('phone')
+
+        edit_user = Retailer.objects.get(Retailer_ID=eid)
+
+        if form_fname:
+            edit_user.first_name = form_fname
+
+        if form_lname:
+            edit_user.last_name = form_lname
+
+        if form_email:
+            if len(Retailer.objects.filter(email=form_email))>0:
+                messages.info(request, 'UserId already registered')
+            else:
+                if check_password(form_password, edit_user.password):
+                    edit_user.email = form_email
+                else:
+                    if form_password:
+                        messages.info(request, 'Incorrect Password')
+                    else:
+                        messages.info(request, 'Enter your Password')
+
+        if form_new_password:
+            if form_new_password == form_confirm_password:
+                P = make_password(form_new_password)
+                edit_user.password = P
+            else:
+                messages.info(request, "Password doesn't match")
+
+        if form_company:
+            edit_user.company_name = form_company
+
+        if form_gstno:
+            edit_user.gstNo = form_gstno
+
+        if form_products:
+            edit_user.Products = form_products
+
+        if form_address:
+            edit_user.address = form_address
+
+        if form_city:
+            edit_user.city = form_city
+
+        if form_state:
+            edit_user.state = form_state
+    
+        if form_phone:
+            edit_user.phone = form_phone
+
+        
+        edit_user.save()
+
+
+    user_list = Retailer.objects.filter(Retailer_ID=eid).values()
+    phone = None
+    address = None
+    city = None
+    state = None
+
+    if user_list[0]['phone']!='None':
+        phone = user_list[0]['phone']
+    if user_list[0]['address']!='None':
+        address = user_list[0]['address']
+    if user_list[0]['city']!='None':
+        city = user_list[0]['city']
+    if user_list[0]['state']!='None':
+        state = user_list[0]['state']
+
+
+    context = {
+    "id": eid,
+    "user": user_list[0]['email'],
+    "fname": user_list[0]['first_name'],
+    "lname": user_list[0]['last_name'],
+    "email": user_list[0]['email'],
+    "company": user_list[0]['company_name'],
+    "gstno": user_list[0]['gstNo'],
+    "products": user_list[0]['Products'],
+    "phone": phone,
+    "address": address,
+    "city": city,
+    "state": state,
+    }
+    return render(request, 'retailer_profile.html', context=context)

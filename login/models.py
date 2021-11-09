@@ -25,6 +25,10 @@ class Retailer(models.Model):
     Products = models.TextField(null=False, blank=False) 
     Retailer_ID = models.AutoField(primary_key=True)
     created_at = models.DateTimeField(default=datetime.now)
+    phone = models.CharField(max_length=128, default="None")
+    address = models.CharField(max_length=128, default="None")
+    city = models.CharField(max_length=128, default="None")
+    state = models.CharField(max_length=128, default="None")
 
     def __str__(self):
         return self.Retailer_ID.__str__()

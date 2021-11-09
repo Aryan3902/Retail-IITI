@@ -533,13 +533,16 @@ def profile(request, id=None, *args, **kwargs):
             edit_user.name = form_name
 
         if form_email:
-            if check_password(form_password, edit_user.password):
-                edit_user.email = form_email
+            if len(User.objects.filter(email=form_email))>0:
+                messages.info(request, 'UserId already registered')
             else:
-                if form_password:
-                    messages.info(request, 'Incorrect Password')
+                if check_password(form_password, edit_user.password):
+                    edit_user.email = form_email
                 else:
-                    messages.info(request, 'Enter your Password')
+                    if form_password:
+                        messages.info(request, 'Incorrect Password')
+                    else:
+                        messages.info(request, 'Enter your Password')
 
         if form_new_password:
             if form_new_password == form_confirm_password:
@@ -591,19 +594,6 @@ def profile(request, id=None, *args, **kwargs):
     if user_list[0]['hostel']=='C. V. RAMAN':
         hostel5 = user_list[0]['hostel']
 
-    # context = {
-    #     "name": user_list[0]['name'],
-    #     "email": user_list[0]['email'],
-    #     "room": room,
-    #     "phone": phone,
-    #     "gender": gender,
-    #     "hostel1": hostel1,
-    #     "hostel2": hostel2,
-    #     "hostel3": hostel3,
-    #     "hostel4": hostel4,
-    #     "hostel5": hostel5
-    # }
-    # return render(request, 'student_profile.html', context=context)
 
     context = {
     "name": user_list[0]['name'],

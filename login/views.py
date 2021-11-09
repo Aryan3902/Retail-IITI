@@ -168,11 +168,11 @@ def relogin(request, *args, **kwargs):
 
         else:
             messages.info(request, 'Wrong password')
-            return redirect('../')
+            return redirect('/sign-in/?next=/retailer/')
 
     else:
         messages.info(request, 'Retailer is not registered')
-        return redirect('../')
+        return redirect('/sign-in/?next=/retailer/')
 
 
 def welcome(request, *args, **kwargs):
