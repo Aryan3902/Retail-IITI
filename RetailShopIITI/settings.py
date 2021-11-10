@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     # my app
     'login',
     'shopapp',
-    'Retailer'
+    'Retailer',
+    'payments',
 ]
 
 MIDDLEWARE = [
@@ -146,3 +147,9 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_PASSWORD = 'iitindore'
+
+PAYTM_MERCHANT_ID = '<your_merchant_id>'
+PAYTM_SECRET_KEY = '<your_paytm_secret_key>'
+PAYTM_WEBSITE = 'WEBSTAGING'
+PAYTM_CHANNEL_ID = 'WEB'
+PAYTM_INDUSTRY_TYPE_ID = 'Retail'
