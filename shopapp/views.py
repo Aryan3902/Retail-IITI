@@ -7,7 +7,7 @@ from django.contrib import messages
 from django.http.response import HttpResponse
 from django.core.mail import send_mail
 from django.contrib.auth.hashers import make_password, check_password
-from login.models import User
+from login.models import User, Retailer
 from .models import Product, Cart, CartItem, Orders, Wishlist
 
 
@@ -272,7 +272,7 @@ def main_page_cart_product(request, id=None, *args, **kwargs):
 
         can_buy = None
         if product_item1[0].availability!='Out of Stock':
-            can_buy = product_item[0].availability
+            can_buy = product_item1[0].availability
         context = {
             "product": product_item,
             "cart_quantity": cart_quantity,
@@ -300,6 +300,12 @@ def orders(request, *args, **kwargs):
     id = None
     eid = request.session.get('eid')
 
+    user_details = User.objects.filter(id=eid).values()
+    user_gender = user_details[0]['gender']
+    user_room = user_details[0]['room']
+    user_hostel = user_details[0]['hostel']
+    user_phone = user_details[0]['phone']
+    
 
     if 'order1' in request.POST:
         id = request.POST.get('order1')
@@ -310,10 +316,13 @@ def orders(request, *args, **kwargs):
         product_list = Product.objects.filter(product_id=id).values()
         product1 = product_list[0]
         product = product1['product_name']
-        
+        retailer = product1['Retailer_ID_id']
         company = product1['company_name']
-        
         price_ht = product1['price']
+
+        retailer_list = Retailer.objects.filter(Retailer_ID=retailer).values()
+        retailer1 = retailer_list[0]['email']
+        retailer2 = retailer_list[0]['first_name'] + " "+ retailer_list[0]['last_name']
 
         list = Orders()
         list.product_id = id
@@ -346,7 +355,37 @@ def orders(request, *args, **kwargs):
         recipient_list = [email2, ]
         send_mail(subject, message, email_from, recipient_list)
 
+        subject = 'New Order'
+        message = f'''
+        Hi {retailer2}, your have a new order. 
 
+        Order Details: 
+
+        Order Id: { order2.id }
+        Product Id: { id }
+        Product Name: { product }
+        Quantity: 1
+        Customer Name: {user2}
+        Gender: {user_gender}
+        Room No: {user_room}
+        Hostel Name: {user_hostel}
+        Address: Indian Institute of Technology, Indore, Madhya Pradesh
+        Phone: {user_phone}
+        '''
+        email_from = settings.EMAIL_HOST_USER
+        recipient_list = [retailer1, ]
+        send_mail(subject, message, email_from, recipient_list)
+
+        product_item = Orders.objects.filter(user_id=eid)
+
+        context = {
+            "product": product_item,
+            # "id": id,
+            "eid": eid,
+            "user": user_details,
+            "product1": product1
+        }
+        return render(request, 'orders.html', context=context)
 
 
 
@@ -377,12 +416,17 @@ def orders(request, *args, **kwargs):
         product_list = Product.objects.filter(product_id=id).values()
         product1 = product_list[0]
         product = product1['product_name']
+        retailer = product1['Retailer_ID_id']
         # price_ht = product1['price']
         company = product1['company_name']
         Cart = CartItem.objects.filter(user_id=eid, product_id=id).values()
         cart = Cart[0]
         quantity = cart['quantity']
         price_ht = cart['price_ht']
+
+        retailer_list = Retailer.objects.filter(Retailer_ID=retailer).values()
+        retailer1 = retailer_list[0]['email']
+        retailer2 = retailer_list[0]['first_name'] + " " + retailer_list[0]['last_name']
 
         list = Orders()
         list.product_id = id
@@ -398,14 +442,8 @@ def orders(request, *args, **kwargs):
         email1 = email[0]
         email2 = email1.email
         user2 = email1.name
-        # send_mail('Order Placed', 'rerhthhr',
-        #     'retailiiti@gmail.com', [eid], fail_silently=False)
 
-        # with mail.get_connection() as connection:
-        #     mail.EmailMessage(
-        #         eid, eid, 'retailiiti@gmail.com', ['cse200001043@iiti.ac.in'],
-        #         connection=connection,
-        #     ).send()
+
         subject = 'Order Placed'
         message = f'''
         Hi {user2}, your order has been placed. 
@@ -420,6 +458,27 @@ def orders(request, *args, **kwargs):
         '''
         email_from = settings.EMAIL_HOST_USER
         recipient_list = [email2, ]
+        send_mail(subject, message, email_from, recipient_list)
+
+        subject = 'New Order'
+        message = f'''
+        Hi {retailer2}, your have a new order. 
+
+        Order Details: 
+
+        Order Id: { order2.id }
+        Product Id: { id }
+        Product Name: { product }
+        Quantity: 1
+        Customer Name: {user2}
+        Gender: {user_gender}
+        Room No: {user_room}
+        Hostel Name: {user_hostel}
+        Address: Indian Institute of Technology, Indore, Madhya Pradesh
+        Phone: {user_phone}
+        '''
+        email_from = settings.EMAIL_HOST_USER
+        recipient_list = [retailer1, ]
         send_mail(subject, message, email_from, recipient_list)
 
         delete_all = CartItem.objects.filter(
@@ -438,8 +497,13 @@ def orders(request, *args, **kwargs):
         product_to_cancel = Product.objects.filter(
             product_id=product_id).values()
         product12 = product_to_cancel[0]
+        retailer = product12['Retailer_ID_id']
         final_list = Orders.objects.filter(id=id).delete()
     #     # final_list1 = final_list
+
+        retailer_list = Retailer.objects.filter(Retailer_ID=retailer).values()
+        retailer1 = retailer_list[0]['email']
+        retailer2 = retailer_list[0]['first_name'] + " " + retailer_list[0]['last_name']
 
         email = User.objects.filter(id=eid)
         email1 = email[0]
@@ -461,6 +525,21 @@ def orders(request, *args, **kwargs):
         recipient_list = [email2, ]
         send_mail(subject, message, email_from, recipient_list)
 
+        subject = 'Order Cancelled'
+        message = f'''
+        Hi {retailer2}, your order has been cancelled. 
+
+        Order Details: 
+
+        Order Id: { order2['id'] }
+        Product Id: { product_id }
+        Product Name: { product12['product_name'] }
+        Customer Name: {user2}
+        '''
+        email_from = settings.EMAIL_HOST_USER
+        recipient_list = [retailer1, ]
+        send_mail(subject, message, email_from, recipient_list)
+
         product_item = Orders.objects.filter(user_id=eid)
         # # cart1 = product_item[0]
         # total_price = 0
@@ -480,18 +559,24 @@ def orders(request, *args, **kwargs):
         user1 = user_list[0]
         user = user1['name']
         total_order = ''''''
+        total_retailer = ''''''
         for x in range(len(list1)):
             abc = list1[x]
             abcd = abc['id']
             cart_item = CartItem.objects.filter(id=abcd).values()
             cart_item1 = cart_item[0]
             id1 = cart_item1['product_id']
-            quantity123 = cart_item['quantity']
+            quantity123 = cart_item1['quantity']
             price_ht = cart_item1['price_ht']
             product_find = Product.objects.filter(product_id=id1).values()
             product_find1 = product_find[0]
             name_product = product_find1['product_name']
             company = product_find1['company_name']
+            retailer = product_find1['Retailer_ID_id']
+
+            retailer_list = Retailer.objects.filter(Retailer_ID=retailer).values()
+            retailer1 = retailer_list[0]['email']
+            retailer2 = retailer_list[0]['first_name'] + " " + retailer_list[0]['last_name']
 
             list = Orders()
             list.product_id = id1
@@ -510,6 +595,13 @@ def orders(request, *args, **kwargs):
                 Quantity: { quantity123 }
             '''
 
+            total_retailer += f'''
+            { x+1 }. Order Id: { order2.id }
+            Product Id: { id1 }
+            Product Name: { name_product }
+            Quantity: {quantity123}
+            '''
+
         email = User.objects.filter(id=eid)
         email1 = email[0]
         email2 = email1.email
@@ -526,6 +618,24 @@ def orders(request, *args, **kwargs):
         recipient_list = [email2, ]
         send_mail(subject, message, email_from, recipient_list)
 
+        subject = 'New Order'
+        message = f'''
+        Hi {retailer2}, your have a new order. 
+
+        Order Details: 
+        { total_retailer }
+
+        Customer Name: {user2}
+        Gender: {user_gender}
+        Room No: {user_room}
+        Hostel Name: {user_hostel}
+        Address: Indian Institute of Technology, Indore, Madhya Pradesh
+        Phone: {user_phone}
+        '''
+        email_from = settings.EMAIL_HOST_USER
+        recipient_list = [retailer1, ]
+        send_mail(subject, message, email_from, recipient_list)
+
         delete_all = CartItem.objects.filter(user_id=eid).delete()
 
     product_item = Orders.objects.filter(user_id=eid)
@@ -533,7 +643,8 @@ def orders(request, *args, **kwargs):
     context = {
         "product": product_item,
         # "id": id,
-        "eid": eid
+        "eid": eid,
+        "user": user_details
     }
     return render(request, 'orders.html', context=context)
 
