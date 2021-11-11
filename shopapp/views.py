@@ -8,7 +8,7 @@ from django.http.response import HttpResponse
 from django.core.mail import send_mail
 from django.contrib.auth.hashers import make_password, check_password
 from login.models import User
-from .models import Product, Cart, CartItem, Orders
+from .models import Product, Cart, CartItem, Orders, Wishlist
 
 
 def main_page(request, *args, **kwargs):
@@ -159,6 +159,35 @@ def cart(request, *args, **kwargs):
             list.user_id = eid
             list.save()
 
+    if 'wishlist' in request.POST:
+        id = request.POST.get('wishlist')
+
+        user_list = User.objects.filter(id=eid).values()
+        user1 = user_list[0]
+        user = user1['name']
+        product_list = Product.objects.filter(product_id=id).values()
+        product1 = product_list[0]
+        product = product1['product_name']
+        price_ht = product1['price']
+
+        final_list = CartItem.objects.filter(product_id=id, user_id=eid)
+        final_list1 = final_list
+
+        cart = Cart.objects.last()
+        cart_id = cart.id
+
+        if len(final_list) == 0:
+
+            list = CartItem()
+            list.product_id = id
+            list.cart_id = cart_id
+            list.price_ht = price_ht
+            list.user_id = eid
+            list.save()
+
+        final_list = Wishlist.objects.filter(
+            product_id=id, user_id=eid).delete()
+
     if 'remove' in request.POST:
         id = request.POST.get('remove')
 
@@ -168,7 +197,6 @@ def cart(request, *args, **kwargs):
         product_list = Product.objects.filter(product_id=id).values()
         product1 = product_list[0]
         product = product1['product_name']
-
         final_list = CartItem.objects.filter(
             product_id=id, user_id=eid).delete()
 
@@ -620,3 +648,49 @@ def profile(request, id=None, *args, **kwargs):
     "hostel5": hostel5
     }
     return render(request, 'student_profile.html', context=context)
+
+
+def wishlist(request, *args, **kwargs):
+
+    eid = request.session.get('eid')
+       
+    if 'name' in request.POST:
+        wish = request.POST.get('name')
+
+        check = Wishlist.objects.filter(user_id=eid, product_id=wish)
+
+        if len(check)==0:
+        
+            list = Wishlist()
+            list.user_id = eid
+            list.product_id = wish
+            list.save()
+
+    if 'remove' in request.POST:
+        wish = request.POST.get('remove')
+        Wishlist.objects.filter(user_id=eid, product_id=wish).delete()
+
+    wishlist = Wishlist.objects.filter(user_id=eid)
+    context = {
+        "product": wishlist,
+        # "userid": userid
+    }
+    return render(request, 'wishlist.html', context=context)
+
+
+def wishlist_product(request, id=None, *args, **kwargs):
+    eid = request.session.get('eid')
+
+    if id is not None:
+        # product_item = Product.objects.filter(product_id=id)
+        wishlist = Wishlist.objects.filter(product_id=id, user_id=eid)
+        can_buy=False
+        if wishlist[0].product.availability != 'Out of Stock':
+            can_buy=True
+
+        context = {
+            "product": wishlist,
+            "can_buy": can_buy
+            # "userid": userid
+        }
+        return render(request, 'index_itempage3.html', context=context)
