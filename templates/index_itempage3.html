@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Retail-IITI</title>
     {% load static %}
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/style_itempage.css' %}">
     <link rel="icon" href="{% static 'img/4014657-buy-cell-online-phone-store_112888.png' %}">
     <style>
@@ -34,7 +35,37 @@
 </head>
 
 <body>
-
+    <!-- <section class="menu">
+        <div class="account">
+            <div class="icon">
+                <a href="#"> <i class="fa fa-user" style="font-size:36px"></i></a>
+            </div>
+            <h1>Hello,User</h1>
+            <div class="burger2">
+                <span class="lines1"></span>
+                <span class="lines2"></span>
+                <span class="lines3"></span>
+            </div>
+        </div>
+        <div class="trending">
+            <h1>Trending</h1>
+            <a href="#">Best Sellers</a>
+            <a href="#">Best Offers</a>
+        </div>
+        <div class="shopbydept">
+            <h1>Shop By Department</h1>
+            <a href="#">Mobiles,Computers</a>
+            <a href="#">TV,Appliances,Electronics</a>
+            <a href="#">Men's Fashion</a>
+        </div>
+        <div class="help">
+            <h1>Help & Settings</h1>
+            <a href="#">Your Account</a>
+            <a href="#">Customer Service</a>
+            <a href="#">Sign Out</a>
+        </div>
+    </section> -->
+    
     <section class="header">
         <h1>Retail IITI</h1>
         <div class="search_box">
@@ -58,6 +89,7 @@
             <a class="shopping" href="/main-page/cart/"><i class="fa fa-shopping-cart" style="font-size:24px"></i></a>
         </div>
     </section>
+
     <section class="navbar">
 
         <div class="itemslist">
@@ -75,75 +107,59 @@
         </div>
     </section>
 
-
-
     {% for x in product %}
     <section class="main">
         <div class="selectoptions"> </div>
         <div class="productimage"> <img src="{{ x.product.image }}" alt=""></div>
         <div class="information" style="text-align: center;">
-            <!-- <h1>{{price}}</h1>
-            <h1><i>Product ID</i> : {{ x.product_id }}</h1>
-            <h1><i>Product Name</i> : {{ x.product_name }}</h1> -->
-
+            <!-- <h1>Title:</h1>
+            <h1>Price:</h1>
+            <h1>Name:</h1> -->
             <h1><i>Product ID</i> : {{ x.product.product_id }}</h1>
             <h1><i>Product Name</i> : {{ x.product.product_name }}</h1>
+            <h1><i>Price</i> : {{ x.product.price }}</h1>
             <h1><i>Company Name</i> : {{ x.product.company_name }}</h1>
             <h1><i>Availability</i> : {{ x.product.availability }}</h1>
-
-            <form action="/main-page/cart/{{ x.product_id }}/" method="POST">
-                {% csrf_token %}
-                <label for="quantity"><b>Quantity : </b></label>
-                
-                <input type="number" style="text-align: center;width: 10%;" name="quantity" placeholder="{{ x.quantity }}">
-                <!-- <select name="quantity" id="cars">
-                {% for i in '0123456789'|make_list %}
-                    
-                    <button type="submit"><option value="{{ forloop.counter }}">{{ forloop.counter }}</option></button>
-                {% endfor %}
-                
-                <option selected value="{{ x.quantity }}">{{ x.quantity }}</option> -->
-                <input type="submit" value="submit">
-                </select>
-
-                <!-- <input type="text" name="search" placeholder="Search Products Here"> -->
-            </form>
-
-            <h1><i>Total Price</i> : {{ x.price_ht }}</h1>
-            <!-- <h1><i>Created At</i> : {{ x.cart.created_at }}</h1> -->
-            <h1><i>Added At</i> : {{ x.added_at }}</h1>
-            <!-- <h1><i>Price per unit</i> : {{ x.price }}</h1>
-            <h1><i>Company Name</i> : {{ x.company_name }}</h1>
-            <h1><i>Availability</i> : {{ x.availability }}</h1> -->
-
             <div class="buttons">
+                
+                {% if can_buy %}
+                    <form action="/main-page/cart/" style="margin-left: 20%;" method="POST">
+                        {% csrf_token %}
+                        <a class="addtocart" href="/main-page/cart/">
+                            <button type="submit"
+                                style="border: none;background-color: rgb(253, 75, 10, 1);color: white;font-size: 1.1rem;"
+                                name="wishlist" value="{{ x.product_id }}">Add to Cart</button>
+                        </a>
 
+                    </form>
+                {% else %}
+                    <form action="" style="margin-left: 20%;" method="POST">
+                        {% csrf_token %}
+                        <a style="background-color: silver;" class="addtocart" href="">
+                            <button type="submit"
+                                style="border: none;background-color: silver;color: white;font-size: 1.1rem;"
+                                name="name" value="{{ x.product_id }}">Add to Cart</button>
+                        </a>
 
-                <form style="margin-left: 20%;" action="/main-page/orders/" method="POST">
+                    </form>
+                {% endif %}
+
+                <form action="/main-page/wishlist/" style="margin-right: 20%;" method="POST">
                     {% csrf_token %}
-                    <a class="buynow" href="/main-page/orders/">
+                    <a class="addtocart" href="/main-page/wishlist/">
                         <button type="submit"
                             style="border: none;background-color: rgb(253, 75, 10, 1);color: white;font-size: 1.1rem;"
-                            name="order" value="{{ x.product_id }}">Buy Now</button>
-                    </a>
-                </form>
-
-                <form action="/main-page/cart/" style="margin-right: 20%;" method="POST">
-                    {% csrf_token %}
-                    <a class="addtocart" href="/main-page/cart/">
-                        <button type="submit"
-                            style="border: none;background-color: rgb(253, 75, 10, 1);color: white;font-size: 1.1rem;"
-                            name="remove" value="{{ x.product_id }}">Remove from Cart</button>
+                            name="remove" value="{{ x.product_id }}">Remove from Wishlist</button>
                     </a>
 
                 </form>
+
 
             </div>
         </div>
     </section>
     {% endfor %}
-
-    <script src="app_itempage.js"></script>
+    <script src="{% static 'js/app.js' %}"></script>
 </body>
 
 </html>

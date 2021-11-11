@@ -39,10 +39,6 @@ class CartItem(models.Model):
     added_at = models.DateTimeField(default=datetime.now)
     user = models.ForeignKey(User, on_delete=models.CASCADE, default=12345)
 
-    # TAX_AMOUNT = 19.25
-
-    # def price_ttc(self):
-    #     return self.price_ht * (1 + TAX_AMOUNT/100.0)
 
     def __str__(self):
         return self.cart.user.name + " - " + self.product.product_name
@@ -59,3 +55,12 @@ class Orders(models.Model):
     def __str__(self):
         # self.user.name + " - " + self.product.product_name
         return str(self.id)
+
+
+class Wishlist(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=12345)
+
+
+    def __str__(self):
+        return self.user.name + " - " + self.product.product_name
