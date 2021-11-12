@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style_modifiedcart.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <section class="header">
+        <h1>🆁🅴🆃🅰🅸🅻 - 🅸🅸🆃🅸</h1>
+        <div class="search_box">
+            <form action="/main-page/" method="POST">
+                {% csrf_token %}
+                <div style="padding: 0.7rem 0rem;">
+                    <input type="text" name="search" placeholder="Search Products Here">
+                    <!-- <i class="fa fa-search" style="font-size:24px"></i> -->
+                </div>
+
+            </form>
+        </div>
+        <div class="options">
+            <div class="list">
+                <a href="#">
+                    <div class="accounts">
+                        <p style="font-size: 0.8rem;">Hello, {{user}}</p>
+                        <strong>
+                            Account Info
+                        </strong>
+                    </div>
+                </a>
+                <ul class="dropdown">
+                    <li><a href="#">Your Account</a></li>
+                    <li><a href="#">Your Orders</a></li>
+                    <li><a href="#">Switch Accounts</a></li>
+                    <li><a href="#">Sign Out</a></li>
+                </ul>
+            </div>
+            <a href="#">
+                <div>
+                    <p style="font-size: 0.8rem;">Returns</p>
+
+                    <strong>
+
+                        &Orders
+                    </strong>
+                </div>
+            </a>
+            <a class="shopping" href="/main-page/cart/"><i class="fa fa-shopping-cart" style="font-size:24px"></i></a>
+        </div>
+    </section>
+    <section class="navbar">
+        <div class="itemslist">
+            <li><a class="qwer" href="/main-page/">Home</a></li>
+            <li><a class="qwer" href="/main-page/electronics/">Electronics</a></li>
+            <li><a class="qwer" href="/main-page/stationary/">Stationary</a></li>
+            <li><a class="qwer" href="/main-page/household/">Household</a></li>
+            <li><a class="qwer" href="/main-page/fashion/">Fashion</a></li>
+            <li><a class="qwer"
+                    href="/main-page/cart/">Cart</a></li>
+            <li><a style="background-color: white;color: black;padding: 0.25rem 0.4rem;" class="qwer" href="/main-page/wishlist/">Wishlist</a></li>
+            
+            <li><a class="qwer" href="/main-page/orders/">Orders</a></li>
+            <li><a class="qwer" href="/main-page/profile/">Profile</a></li>
+            <li><a class="qwer" href="/main-page/aboutUs/">About Us</a></li>
+        </div>
+    </section>
+    <div class="headercart">
+        <h1>Wishlist</h1>
+
+    </div>
+
+    <hr>
+    <div class="cart">
+        <div class="descriptionproduct">
+           
+            {% for x in product %}
+            <div style="display: flex;">
+                <div style="flex: 1; margin: 1rem;">
+                    <div>
+                        <div>
+                            <a href="/main-page/wishlist/{{ x.product_id }}/">
+                                <img class="prImage" src="{{ x.product.image }}" alt="">
+                            </a>
+                        </div>
+
+                        <div class="descriptionproduct">
+                            <div class="text">
+                                <a style="color: black;" href="/main-page/wishlist/{{ x.product_id }}/">
+                                    <h2>{{ x.product.product_name }}</h2>
+                                </a>
+                                <br>
+                                <h3 style="font-size: 1.5rem;">{{ x.product.company_name }}</h3>
+                                <h3 style="font-size: 1.5rem;color: rgb(131, 65, 65);">Currently {{ x.product.availability }}</h3>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div style="margin: 4rem;">
+                    <h2>Price</h2>
+                    <h4>{{ x.product.price }}</h4>
+                </div>
+            </div>
+            <hr>
+            {% endfor %}
+            <!-- <form action="/main-page/orders/" style="margin-right: 20%;" method="POST">
+                {% csrf_token %}
+                <a href="/main-page/orders/">
+                    <button type="submit"
+                        style="border: none;background-color: rgb(253, 75, 10, 1);color: white;font-size: 1.1rem;"
+                        name="buyall" value="{{product}}">Buy All</button>
+                </a>
+
+            </form> -->
+
+
+        </div>
+
+    </div>
+
+
+
+
+    <!-- <div class="proceed">
+    <h2>Subtotal : </h2>
+    <button>Proceed to Buy</button>
+</div> -->
+
+</body>
+<script>
+    const burger = document.querySelector('.burger')
+    const menu = document.querySelector('.menu')
+    const dropdown = document.querySelector('.dropdown')
+    const list = document.querySelector('.list')
+    burger.addEventListener('click', function () {
+        burger.classList.toggle('toggle');
+        burger.classList.toggle('hiburger');
+        menu.classList.toggle('closemenu')
+    });
+    const accounts = document.querySelector('.accounts')
+    accounts.addEventListener('click', function () {
+        dropdown.classList.toggle('comedown')
+        list.classList.toggle('addcolor')
+    })
+</script>
+
+</html>
