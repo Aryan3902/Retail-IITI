@@ -51,6 +51,8 @@ class Orders(models.Model):
     # cart = models.ForeignKey('Cart', on_delete=models.CASCADE)
     added_at = models.DateTimeField(default=datetime.now)
     user = models.ForeignKey(User, on_delete=models.CASCADE, default=12345)
+    Retailer_ID = models.ForeignKey(Retailer, on_delete=models.CASCADE, default=1)
+    Status = models.CharField(max_length=128, default="Ordered")
 
     def __str__(self):
         # self.user.name + " - " + self.product.product_name

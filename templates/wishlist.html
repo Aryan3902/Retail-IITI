@@ -3,18 +3,15 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/style_yourorders.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style_modifiedcart.css' %}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 
 <body>
-
     <section class="header">
         <h1>🆁🅴🆃🅰🅸🅻 - 🅸🅸🆃🅸</h1>
         <div class="search_box">
@@ -31,18 +28,15 @@
             <div class="list">
                 <a href="#">
                     <div class="accounts">
-                        <p style="font-size: 0.8rem;">Hello, {{user1}}</p>
+                        <p style="font-size: 0.8rem;">Hello, {{user}}</p>
                         <strong>
                             Account Info
                         </strong>
                     </div>
                 </a>
                 <ul class="dropdown">
-                    <li><a href="#">Browsing History</a></li>
                     <li><a href="#">Your Account</a></li>
                     <li><a href="#">Your Orders</a></li>
-                    <li><a href="#">Your Wishlist</a></li>
-                    <li><a href="#">Create a Wishlist</a></li>
                     <li><a href="#">Switch Accounts</a></li>
                     <li><a href="#">Sign Out</a></li>
                 </ul>
@@ -61,79 +55,77 @@
         </div>
     </section>
     <section class="navbar">
-
         <div class="itemslist">
             <li><a class="qwer" href="/main-page/">Home</a></li>
             <li><a class="qwer" href="/main-page/electronics/">Electronics</a></li>
             <li><a class="qwer" href="/main-page/stationary/">Stationary</a></li>
             <li><a class="qwer" href="/main-page/household/">Household</a></li>
             <li><a class="qwer" href="/main-page/fashion/">Fashion</a></li>
-            <li><a class="qwer" href="/main-page/cart/">Cart</a></li>
-            <li><a class="qwer" href="/main-page/wishlist/">Wishlist</a></li>
-            <li><a style="background-color: white;color: black;padding: 0.25rem 0.4rem;" class="qwer" href="/main-page/orders/">Orders</a></li>
+            <li><a class="qwer"
+                    href="/main-page/cart/">Cart</a></li>
+            <li><a style="background-color: white;color: black;padding: 0.25rem 0.4rem;" class="qwer" href="/main-page/wishlist/">Wishlist</a></li>
+            
+            <li><a class="qwer" href="/main-page/orders/">Orders</a></li>
             <li><a class="qwer" href="/main-page/profile/">Profile</a></li>
             <li><a class="qwer" href="/main-page/aboutUs/">About Us</a></li>
         </div>
     </section>
     <div class="headercart">
-        <h1>Your Orders</h1>
+        <h1>Wishlist</h1>
 
     </div>
 
     <hr>
     <div class="cart">
-        {% for x in product %}
-        <div style="display: flex;">
-            <div>
-                <a href="/main-page/orders/{{ x.id }}/">
-                    <img class="prImage" src="{{ x.product.image }}" alt="">
-                </a>
-            </div>
+        <div class="descriptionproduct">
+           
+            {% for x in product %}
+            <div style="display: flex;">
+                <div style="flex: 1; margin: 1rem;">
+                    <div>
+                        <div>
+                            <a href="/main-page/wishlist/{{ x.product_id }}/">
+                                <img class="prImage" src="{{ x.product.image }}" alt="">
+                            </a>
+                        </div>
 
-            <div class="descriptionproduct">
-                <div class="text">
-                    <a style="color: black;" href="/main-page/orders/{{ x.id }}/">
-                        <h2>{{ x.product.product_name }}</h2>
-                    </a>
-                    <br>
-                    <p style="font-size: 1.5rem;">{{ x.product.company_name }}</p>
-                    <p style="font-size: 2rem;margin-top: 2rem;"><i>Status</i> : {{ x.Status }}</p>
+                        <div class="descriptionproduct">
+                            <div class="text">
+                                <a style="color: black;" href="/main-page/wishlist/{{ x.product_id }}/">
+                                    <h2>{{ x.product.product_name }}</h2>
+                                </a>
+                                <br>
+                                <h3 style="font-size: 1.5rem;">{{ x.product.company_name }}</h3>
+                                <h3 style="font-size: 1.5rem;color: rgb(131, 65, 65);">Currently {{ x.product.availability }}</h3>
+                            </div>
+                        </div>
+                    </div>
                     
                 </div>
+                <div style="margin: 4rem;">
+                    <h2>Price</h2>
+                    <h4>{{ x.product.price }}</h4>
+                </div>
             </div>
-            <div style="margin: 4rem;">
-                <h3>Price</h3>
-                <h4>{{ x.price_ht }}</h4>
-            </div>
+            <hr>
+            {% endfor %}
+            <!-- <form action="/main-page/orders/" style="margin-right: 20%;" method="POST">
+                {% csrf_token %}
+                <a href="/main-page/orders/">
+                    <button type="submit"
+                        style="border: none;background-color: rgb(253, 75, 10, 1);color: white;font-size: 1.1rem;"
+                        name="buyall" value="{{product}}">Buy All</button>
+                </a>
+
+            </form> -->
+
+
         </div>
-        <hr>
-        {% endfor %}
-
-
-        <div class="cartoptions">
-            <!-- <select name="" id="">
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-        <option value="10">10</option>
-    </select> -->
-
-            <a href="#">Cancel Order </a>
-            <a href="#">Track Order</a>
-        </div>
-    </div>
 
     </div>
 
 
-    <hr>
+
 
     <!-- <div class="proceed">
     <h2>Subtotal : </h2>
