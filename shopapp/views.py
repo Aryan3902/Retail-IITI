@@ -330,6 +330,7 @@ def orders(request, *args, **kwargs):
         list.quantity = 1
         list.price_ht = price_ht
         list.user_id = eid
+        list.Retailer_ID_id = product1['Retailer_ID_id']
         list.save()
 
         order2 = Orders.objects.all().last()
@@ -434,6 +435,7 @@ def orders(request, *args, **kwargs):
         list.quantity = quantity
         list.price_ht = price_ht
         list.user_id = eid
+        list.Retailer_ID_id = product1['Retailer_ID_id']
         list.save()
 
         order2 = Orders.objects.all().last()
@@ -583,6 +585,7 @@ def orders(request, *args, **kwargs):
             # list.cart_id = 1
             list.price_ht = price_ht
             list.user_id = eid
+            list.Retailer_ID_id = product_find1['Retailer_ID_id']
             list.save()
 
             order2 = Orders.objects.all().last()

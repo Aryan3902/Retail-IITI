@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from django.contrib import messages
-from shopapp.models import Product
-from login.models import Retailer
+from login.models import User, Retailer
+from shopapp.models import Product, Cart, CartItem, Orders, Wishlist
 from django.http import HttpResponse
 from django.contrib.auth.hashers import make_password, check_password
 # Create your views here.
@@ -187,3 +187,34 @@ def retailer_profile(request, id=None, *args, **kwargs):
     "state": state,
     }
     return render(request, 'retailer_profile.html', context=context)
+
+def retailer_orders(request, *args, **kwargs):
+    eid = request.session.get('rid')
+
+    product_item = Orders.objects.filter(Retailer_ID_id=eid)
+
+    context = {
+        "product": product_item,
+        # "id": id,
+    }
+    return render(request, 'retailer_orders.html', context=context)
+
+
+def retailer_orders_product(request, id=None, *args, **kwargs):
+    # article_obj = None
+    if'status' in request.POST:
+        status = request.POST.get('status')
+        edit_order = Orders.objects.get(id=id)
+        edit_order.Status = status
+        edit_order.save()
+
+    if id is not None:
+        # product_item = Product.objects.filter(product_id=id)
+        order_item = Orders.objects.filter(id=id)
+        order12 = order_item[0]
+        context = {
+            "product": order_item,
+            "order": order12
+            # "userid": userid
+        }
+        return render(request, 'retailer_itempage.html', context=context)

@@ -16,27 +16,14 @@
 <body>
 
     <section class="header">
-        <h1>🆁🅴🆃🅰🅸🅻 - 🅸🅸🆃🅸</h1>
+        <h1>Retail IITI</h1>
         <div class="search_box">
-            <form action="/main-page/" method="POST">
-                {% csrf_token %}
-                <div style="padding: 0.7rem 0rem;">
-                    <input type="text" name="search" placeholder="Search Products Here">
-                    <!-- <i class="fa fa-search" style="font-size:24px"></i> -->
-                </div>
+            <input type="text" placeholder="Search Products Here">
 
-            </form>
         </div>
         <div class="options">
             <div class="list">
-                <a href="#">
-                    <div class="accounts">
-                        <p style="font-size: 0.8rem;">Hello, {{user1}}</p>
-                        <strong>
-                            Account Info
-                        </strong>
-                    </div>
-                </a>
+                <a href="#" class="accounts"> Accounts & Lists</a>
                 <ul class="dropdown">
                     <li><a href="#">Browsing History</a></li>
                     <li><a href="#">Your Account</a></li>
@@ -47,31 +34,18 @@
                     <li><a href="#">Sign Out</a></li>
                 </ul>
             </div>
-            <a href="#">
-                <div>
-                    <p style="font-size: 0.8rem;">Returns</p>
-
-                    <strong>
-
-                        &Orders
-                    </strong>
-                </div>
-            </a>
+            <a class="returns" href="#">Returns &Orders</a>
             <a class="shopping" href="/main-page/cart/"><i class="fa fa-shopping-cart" style="font-size:24px"></i></a>
         </div>
     </section>
     <section class="navbar">
 
         <div class="itemslist">
-            <li><a class="qwer" href="/main-page/">Home</a></li>
-            <li><a class="qwer" href="/main-page/electronics/">Electronics</a></li>
-            <li><a class="qwer" href="/main-page/stationary/">Stationary</a></li>
-            <li><a class="qwer" href="/main-page/household/">Household</a></li>
-            <li><a class="qwer" href="/main-page/fashion/">Fashion</a></li>
-            <li><a class="qwer" href="/main-page/cart/">Cart</a></li>
-            <li><a class="qwer" href="/main-page/wishlist/">Wishlist</a></li>
-            <li><a style="background-color: white;color: black;padding: 0.25rem 0.4rem;" class="qwer" href="/main-page/orders/">Orders</a></li>
-            <li><a class="qwer" href="/main-page/profile/">Profile</a></li>
+            <li><a
+                    href="/Retailer/">Home</a></li>
+            <li><a class="qwer" href="/Retailer/add/">Add New Products</a></li>
+            <li><a style="background-color: white;color: black;padding: 0.25rem 0.4rem;" class="qwer" class="qwer" href="/Retailer/orders/">Your Orders</a></li>
+            <li><a class="qwer" href="/Retailer/Profile/">Profile</a></li>
             <li><a class="qwer" href="/main-page/aboutUs/">About Us</a></li>
         </div>
     </section>
@@ -85,19 +59,18 @@
         {% for x in product %}
         <div style="display: flex;">
             <div>
-                <a href="/main-page/orders/{{ x.id }}/">
+                <a href="/Retailer/orders/{{ x.id }}/">
                     <img class="prImage" src="{{ x.product.image }}" alt="">
                 </a>
             </div>
 
             <div class="descriptionproduct">
                 <div class="text">
-                    <a style="color: black;" href="/main-page/orders/{{ x.id }}/">
+                    <a style="color: black;" href="/Retailer/orders/{{ x.id }}/">
                         <h2>{{ x.product.product_name }}</h2>
                     </a>
                     <br>
                     <p style="font-size: 1.5rem;">{{ x.product.company_name }}</p>
-                    <p style="font-size: 2rem;margin-top: 2rem;"><i>Status</i> : {{ x.Status }}</p>
                     
                 </div>
             </div>
@@ -108,26 +81,6 @@
         </div>
         <hr>
         {% endfor %}
-
-
-        <div class="cartoptions">
-            <!-- <select name="" id="">
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-        <option value="10">10</option>
-    </select> -->
-
-            <a href="#">Cancel Order </a>
-            <a href="#">Track Order</a>
-        </div>
     </div>
 
     </div>
