@@ -18,6 +18,9 @@ from django.urls import path
 from login import views
 from shopapp.views import main_page, cart, wishlist, wishlist_product, main_page_product, main_page_cart_product, orders, main_page_order_product, aboutus, main_page_electronics, main_page_stationary, main_page_household, main_page_fashion, profile
 from Retailer.views import mainpage, update_product, add_product_form, add_product, update_product_form, delete_product, retailer_profile, retailer_orders, retailer_orders_product
+from shopapp.views import main_page, cart, main_page_product, main_page_cart_product, orders, main_page_order_product, aboutus, main_page_electronics, main_page_stationary, main_page_household, main_page_fashion, profile
+from Retailer.views import mainpage, update_product, add_product_form, add_product, update_product_form, delete_product, retailer_profile
+from django.urls import include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -51,5 +54,6 @@ urlpatterns = [
     path('Retailer/Profile/', retailer_profile),
     path('Retailer/orders/', retailer_orders),
     path('Retailer/orders/<int:id>/', retailer_orders_product),
-    path('main-page/aboutUs/', aboutus)
+    path('main-page/aboutUs/', aboutus),
+    path('', include('payments.urls'))
 ]
