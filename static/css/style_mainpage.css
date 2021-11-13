@@ -159,6 +159,7 @@ width:90% ;
 }
 .burger{
     transition: all 0.5s ease;
+    z-index: 10000000000;
 } 
 body{
     overflow-x: hidden;
@@ -218,12 +219,15 @@ color: black;
 }
 .account{
     margin-bottom: 1rem;
+    display: flex;
 }
+
 .menu{
     position: absolute;
     z-index: 1000;
+    background-color: pink;
     transition: all 0.5s ease;
-    left: -264px;
+  left: -290px;
 }
 .menu a:hover{
     color: blue;
@@ -245,6 +249,7 @@ left: 0;
     background-color: #131c21;
     position: absolute;
     display: none;
+    border-radius: 7px;
     transition: all 0.5s ease;
     color: white;
     z-index: 100;
@@ -260,7 +265,7 @@ left: 0;
 }
 .comedown{
     display: block;
-    top: 10vh;
+    top: 15vh;
 }
 .dropdown a:hover{
     border: none;

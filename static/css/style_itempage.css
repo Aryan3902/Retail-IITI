@@ -4,36 +4,30 @@
     box-sizing: border-box;
     font-family: 'Source Sans Pro', sans-serif;
 }
-.returns{
-    margin-right: 1rem;
-   transform: translateX(-20%);
-}
-.accounts{
-    margin-right: 1rem;
-    transform: translateX(-200%);
+body{
+    overflow-y: hidden;
 }
 .fa-shopping-cart{
     margin:1rem;
     transform: translateX(-90%);
 }
-.dropdown{
-    z-index: 1000;
-}
 .header{
     display: flex;
     min-height:10vh ;
-    background-color: #131c21;
+    background-color: #071116;
     color: white;
     align-items: center;
-    justify-content: space-between;
+    
 }
 .header h1{
-    margin-left: 0.3rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
 }
 .options{
+    margin-left: 1rem;
 display: flex;
 align-items: center;
-justify-content: space-between;
+
 }
 .options a{
     color: white;
@@ -44,11 +38,11 @@ justify-content: space-between;
     margin-right: 0.3rem;
 }
 .search_box input{
-    padding: 0.7rem 0rem;
-    width: 50%;
-    top: 3%;
-    position: absolute;
+    
+    width: 100%;
+    margin-right: 2rem;
     text-align: center;
+    padding: 0.8rem;
 }
 input::placeholder{
     font-size: 1rem;
@@ -62,33 +56,16 @@ ul a{
 }
 .search_box .fa{
     cursor: pointer;
-    position: absolute;
     top: 3%;
     padding: 0.55rem;
-    transform: translateX(-10%)translateY(0%);
     background-color: green;
 }
-.list a:hover{
-    border-style: solid;
-    padding: 0.5rem;
-    transition:  all 0.5s ease;
-    background-color: white;
-    color: #131c21;
-    border-radius: 7px;
-}
-.returns:hover{
-    padding: 0.5rem;
-    background-color: white;
-    border-radius: 5px;
-    color: #131c21;
-    transition: all 0.5s ease;
+.list div:hover{
+    color: rgb(126, 61, 0);
 }
 .search_box{
-    transform: translateX(20%);
-    position: absolute;
-    width: 90%;
-    right: 0%;
-    top: 3%;
+    /* transform: translateX(20%); */
+    flex: 1;
 }
 .fa{
     cursor: pointer;
@@ -96,7 +73,7 @@ ul a{
 .navbar{
     color: white;
     min-height: 5vh;
-    background-color:indigo;
+    background-color:#131c21;
     align-items: center;
     display: flex;
 }
@@ -142,7 +119,6 @@ width:90% ;
 }
 .box{
     display: flex;
-    background: pink;
     min-height: 40vh;
     margin-bottom: 0.5rem;
 }
@@ -150,17 +126,25 @@ width:90% ;
     display: flex;
 }
 .product{
-    width: 20%;
-    background: yellow;
+    width: 20rem;
+    height: 20rem;
+}
+
+.prImage{
+    
+    object-fit: contain;
 }
 .description{
     display: flex;
     flex-direction:column;
-  justify-content: space-evenly;
+    flex: 1;
  }
- .description h1{
-     margin-left: 1rem;
- }
+.prName{
+    font-size: 2rem;
+    margin: 1rem;
+    margin-left: 0rem;
+    margin-bottom: 0.5rem;
+}
 .searchbyoptions{
     min-height: 100vh;
     width: 30%;
@@ -201,9 +185,7 @@ padding: 1rem 1rem;
   
     background-color: pink;
 }
-.account{
-    display: flex;
-}
+
 .trending{
     display: flex;
     flex-direction: column;
@@ -229,12 +211,14 @@ color: black;
 }
 .account{
     margin-bottom: 1rem;
+    display: flex;
 }
 .menu{
     position: absolute;
     z-index: 1000;
     transition: all 0.5s ease;
-    left: -264px;
+    left: -290px;
+    background-color: pink;
 }
 .menu a:hover{
     color: blue;
@@ -251,6 +235,7 @@ left: 0;
 }
 
 .dropdown{
+    border-radius: 7px;
     display: flex;
     flex-direction: column;
     background-color: #131c21;
@@ -270,8 +255,21 @@ left: 0;
 }
 .comedown{
     display: block;
-    top: 10vh;
+    top: 15vh;
 }
+.dropdown a:hover{
+    border: none;
+    padding: 0.2rem;
+    color: blue;
+}
+.prName:hover{
+    color: rgb(196, 95, 0);
+}
+
+
+
+
+
 .dropdown a:hover{
     border: none;
     padding: 0.2rem;
@@ -304,13 +302,13 @@ left: 0;
 }
 .information a{
    text-align: center;
-    width: 40%;
+    
     margin-top: 1rem;
 }
 .information a{
     text-decoration: none;
     color: white;
-    background-color: rgb(253, 75, 10,1);
+    /* background-color: rgb(253, 75, 10,1); */
     border-radius: 7px;
 }
 .main{
@@ -326,18 +324,65 @@ left: 0;
 .selectoptions{
 width: 10%;
 }
-.buttons a:hover{
-    box-shadow: 0px 5px 5px 3px rgba(0, 0, 0, 0.2);
+
+.buynow button,
+.addtocart  button{
+    cursor: pointer;
+    border: none;
+    background-color: rgba(253,75,10,1);
+    border-radius: 7px;
+  
+    color: white;
+    font-size: 1.1rem;
 }
-.buynow{
-    padding: 0.5rem;
+.buynow button:hover{
+    box-shadow:    0px 7px 7px 7px rgba(0,0,0,0.1);
 }
-.addtocart {
-    padding: 0.5rem;
+.addtocart button:hover{
+    box-shadow:    0px 7px 7px 7px rgba(0,0,0,0.1);
 }
+
 .buttons a{
     font-size: 1.1rem;
 }
 .buttons{
     display: flex;
 }
+.closemenu{
+    left: 0;
+    }
+    .hiburger{
+        transform: translateX(550%) translateY(-400%);
+    }
+    
+    .dropdown{
+        display: flex;
+        flex-direction: column;
+        background-color: #131c21;
+        position: absolute;
+        display: none;
+        transition: all 0.5s ease;
+        color: white;
+      
+    }
+    .dropdown li{
+       
+        margin-right: 1rem;
+        margin-bottom: 1rem;
+        margin-top: 1rem;
+    }
+    .dropdown li a{
+        color: white;
+    }
+    .comedown{
+        display: block;
+        top: 15vh;
+    }
+    .dropdown a:hover{
+        border: none;
+        padding: 0.2rem;
+        color: blue;
+    }
+    button{
+        padding: 0.5rem;
+    }

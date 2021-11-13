@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,8 +10,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Retail-IITI</title>
     {% load static %}
-
     <link rel="stylesheet" href="{% static 'css/style_mainpage.css' %}">
+   
     <link rel="icon" href="{% static 'img/4014657-buy-cell-online-phone-store_112888.png' %}">
     <style>
         .product {
@@ -24,17 +26,13 @@
 </head>
 
 <body>
-    <!-- <section class="menu">
+    <section class="menu">
         <div class="account">
             <div class="icon">
                 <a href=""> <i class="fa fa-user" style="font-size:36px"></i></a>
             </div>
             <h1>Hello,User</h1>
-            <div class="burger2">
-                <span class="lines1"></span>
-                <span class="lines2"></span>
-                <span class="lines3"></span>
-            </div>
+           
         </div>
         <div class="trending">
             <h1>Trending</h1>
@@ -53,7 +51,7 @@
             <a href="#">Customer Service</a>
             <a href="#">Sign Out</a>
         </div>
-    </section> -->
+    </section>
     <section class="header">
         <h1>🆁🅴🆃🅰🅸🅻 - 🅸🅸🆃🅸</h1>
         <div class="search_box">
@@ -100,7 +98,11 @@
         </div>
     </section>
     <section class="navbar">
-
+        <div class="burger">
+            <span class="line1"></span>
+            <span class="line2"></span>
+            <span class="line3"></span>
+        </div>
         <div class="itemslist">
             <li><a style="background-color: white;color: black;padding: 0.25rem 0.4rem;" class="qwer"
                     href="/main-page/">Home</a></li>
@@ -158,7 +160,22 @@
             margin-bottom: 1rem;
         }
     </style>
-    <script src="{% static 'js/app.js' %}"></script>
+  <script>
+    const burger = document.querySelector('.burger')
+const menu = document.querySelector('.menu')
+const dropdown = document.querySelector('.dropdown')
+const list = document.querySelector('.list')
+burger.addEventListener('click', function () {
+    burger.classList.toggle('toggle');
+    burger.classList.toggle('hiburger');
+    menu.classList.toggle('closemenu')
+});
+const accounts = document.querySelector('.accounts')
+accounts.addEventListener('click', function () {
+    dropdown.classList.toggle('comedown')
+    list.classList.toggle('addcolor')
+})
+</script>
 </body>
 
 </html>
