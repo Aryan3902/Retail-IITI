@@ -6,8 +6,9 @@ from django.http.response import HttpResponse
 from django.shortcuts import render, redirect
 from django.core.mail import send_mail
 from django.contrib.auth.hashers import make_password, check_password
-from .models import User,Retailer
+from .models import User, Retailer
 import random
+import requests as r
 
 # Create your views here.
 
@@ -20,14 +21,14 @@ def forgetview(request, *args, **kwargs):
     if request.method == 'POST':
         email = request.POST.get('email')
         name = request.POST.get('name')
-        
+
         userlist = User.objects.filter(name=name, email=email).values()
 
-        if len(userlist)>0:
+        if len(userlist) > 0:
             users = User.objects.get(email=email)
 
             password = ""
-            given="QWERTYUIOPLKJHGFDSAZXCVBNMqwertyuioplkjhgfdsazxcvbnm1234567890"
+            given = "QWERTYUIOPLKJHGFDSAZXCVBNMqwertyuioplkjhgfdsazxcvbnm1234567890"
             for x in range(10):
                 password += random.choice(given)
             users.password = make_password(password)
@@ -36,11 +37,10 @@ def forgetview(request, *args, **kwargs):
                 "user": password
             }
             return render(request, 'forgot-password1.html', context=context)
-        
+
         else:
             messages.info(request, 'EmailID is not registered')
     return render(request, 'forgot-password.html')
-
 
 
 def openview(request, *args, **kwargs):
@@ -56,28 +56,34 @@ def ticket(request, *args, **kwargs):
         why_you = request.POST.get('why')
         email = request.POST.get('email')
         gst_no = request.POST.get('gstin')
+        apikey = "2c26255edacf2528e5d992cdda41197f"
+        checkUrl = r.get(
+            f"http://sheet.gstincheck.co.in/check/{apikey}/{gst_no}").json()
+        if checkUrl["message"] != "Invalid GSTIN Number.":
+            subject = 'Retailer Request'
+            message = f'''
+            Hi , there is a retailer waiting for a response. 
 
+            Retailer Info: 
+
+            Name:  { first_name } { last_name }
+            Company Name: { company_name }
+            Products: { products }
+            Why You: { why_you }
+            Email: { email }
+            GST No.: { gst_no }
+            '''
+            email_from = settings.EMAIL_HOST_USER
+            recipient_list = ['retailiiti@gmail.com', ]
+            send_mail(subject, message, email_from, recipient_list)
+
+            return HttpResponse('Your request is sent to the admins.')
+        else:
+            return HttpResponse('Invalid Gst No.')
         # send_mail('Retailer Request', 'LET ME INNNNNNNNNNNNNN',
         #           'retailiiti@gmail.com', ['retailiiti@gmail.com'], fail_silently=False)
         # return HttpResponse('Your request is sent to the admins.')
-        subject = 'Retailer Request'
-        message =f'''
-        Hi , there is a retailer waiting for a response. 
 
-        Retailer Info: 
-
-        Name:  { first_name } { last_name }
-        Company Name: { company_name }
-        Products: { products }
-        Why You: { why_you }
-        Email: { email }
-        GST No.: { gst_no }
-        '''
-        email_from = settings.EMAIL_HOST_USER
-        recipient_list = ['retailiiti@gmail.com', ]
-        send_mail( subject, message, email_from, recipient_list )
-
-        return HttpResponse('Your request is sent to the admins.')
     else:
         return render(request, 'ticket.html')
 
@@ -113,13 +119,13 @@ def login(request, *args, **kwargs):
     # username = request.POST.get('Name')
     userlist = User.objects.filter(email=email).values()
     # print(userlist)
-    
+
     # print("1234567890")
 
-    if len(userlist)>0:
+    if len(userlist) > 0:
         userA = userlist[0]
         if check_password(password, userA['password']):
-        # if password == userA['password']:
+            # if password == userA['password']:
             # print(userA['name'])
             context = {
                 "userid": email
@@ -144,13 +150,13 @@ def relogin(request, *args, **kwargs):
     # username = request.POST.get('Name')
     userlist = Retailer.objects.filter(email=email).values()
     # print(userlist)
-    
+
     # print("1234567890")
 
-    if len(userlist)>0:
+    if len(userlist) > 0:
         userA = userlist[0]
         if check_password(password, userA['password']):
-        # if password == userA['password']:
+            # if password == userA['password']:
             # print(userA['name'])
             context = {
                 "userid": email
@@ -162,13 +168,12 @@ def relogin(request, *args, **kwargs):
 
         else:
             messages.info(request, 'Wrong password')
-            return redirect('../')
+            return redirect('/sign-in/?next=/retailer/')
 
     else:
         messages.info(request, 'Retailer is not registered')
-        return redirect('../')
+        return redirect('/sign-in/?next=/retailer/')
 
 
 def welcome(request, *args, **kwargs):
     return render(request, 'Welcome.html')
-

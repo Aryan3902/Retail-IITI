@@ -26,6 +26,17 @@
         background-color: white;
         color: black;
     }
+    input {
+		background-color: rgb(224, 221, 221);
+		border: none;
+		padding: 12px 15px;
+		margin: 8px 0;
+		width: 60%;
+		text-align: center;
+	}
+    input:focus{
+		background-color: rgb(248, 248, 248);
+	}
     </style>
 </head>
 <body>
@@ -62,40 +73,34 @@
     <section class="header">
         <h1>Retail IITI</h1>
         <div class="search_box">
-        <input type="text" placeholder="Search Products Here">
-        <i class="fa fa-search" style="font-size:24px"></i>
-    </div>
-    <div class="options">
-        <div class="list">
-    <a href="#" class="accounts"> Accounts & Lists</a>
-    <ul class="dropdown">
-        <li><a href="#">Browsing History</a></li>
-        <li><a href="#">Your Account</a></li>
-        <li><a href="#">Your Orders</a></li>
-        <li><a href="#">Your Wishlist</a></li>
-        <li><a href="#">Create a Wishlist</a></li>
-        <li><a href="#">Switch Accounts</a></li>
-        <li><a href="#">Sign Out</a></li>
-    </ul>
-</div>
-    <a class="returns" href="#">Returns &Orders</a>
-    <a class="shopping" href="/main-page/cart/"><i class="fa fa-shopping-cart" style="font-size:24px"></i></a>
-</div>
-    </section>
+            <input type="text" placeholder="Search Products Here">
 
+        </div>
+        <div class="options">
+            <div class="list">
+                <a href="#" class="accounts"> Accounts & Lists</a>
+                <ul class="dropdown">
+                    <li><a href="#">Browsing History</a></li>
+                    <li><a href="#">Your Account</a></li>
+                    <li><a href="#">Your Orders</a></li>
+                    <li><a href="#">Your Wishlist</a></li>
+                    <li><a href="#">Create a Wishlist</a></li>
+                    <li><a href="#">Switch Accounts</a></li>
+                    <li><a href="#">Sign Out</a></li>
+                </ul>
+            </div>
+            <a class="returns" href="#">Returns &Orders</a>
+            <a class="shopping" href="/main-page/cart/"><i class="fa fa-shopping-cart" style="font-size:24px"></i></a>
+        </div>
+    </section>
     <section class="navbar">
 
         <div class="itemslist">
             <li><a
-                    href="/main-page/">Home</a></li>
-            <li><a class="qwer" href="/main-page/electronics/">Electronics</a></li>
-            <li><a class="qwer" href="/main-page/stationary/">Stationary</a></li>
-            <li><a class="qwer" href="/main-page/household/">Household</a></li>
-            <li><a class="qwer" href="/main-page/fashion/">Fashion</a></li>
-            <li><a class="qwer" href="/main-page/cart/">Cart</a></li>
-            <li><a class="qwer" href="/main-page/wishlist/">Wishlist</a></li>
-            <li><a class="qwer" href="/main-page/orders/">Orders</a></li>
-            <li><a class="qwer" href="/main-page/profile/">Profile</a></li>
+                    href="/Retailer/">Home</a></li>
+            <li><a class="qwer" href="/Retailer/add/">Add New Products</a></li>
+            <li><a style="background-color: white;color: black;padding: 0.25rem 0.4rem;" class="qwer" class="qwer" href="/Retailer/orders/">Your Orders</a></li>
+            <li><a class="qwer" href="/Retailer/Profile/">Profile</a></li>
             <li><a class="qwer" href="/main-page/aboutUs/">About Us</a></li>
         </div>
     </section>
@@ -114,7 +119,7 @@
             <h1><i>Product Name</i> : {{ x.product.product_name }}</h1>
             <h1><i>Total Price</i> : {{ x.price_ht }}</h1>
             <h1><i>Quantity</i> : {{ x.quantity }}</h1>
-            <h1><i>Company Name</i> : {{ x.product.company_name }}</h1>
+            
             <!-- <h1><i>Availability</i> : {{ x.product.availability }}</h1> -->
             <div class="buttons">
 
@@ -126,11 +131,12 @@
                 </a>
             </form> -->
 
-            <form style="text-align: center;" action="/main-page/orders/" method="POST">
+            <form style="text-align: center;" action="/Retailer/orders/{{ x.id }}/" method="POST">
                 {% csrf_token %}
                 <!-- <a class="buynow" href="#">Buy Now</a> -->
-                <a class="buynow" href="/main-page/orders/">
-                    <button type="submit" style="margin-bottom:1rem;border: none;background-color: rgb(253, 75, 10, 1);color: white;font-size: 1.1rem;" name="cancel" value="{{ x.id }}">Cancel Order</button>
+                <h1 style="margin-top: 0rem;margin-bottom: 3rem;"><i>Status</i> : <input type="text" style="text-align: center;" placeholder="{{x.Status}}" name="status"> </h1>
+                <a class="buynow" href="/Retailer/orders/{{ x.id }}/">
+                    <button type="submit" style="margin-bottom:1rem;border: none;background-color: rgb(253, 75, 10, 1);color: white;font-size: 1.1rem;" name="cancel" value="{{ x.id }}">Make Changes</button>
                 </a>
                 <!-- <a class="addtocart" href="/main-page/cart/">
                     <button type="submit" style="border: none;background-color: rgb(253, 75, 10, 1);color: white;font-size: 1.1rem;" name="name" value="{{ x.product_id }}">Add to Cart</button>

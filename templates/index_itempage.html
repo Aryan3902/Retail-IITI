@@ -65,6 +65,7 @@
             <a href="#">Sign Out</a>
         </div>
     </section> -->
+    
     <section class="header">
         <h1>Retail IITI</h1>
         <div class="search_box">
@@ -88,19 +89,21 @@
             <a class="shopping" href="/main-page/cart/"><i class="fa fa-shopping-cart" style="font-size:24px"></i></a>
         </div>
     </section>
+
     <section class="navbar">
-        <div class="burger">
-            <span class="line1"></span>
-            <span class="line2"></span>
-            <span class="line3"></span>
-        </div>
+
         <div class="itemslist">
-            <li><a class="qwer" href="/main-page/">Home</a></li>
+            <li><a
+                    href="/main-page/">Home</a></li>
+            <li><a class="qwer" href="/main-page/electronics/">Electronics</a></li>
+            <li><a class="qwer" href="/main-page/stationary/">Stationary</a></li>
+            <li><a class="qwer" href="/main-page/household/">Household</a></li>
+            <li><a class="qwer" href="/main-page/fashion/">Fashion</a></li>
             <li><a class="qwer" href="/main-page/cart/">Cart</a></li>
+            <li><a class="qwer" href="/main-page/wishlist/">Wishlist</a></li>
             <li><a class="qwer" href="/main-page/orders/">Orders</a></li>
-            <li><a class="qwer" href="/main-page/cart/">Profile</a></li>
-            <li><a class="qwer" href="/main-page/cart/">About Us</a></li>
-            <li><a class="qwer" href="/main-page/cart/">Item1</a></li>
+            <li><a class="qwer" href="/main-page/profile/">Profile</a></li>
+            <li><a class="qwer" href="/main-page/aboutUs/">About Us</a></li>
         </div>
     </section>
 
@@ -120,34 +123,51 @@
             <h1><i>Company Name</i> : {{ x.company_name }}</h1>
             <h1><i>Availability</i> : {{ x.availability }}</h1>
             <div class="buttons">
-
-                <form style="margin-left: 20%;" action="/main-page/orders/" method="POST">
-                    {% csrf_token %}
-                    <!-- <a class="buynow" href="#">Buy Now</a> -->
-                    <a class="buynow" href="/main-page/orders/">
-                        <button type="submit"
-                            style="border: none;background-color: rgb(253, 75, 10, 1);color: white;font-size: 1.1rem;"
-                            name="order" value="{{ x.product_id }}">Buy Now</button>
-                    </a>
+                
+                {% if can_buy %}
+                    <form style="margin-left: 20%;" action="/main-page/orders/" method="POST">
+                        {% csrf_token %}
+                        <a class="buynow" href="/main-page/orders/">
+                            <button type="submit"
+                                style="border: none;background-color: rgb(253, 75, 10, 1);color: white;font-size: 1.1rem;"
+                                name="order1" value="{{ x.product_id }}">Buy Now</button>
+                        </a>
+                    </form>
+                {% else %}
+                    <form style="margin-left: 20%;" action="">
+                        {% csrf_token %}
+                        <a style="background-color: silver;" class="buynow" href="">
+                            <button 
+                                style="border: none;background-color: silver;color: white;font-size: 1.1rem;"
+                                value="{{ x.product_id }}">Buy Now</button>
+                        </a>
+                    </form>
+                {% endif %}
                     <!-- <a class="addtocart" href="/main-page/cart/">
                         <button type="submit" style="border: none;background-color: rgb(253, 75, 10, 1);color: white;font-size: 1.1rem;" name="name" value="{{ x.product_id }}">Add to Cart</button>
                     </a> -->
+                {% if can_buy %}
+                    <form action="/main-page/cart/" style="margin-right: 20%;" method="POST">
+                        {% csrf_token %}
+                        <a class="addtocart" href="/main-page/cart/">
+                            <button type="submit"
+                                style="border: none;background-color: rgb(253, 75, 10, 1);color: white;font-size: 1.1rem;"
+                                name="name" value="{{ x.product_id }}">Add to Cart</button>
+                        </a>
 
-                </form>
+                    </form>
+                {% else %}
+                    <form action="/main-page/wishlist/" style="margin-right: 20%;" method="POST">
+                        {% csrf_token %}
+                        <a class="addtocart" href="/main-page/wishlist/">
+                            <button type="submit"
+                                style="border: none;background-color: rgb(253, 75, 10, 1);color: white;font-size: 1.1rem;"
+                                name="name" value="{{ x.product_id }}">Add to Wishlist</button>
+                        </a>
 
-                <form action="/main-page/cart/" style="margin-right: 20%;" method="POST">
-                    {% csrf_token %}
-                    <!-- <a class="buynow" href="#">Buy Now</a> -->
-                    <!-- <a class="buynow" href="/main-page/orders/">
-                    <button type="submit" style="border: none;background-color: rgb(253, 75, 10, 1);color: white;font-size: 1.1rem;" name="order" value="{{ x.product_id }}">Buy Now</button>
-                </a> -->
-                    <a class="addtocart" href="/main-page/cart/">
-                        <button type="submit"
-                            style="border: none;background-color: rgb(253, 75, 10, 1);color: white;font-size: 1.1rem;"
-                            name="name" value="{{ x.product_id }}">Add to Cart</button>
-                    </a>
+                    </form>
+                {% endif %}
 
-                </form>
 
             </div>
         </div>

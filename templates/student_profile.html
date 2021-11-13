@@ -1,0 +1,385 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retailer-Login | Retail-IIT</title>
+    <meta class="description" content="It is the official website of IIT Indore where students and teachers of the university can register to order
+     the stationary and items of daily basic needs .">
+    <meta class="robots" content="index,follow">
+    <link href="https://fonts.googleapis.com/css2?family=Italianno&display=swap" rel="stylesheet">
+
+    <script src="forgot-password.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .e-mail i,.password i {
+            font-size: 2rem;
+            position: absolute;
+            top: 1rem;
+            left: 1.5rem;
+            color: #47ad33;
+            }
+        .e-mail, .password{
+            position: relative;
+            width: 65%;
+            margin-left: auto;
+            margin-right: auto;
+            }
+    </style>
+	{% load static %}
+	<link rel="icon" href="{% static 'img/4014657-buy-cell-online-phone-store_112888.png' %}">
+</head>
+<body>
+    <div class="main-head">
+        <h1 style="font-size: 3.5rem;margin-top: 2rem;">ℙ𝕣𝕠𝕗𝕚𝕝𝕖 ℙ𝕒𝕘𝕖</h1>
+        
+    </div>
+    
+<div class="middle-part">
+	<div style="margin-top: 5rem;margin-bottom: 4rem;" class="container" id="container">
+		<div class="form-container sign-in-container">
+			<form  action="/main-page/profile/" method="POST">
+                {% csrf_token %}
+				<h1 style="font-size: 1.8rem;margin-top: 0rem;justify-content: left;">Edit Profile</h1>
+                <hr style="color: #131c13;width: 100%">
+ 
+                <table>
+                    <tr>
+                        <td class="row-1"><label for="name">Name<strong>:</strong></label></td>
+                        <td class="row-2"><input placeholder="{{ name }}" type="text" name="name" id="name"></td>
+                    </tr>
+                    <tr>
+                        <td class="row-1"><label for="email">Email<strong>:</strong></label></td>
+                        <td class="row-2"><input placeholder="{{ email }}" type="email" name="email" id="email"></td>
+                    </tr>
+                    <tr>
+                        <td class="row-1"><label for="password">Password<strong>:</strong></label></td>
+                        <td class="row-2"><input placeholder="Enter your password" type="password" name="password" id="password"></td>
+                    </tr>
+                    <tr>
+                        <td class="row-1"><label for="new-password">New Password<strong>:</strong></label></td>
+                        <td class="row-2"><input placeholder="Enter your new password" type="password" name="new-password" id="new-password"></td>
+                    </tr>
+                    <tr>
+                        <td class="row-1"><label for="confirm-password">Confirm Password<strong>:</strong></label></td>
+                        <td class="row-2"><input placeholder="Confirm your new password" type="password" name="confirm-password" id="confirm-password"></td>
+                    </tr>
+                    <tr>
+                        <td class="row-1"><label for="gender">Gender<strong>:</strong></label></td>
+                        <td class="row-2">
+                            <select id="gender" name="gender">
+                                <option value="Male">Male</option>
+                                {% if gender %}
+                                    <option value="Female" selected>Female</option>
+                                {% else %}
+                                    <option value="Female">Female</option>
+                                {% endif %}
+                                
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="row-1"><label for="hostel">Hostel Name<strong>:</strong></label></td>
+                        <td class="row-2">
+                            <select id="hostel" name="hostel">
+                                {% if hostel1 %}
+                                <option value="A. P. J ABDUL KALAM" selected>A. P. J ABDUL KALAM</option>
+                                {% else %}
+                                <option value="A. P. J ABDUL KALAM">A. P. J ABDUL KALAM</option>
+                                {% endif %}
+                                {% if hostel2 %}
+                                <option value="HOMI JEHANGIR BHABHA" selected>HOMI JEHANGIR BHABHA</option>
+                                {% else %}
+                                <option value="HOMI JEHANGIR BHABHA">HOMI JEHANGIR BHABHA</option>
+                                {% endif %}
+                                {% if hostel3 %}
+                                <option value="VIKRAM SARABHAI" selected>VIKRAM SARABHAI</option>
+                                {% else %}
+                                <option value="VIKRAM SARABHAI">VIKRAM SARABHAI</option>
+                                {% endif %}
+                                {% if hostel4 %}
+                                <option value="DEVI AHILYA" selected>DEVI AHILYA</option>
+                                {% else %}
+                                <option value="DEVI AHILYA">DEVI AHILYA</option>
+                                {% endif %}
+                                {% if hostel5 %}
+                                <option value="C. V. RAMAN" selected>C. V. RAMAN</option>
+                                {% else %}
+                                <option value="C. V. RAMAN">C. V. RAMAN</option>
+                                {% endif %}
+                                
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="row-1"><label for="room">Room No.<strong>:</strong></label></td>
+                        
+                        {% if room %}
+                            <td class="row-2"><input placeholder="{{ room }}" type="text" name="room" id="room"></td>
+                        {% else %}
+                            <td class="row-2"><input placeholder="Enter your room no." type="text" name="room" id="room"></td>
+                        {% endif %}
+                    </tr>
+                    <tr>
+                        <td class="row-1"><label for="phone">Phone No.<strong>:</strong></label></td>
+                        {% if phone %}
+                            <td class="row-2"><input placeholder="{{ phone }}" type="tel" name="phone" id="phone"></td>
+                        {% else %}
+                            <td class="row-2"><input placeholder="Enter your phone no." type="tel" name="phone" id="phone"></td>
+                        {% endif %}
+                    </tr>
+                </table>
+
+                {% for message in messages %}
+					<h3 center style="color: red;font-size: 1rem;margin-bottom: 0rem;margin-top: 1rem;">{{message}}</h3>
+				{% endfor %}
+
+				<div class="bottom" style="margin-bottom:1rem;">
+                    <button style="justify-content: centre;background-color: silver;" type="submit" name="cancel" style="margin-bottom: 30rem;margin-top: 3rem;">Cancel</button>
+                    <button style="align-items: centre;" type="submit" name="save" style="margin-bottom: 30rem;margin-top: 3rem">Save</button>
+                    <h1 style="font-size: 1rem;margin-top: 1rem;margin-bottom: 1rem">Back to <a href="/main-page/">Home</a> Page</h1>
+                </div>
+			</form>
+		</div>
+	</div>
+</div>
+
+
+<style>
+	@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+
+	* {
+		box-sizing: border-box;
+	}
+	
+	span{
+		margin-bottom: 2rem;
+	}
+
+	button{
+		margin-top: 1rem;
+	}
+
+	body {
+		background: #f6f5f7;
+		display: flex;
+
+		flex-direction: column;
+		font-family: 'Montserrat', sans-serif;
+		height: 100vh;
+		margin: -20px 0 0px;
+	}
+
+    table{
+        width: 100%;
+        margin: 0rem 2rem;
+    }
+
+    .row-1{
+        width: 30%;
+        text-align: right;
+        padding-right: 3rem;
+    }
+
+    .row-2{
+        width: 70%;
+        padding-right: 2rem;
+    }
+
+    .bottom{
+        width: 100%;
+    }
+
+    .bottom button{
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+
+	h1 {
+		font-weight: bold;
+		margin: 0;
+	}
+
+	h2 {
+        font-size: 14px;
+		text-align: center;
+	}
+
+    h3{
+        color: deeppink;
+        font-size: 2rem;
+        margin-bottom: 3rem;
+    }
+
+	p {
+		font-size: 14px;
+		font-weight: 100;
+		line-height: 20px;
+		letter-spacing: 0.5px;
+		margin: 20px 0 30px;
+	}
+
+	span {
+		font-size: 12px;
+	}
+
+	a {
+		font-size: 14px;
+		text-decoration: none;
+		margin: 15px 0;
+	}
+
+	a:hover{
+		text-decoration: underline;
+	}
+
+	button {
+		border-radius: 20px;
+		border: 1px solid #FF4B2B;
+		background-color: #FF4B2B;
+		color: #FFFFFF;
+		font-size: 12px;
+		font-weight: bold;
+		padding: 12px 45px;
+		letter-spacing: 1px;
+		text-transform: uppercase;
+		transition: transform 80ms ease-in;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+	}
+
+	button:active {
+		transform: scale(0.95);
+	}
+
+	button:hover {
+  box-shadow: 0 10px 10px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+  cursor: pointer;
+}
+
+	button:focus {
+		outline: none;
+	}
+
+	button.ghost {
+		background-color: transparent;
+		border-color: #FFFFFF;
+	}
+
+	form {
+		background-color: #FFFFFF;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		padding: 0 50px;
+		height: 100%;
+		text-align: center;
+	}
+
+	input {
+		background-color: rgb(224, 221, 221);
+		border: none;
+		padding: 12px 15px;
+		margin: 8px 0;
+		width: 100%;
+		text-align: center;
+	}
+
+    select{
+        background-color: rgb(224, 221, 221);
+		border: none;
+		padding: 12px 15px;
+		margin: 8px 0;
+		width: 100%;
+		text-align: center;
+    }
+
+	input:focus{
+		background-color: rgb(248, 248, 248);
+	}
+
+    select:focus{
+		background-color: rgb(248, 248, 248);
+        border: cadetblue;
+    }
+
+	.middle-part{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		
+	}
+
+	.main-head {
+    color: white;
+    width: 100%;
+    min-height: 10vh;
+	text-align: center;
+	}
+  
+  .main-head h1 {
+	  padding-top: 1%;
+	  padding-bottom: 1%;
+	  color: #191d19e1;
+	margin: auto;
+    font-size: 4rem;
+    /* text-shadow: 10px 0px 10px rgba(0, 0, 0, 0.8); */
+  }
+
+  .heading{
+      padding-top: 0rem;
+      text-align: center;
+  }
+
+  .heading h1{
+      font-size: 2.5rem;
+      color: forestgreen;
+  }
+
+
+	.container {
+        padding-top: 2.3rem;
+		background-color: #fff;
+		border-radius: 10px;
+		box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+			0 10px 10px rgba(0, 0, 0, 0.22);
+			position: relative;
+		overflow: hidden;
+		width: 568px;
+		width: 768px;
+		max-width: 100%;
+		min-height: 480px;
+		margin-top: 1rem;
+	}
+
+    .container h1{
+        margin-bottom: 1rem;
+    }
+
+    .footer{
+        text-align: center;
+        margin-top: 2rem;
+    }
+
+    .footer h1{
+        font-size: 1.5rem;
+    }
+
+    .footer a{
+        font-size: 1.2rem;
+    }
+
+	@media screen and (max-width:824px){
+		.main-head h1{
+			font-size: 4rem;
+		}
+	}
+</style>
+
+
+</body>
+</html>
