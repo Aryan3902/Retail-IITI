@@ -2,7 +2,6 @@ from django.shortcuts import render
 from django.core import mail
 from django.conf import settings
 from django.core.mail import send_mail
-
 from django.contrib import messages
 from django.http.response import HttpResponse
 from django.core.mail import send_mail
@@ -200,7 +199,6 @@ def main_page_product(request, id=None, *args, **kwargs):
 
 
 def main_page_cart_product(request, id=None, *args, **kwargs):
-    # article_obj = None
     eid = request.session.get('eid')
     if 'quantity' in request.POST:
         value = request.POST.get('quantity')
