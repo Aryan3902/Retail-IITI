@@ -20,9 +20,19 @@
         <div class="company_name">
             <input type="text" placeholder="Company Name of Product" name="company_name"required>
         </div>
-        <div class="availability">
-            <input type="number" placeholder="Availability of Product" name="availability" required>
-        </div>
+        <label for="category">Category of product:</label>
+        <select name="category" id="category">
+            <option value="General">General</option>
+            <option value="Electronics">Electronics</option>
+            <option value="Stationary">Stationary</option>
+            <option value="Fashion">Fashion</option>
+            <option value="Household">Household</option>
+        </select>
+        <label for="availability">Availability Status:</label>
+        <select name="availability" id="availability" >
+            <option value="In Stock">In Stock</option>
+            <option value="Out of Stock">Out of Stock</option>
+        </select></div>
         <div class="image">
             <input type="url" placeholder="Image URL" name="image" required>
         </div>

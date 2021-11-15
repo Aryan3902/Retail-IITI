@@ -20,9 +20,19 @@
         <div class="company_name">
             <input type="text" placeholder="{{x.company_name}}" id="pc" name="company_name">
         </div>
-        <div class="availability">
-            <input type="number" placeholder="{{x.Quantity}}"  id="pq" name="availability">
-        </div>
+        <label for="category">Category of product:</label>
+        <div class="category"><select name="category" >
+            <option value="General">General</option>
+            <option value="Electronics">Electronics</option>
+            <option value="Stationary">Stationary</option>
+            <option value="Fashion">Fashion</option>
+            <option value="Household">Household</option>
+        </select></div>
+        <label for="availability">Availability Status:</label>
+        <div class="availability"><select name="availability" >
+            <option value="In Stock">In Stock</option>
+            <option value="Out of Stock">Out of Stock</option>
+        </select></div>
         <div class="image">
             <input type="url" placeholder="{{x.image}}" id="pi" name="image">
         </div>

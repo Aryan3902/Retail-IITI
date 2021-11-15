@@ -97,6 +97,7 @@
                 </div>
             </a>
             <a class="shopping" href="/main-page/cart/"><i class="fa fa-shopping-cart" style="font-size:24px"></i></a>
+            <a class="shopping" href="/" onclick="preventBack()"><i class="fa fa-sign-out" style="font-size:20px;">Logout</i></a>
         </div>
     </section>
     <section class="navbar">
@@ -159,6 +160,11 @@
         }
     </style>
     <script src="{% static 'js/app.js' %}"></script>
+    <script>
+        function preventBack() { window.history.forward(); }
+        setTimeout("preventBack()", 0);
+        window.onunload = function () { null };
+    </script>
 </body>
 
 </html>

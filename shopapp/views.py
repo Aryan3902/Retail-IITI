@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.core import mail
 from django.conf import settings
 from django.core.mail import send_mail
@@ -11,7 +11,18 @@ from .models import Product, Cart, CartItem, Orders, Wishlist
 
 
 def main_page(request, *args, **kwargs):
+    try:
+        re=request.META['HTTP_REFERER']
+    except:
+        re ="None"
+    if(not("http://127.0.0.1:8000/" in re) ):
+        return redirect("../")
     eid = request.session.get('eid')
+    product_item = Product.objects.all()
+    username = User.objects.filter(id=eid)
+    user = username[0]
+    # print(eid)
+    # print()
     if 'search' in request.POST:
         query = request.POST.get('search')
         try:
@@ -35,6 +46,7 @@ def main_page(request, *args, **kwargs):
             if len(product_item1) > 0:
                 context = {
                     "product": product_item1,
+                    'user': user
                     # "userid": userid
                 }
                 return render(request, 'index_mainpage.html', context=context)
@@ -42,6 +54,7 @@ def main_page(request, *args, **kwargs):
             elif len(product_item2) > 0:
                 context = {
                     "product": product_item2,
+                    'user': user
                     # "userid": userid
                 }
                 return render(request, 'index_mainpage.html', context=context)
@@ -49,13 +62,12 @@ def main_page(request, *args, **kwargs):
             else:
                 context = {
                     "product": product_item3,
+                    'user': user
                     # "userid": userid
                 }
                 return render(request, 'index_mainpage.html', context=context)
+    
 
-    product_item = Product.objects.all()
-    username = User.objects.filter(id=eid)
-    user = username[0]
     context = {
         "product": product_item,
         'user': user
