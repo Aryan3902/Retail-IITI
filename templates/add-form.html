@@ -4,120 +4,350 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style_form.css">
+    <title>Retailer-Login | Retail-IIT</title>
+    <meta class="description" content="It is the official website of IIT Indore where students and teachers of the university can register to order
+     the stationary and items of daily basic needs .">
+    <meta class="robots" content="index,follow">
+    <link href="https://fonts.googleapis.com/css2?family=Italianno&display=swap" rel="stylesheet">
+
+    <script src="forgot-password.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .e-mail i,.password i {
+            font-size: 2rem;
+            position: absolute;
+            top: 1rem;
+            left: 1.5rem;
+            color: #47ad33;
+            }
+        .e-mail, .password{
+            position: relative;
+            width: 65%;
+            margin-left: auto;
+            margin-right: auto;
+            }
+    </style>
+	{% load static %}
+	<link rel="icon" href="{% static 'img/4014657-buy-cell-online-phone-store_112888.png' %}">
 </head>
 <body>
-    <div class="form">
-        <form action="/Retailer/add/a/" method="post">
-            {% csrf_token %}
-        <div class="productname">
-            <input type="text" placeholder="Product Name" name="product_name" required>
-        </div>
-        <div class="price">
-            <input type="number" placeholder="Price you want to sell at" name="price" required>
-        </div>
-        <div class="company_name">
-            <input type="text" placeholder="Company Name of Product" name="company_name"required>
-        </div>
-        <div class="availability">
-            <input type="number" placeholder="Availability of Product" name="availability" required>
-        </div>
-        <div class="image">
-            <input type="url" placeholder="Image URL" name="image" required>
-        </div>
-        <button type="submit">Add Product</button>
-    </form>
+    <div class="main-head">
+        <h1 style="font-size: 3.5rem;margin-top: 2rem;">Add Product</h1>
+        
     </div>
-</body>
-<style>
-    *{
-    margin: 0%;
-    padding: 0%;
-    box-sizing: border-box;
-}
-body{
-    background-image: linear-gradient(#02aab0 , #00cdac);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-form{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-
-.form{
- width: 50%;   
- background-color: pink;
-
-}
-.company{
-    margin-top: 0.4rem;
-}
-input{
-    margin: 0.7rem;
-    padding: 1rem 2.5rem;
-    border: none;
-    border-radius: 5px;
-    text-align: center;
     
-}
-button:hover{
-    background-color: white;
-    color: #131c21;
-}
-.image {
-  display: flex;
-  flex-direction: column; 
-}
-button{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    transition: all 0.5s ease;
-    width: 100%;
-    color: white;
-    font-size: 1.3rem;
-    padding: 1rem;
-    border: none;
-    background-color: blue;
-    border-bottom-left-radius: 7px;
-    border-bottom-right-radius: 7px;
-    cursor: pointer;
-}
-.header{
-    width: 50%;
-    background-color: white;
-        text-align: center;
-    border-top-right-radius: 7px;
-    padding: 1rem;
-    border-top-left-radius: 7px;
-   box-shadow: 0px 0px 5px 5px rgba(0,00, 0, 0.1);
-   color: #131c21;
-   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
-.image label{
-    font-size: 1.2rem;
-    transform: translateY(50%);
-}
-.form{
+<div class="middle-part">
+	<div style="margin-top: 5rem;margin-bottom: 4rem;" class="container" id="container">
+		<div class="form-container sign-in-container">
+			<div class="form">
+                <form action="/Retailer/add/a/" method="post">
+                    {% csrf_token %}
 
-   color: #131c21;
-}@media screen and (max-width:496px){
-    .form{
+                    <table style="margin-top: 1rem;">
+                        <tr>
+                            <td class="row-1">
+                                <label for="name">Product Name:</label>
+                            </td>
+                            <td class="row-2">
+                                <input type="text" id="name" placeholder="Product Name" name="product_name" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="row-1">
+                                <label for="price">Price:</label>
+                            </td>
+                            <td class="row-2">
+                                <input type="number" id="price" placeholder="Price you want to sell at" name="price" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="row-1">
+                                <label for="cname">Company Name:</label>
+                            </td>
+                            <td class="row-2">
+                                <input type="text" id="cname" placeholder="Company Name of Product" name="company_name"required>
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td class="row-1">
+                                <label for="category">Category of product:</label>
+                            </td>
+                            <td class="row-2">
+                                <select name="category" id="category">
+                                    <option value="General">General</option>
+                                    <option value="Electronics">Electronics</option>
+                                    <option value="Stationary">Stationary</option>
+                                    <option value="Fashion">Fashion</option>
+                                    <option value="Household">Household</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="row-1">
+                                <label for="availability">Availability Status:</label>
+                            </td>
+                            <td class="row-2">
+                                <select name="availability" id="availability" >
+                                    <option value="In Stock">In Stock</option>
+                                    <option value="Out of Stock">Out of Stock</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="row-1">
+                                <label for="url">Image:</label>
+                            </td>
+                            <td class="row-2">
+                                <input type="url" id="url" placeholder="Image URL" name="image" required>
+                            </td>
+                        </tr>
+                    </table>
+                <button type="submit" style="margin-top: 2rem;">Add Product</button>
+            </form>
+            </div>
+
+
+
+
+		</div>
+	</div>
+</div>
+
+
+<style>
+	@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+
+	* {
+		box-sizing: border-box;
+	}
+	
+	span{
+		margin-bottom: 2rem;
+	}
+
+	button{
+		margin-top: 1rem;
+	}
+
+	body {
+		background: #f6f5f7;
+		display: flex;
+
+		flex-direction: column;
+		font-family: 'Montserrat', sans-serif;
+		height: 100vh;
+		margin: -20px 0 0px;
+	}
+
+    table{
         width: 100%;
-        margin-left: 0.4rem;
-        margin-right: 0.4rem;
+        margin: 0rem 2rem;
     }
-    .header{
-        margin-left: 0.4rem;
-        margin-right: 0.4rem;
+
+    .row-1{
+        width: 30%;
+        text-align: right;
+        padding-right: 3rem;
+    }
+
+    .row-2{
+        width: 70%;
+        padding-right: 2rem;
+    }
+
+    .bottom{
         width: 100%;
     }
+
+    .bottom button{
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+
+	h1 {
+		font-weight: bold;
+		margin: 0;
+	}
+
+	h2 {
+        font-size: 14px;
+		text-align: center;
+	}
+
+    h3{
+        color: deeppink;
+        font-size: 2rem;
+        margin-bottom: 3rem;
+    }
+
+	p {
+		font-size: 14px;
+		font-weight: 100;
+		line-height: 20px;
+		letter-spacing: 0.5px;
+		margin: 20px 0 30px;
+	}
+
+	span {
+		font-size: 12px;
+	}
+
+	a {
+		font-size: 14px;
+		text-decoration: none;
+		margin: 15px 0;
+	}
+
+	a:hover{
+		text-decoration: underline;
+	}
+
+	button {
+		border-radius: 20px;
+		border: 1px solid #FF4B2B;
+		background-color: #FF4B2B;
+		color: #FFFFFF;
+		font-size: 12px;
+		font-weight: bold;
+		padding: 12px 45px;
+		letter-spacing: 1px;
+		text-transform: uppercase;
+		transition: transform 80ms ease-in;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+	}
+
+	button:active {
+		transform: scale(0.95);
+	}
+
+	button:hover {
+  box-shadow: 0 10px 10px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+  cursor: pointer;
 }
+
+	button:focus {
+		outline: none;
+	}
+
+	button.ghost {
+		background-color: transparent;
+		border-color: #FFFFFF;
+	}
+
+	form {
+		background-color: #FFFFFF;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		padding: 0 50px;
+		height: 100%;
+		text-align: center;
+	}
+
+	input {
+		background-color: rgb(224, 221, 221);
+		border: none;
+		padding: 12px 15px;
+		margin: 8px 0;
+		width: 100%;
+		text-align: center;
+	}
+
+    select{
+        background-color: rgb(224, 221, 221);
+		border: none;
+		padding: 12px 15px;
+		margin: 8px 0;
+		width: 100%;
+		text-align: center;
+    }
+
+	input:focus{
+		background-color: rgb(248, 248, 248);
+	}
+
+    select:focus{
+		background-color: rgb(248, 248, 248);
+        border: cadetblue;
+    }
+
+	.middle-part{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		
+	}
+
+	.main-head {
+    color: white;
+    width: 100%;
+    min-height: 10vh;
+	text-align: center;
+	}
+  
+  .main-head h1 {
+	  padding-top: 1%;
+	  padding-bottom: 1%;
+	  color: #191d19e1;
+	margin: auto;
+    font-size: 4rem;
+    /* text-shadow: 10px 0px 10px rgba(0, 0, 0, 0.8); */
+  }
+
+  .heading{
+      padding-top: 0rem;
+      text-align: center;
+  }
+
+  .heading h1{
+      font-size: 2.5rem;
+      color: forestgreen;
+  }
+
+
+	.container {
+        padding-top: 2.3rem;
+		background-color: #fff;
+		border-radius: 10px;
+		box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+			0 10px 10px rgba(0, 0, 0, 0.22);
+			position: relative;
+		overflow: hidden;
+		width: 568px;
+		width: 768px;
+		max-width: 100%;
+		min-height: 480px;
+		margin-top: 1rem;
+	}
+
+    .container h1{
+        margin-bottom: 1rem;
+    }
+
+    .footer{
+        text-align: center;
+        margin-top: 2rem;
+    }
+
+    .footer h1{
+        font-size: 1.5rem;
+    }
+
+    .footer a{
+        font-size: 1.2rem;
+    }
+
+	@media screen and (max-width:824px){
+		.main-head h1{
+			font-size: 4rem;
+		}
+	}
 </style>
+
+
+</body>
 </html>
