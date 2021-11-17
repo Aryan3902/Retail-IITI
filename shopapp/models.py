@@ -12,9 +12,7 @@ class Product(models.Model):
     product_name = models.CharField(max_length=128, null=False, blank=False)
     price = models.IntegerField(null=False, blank=False)
     company_name = models.CharField(max_length=128, null=False, blank=False)
-    Quantity = models.IntegerField(default=0, blank=False)
-    image = models.URLField(
-        max_length=5000, default="https://bitsofco.de/content/images/2018/12/broken-1.png")
+    image = models.URLField(max_length=5000, default="https://bitsofco.de/content/images/2018/12/broken-1.png")
     Retailer_ID = models.ForeignKey(Retailer, on_delete=models.CASCADE)
     availability = models.CharField(max_length=128, default="Out of Stock")
     category = models.CharField(max_length=128, default="General")

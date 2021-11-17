@@ -31,9 +31,42 @@
 	<link rel="icon" href="{% static 'img/4014657-buy-cell-online-phone-store_112888.png' %}">
 </head>
 <body>
+<<<<<<< HEAD
     <div class="main-head">
         <h1 style="font-size: 3.5rem;margin-top: 2rem;">Update Product</h1>
         
+=======
+    <div class="form">
+        <form action="/Retailer/update/u/" method="post">
+            {% csrf_token %}
+        <div class="productname">
+            <input type="text" placeholder=" {{x.product_name}}" id ="pn" name="product_name">
+        </div>
+        <div class="price">
+            <input type="number" placeholder="{{x.price}}" id="pp" name="price">
+        </div>
+        <div class="company_name">
+            <input type="text" placeholder="{{x.company_name}}" id="pc" name="company_name">
+        </div>
+        <label for="category">Category of product:</label>
+        <div class="category"><select name="category" >
+            <option value="General">General</option>
+            <option value="Electronics">Electronics</option>
+            <option value="Stationary">Stationary</option>
+            <option value="Fashion">Fashion</option>
+            <option value="Household">Household</option>
+        </select></div>
+        <label for="availability">Availability Status:</label>
+        <div class="availability"><select name="availability" >
+            <option value="In Stock">In Stock</option>
+            <option value="Out of Stock">Out of Stock</option>
+        </select></div>
+        <div class="image">
+            <input type="url" placeholder="{{x.image}}" id="pi" name="image">
+        </div>
+        <button type="submit">Update Product</button>
+    </form>
+>>>>>>> 80b0541cff660a4a970674daa017d1913fdd4ebc
     </div>
     
 <div class="middle-part">
