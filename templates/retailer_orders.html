@@ -6,6 +6,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/style_yourorders.css' %}">
@@ -35,7 +36,8 @@
                 </ul>
             </div>
             <a class="returns" href="#">Returns &Orders</a>
-            <a class="shopping" href="/main-page/cart/"><i class="fa fa-shopping-cart" style="font-size:24px"></i></a>
+            <!-- <a class="shopping" href="/main-page/cart/"><i class="fa fa-shopping-cart" style="font-size:24px"></i></a> -->
+            <a class="shopping" href="/" onclick="preventBack()"><i class="fa fa-sign-out" style="font-size:20px;">Logout</i></a>
         </div>
     </section>
     <section class="navbar">

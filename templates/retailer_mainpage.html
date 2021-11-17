@@ -55,7 +55,8 @@
                 </ul>
             </div>
             <a class="returns" href="#">Returns &Orders</a>
-            <a class="shopping" href="/main-page/cart/"><i class="fa fa-shopping-cart" style="font-size:24px"></i></a>
+            <!-- <a class="shopping" href="/main-page/cart/"><i class="fa fa-shopping-cart" style="font-size:24px"></i></a> -->
+            <a class="shopping" href="/" onclick="preventBack()"><i class="fa fa-sign-out" style="font-size:20px;">Logout</i></a>
         </div>
     </section>
     <section class="navbar">
@@ -83,7 +84,7 @@
                     <h1><i>Product Name</i> : {{ x.product_name }}</h1>
                     <h1><i>Price</i> : {{ x.price }}</h1>
                     <h1><i>Company Name</i> : {{ x.company_name }}</h1>
-                    <h1><i>Quantity</i> : {{ x.Quantity }}</h1>
+                    <h1><i>Availability</i> : {{ x.availability }}</h1>
                 </div>
                 <div class="buttons">
                     <form style="margin-left: 20%;" action="/Retailer/update/" method="post">
@@ -119,5 +120,10 @@
 
 
 </body>
+<script>
+    function preventBack() { window.history.forward(); }
+    setTimeout("preventBack()", 0);
+    window.onunload = function () { null };
+</script>
 
 </html>

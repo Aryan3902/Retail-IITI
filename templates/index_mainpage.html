@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,7 +9,7 @@
     <title>Retail-IITI</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/style_mainpage.css' %}">
-   
+
     <link rel="icon" href="{% static 'img/4014657-buy-cell-online-phone-store_112888.png' %}">
     <style>
         .product {
@@ -32,7 +30,7 @@
                 <a href=""> <i class="fa fa-user" style="font-size:36px"></i></a>
             </div>
             <h1>Hello,User</h1>
-           
+
         </div>
         <div class="trending">
             <h1>Trending</h1>
@@ -95,6 +93,8 @@
                 </div>
             </a>
             <a class="shopping" href="/main-page/cart/"><i class="fa fa-shopping-cart" style="font-size:24px"></i></a>
+            <a class="shopping" href="/" onclick="preventBack()"><i class="fa fa-sign-out"
+                    style="font-size:20px;">Logout</i></a>
         </div>
     </section>
     <section class="navbar">
@@ -160,22 +160,26 @@
             margin-bottom: 1rem;
         }
     </style>
-  <script>
-    const burger = document.querySelector('.burger')
-const menu = document.querySelector('.menu')
-const dropdown = document.querySelector('.dropdown')
-const list = document.querySelector('.list')
-burger.addEventListener('click', function () {
-    burger.classList.toggle('toggle');
-    burger.classList.toggle('hiburger');
-    menu.classList.toggle('closemenu')
-});
-const accounts = document.querySelector('.accounts')
-accounts.addEventListener('click', function () {
-    dropdown.classList.toggle('comedown')
-    list.classList.toggle('addcolor')
-})
-</script>
+    <script>
+        const burger = document.querySelector('.burger')
+        const menu = document.querySelector('.menu')
+        const dropdown = document.querySelector('.dropdown')
+        const list = document.querySelector('.list')
+        burger.addEventListener('click', function () {
+            burger.classList.toggle('toggle');
+            burger.classList.toggle('hiburger');
+            menu.classList.toggle('closemenu')
+        });
+        const accounts = document.querySelector('.accounts')
+        accounts.addEventListener('click', function () {
+            dropdown.classList.toggle('comedown')
+            list.classList.toggle('addcolor')
+        })
+        function preventBack() { window.history.forward(); }
+        setTimeout("preventBack()", 0);
+        window.onunload = function () { null };
+    </script>
+    <script src="{% static 'js/app.js' %}"></script>
 </body>
 
 </html>
