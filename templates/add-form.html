@@ -36,37 +36,9 @@
 </head>
 
 <body>
-    <div class="form">
-        <form action="/Retailer/add/a/" method="post">
-            {% csrf_token %}
-            <div class="productname">
-                <input type="text" placeholder="Product Name" name="product_name" required>
-            </div>
-            <div class="price">
-                <input type="number" placeholder="Price you want to sell at" name="price" required>
-            </div>
-            <div class="company_name">
-                <input type="text" placeholder="Company Name of Product" name="company_name" required>
-            </div>
-            <label for="category">Category of product:</label>
-            <select name="category" id="category">
-                <option value="General">General</option>
-                <option value="Electronics">Electronics</option>
-                <option value="Stationary">Stationary</option>
-                <option value="Fashion">Fashion</option>
-                <option value="Household">Household</option>
-            </select>
-            <label for="availability">Availability Status:</label>
-            <select name="availability" id="availability">
-                <option value="In Stock">In Stock</option>
-                <option value="Out of Stock">Out of Stock</option>
-            </select>
-    </div>
-    <div class="image">
-        <input type="url" placeholder="Image URL" name="image" required>
-    </div>
-    <button type="submit">Add Product</button>
-    </form>
+    <div class="main-head">
+        <h1 style="font-size: 3.5rem;margin-top: 2rem;">Add Product</h1>
+
     </div>
 
     <div class="middle-part">
