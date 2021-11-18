@@ -60,14 +60,21 @@
         </div>
     </section>
     <section class="header">
-        <h1>Retail IITI</h1>
+        <h1>🆁🅴🆃🅰🅸🅻 - 🅸🅸🆃🅸</h1>
         <div class="search_box">
         <input type="text" placeholder="Search Products Here">
-        <i class="fa fa-search" style="font-size:24px"></i>
+    
     </div>
     <div class="options">
         <div class="list">
-    <a href="#" class="accounts"> Accounts & Lists</a>
+            <a href="/main-page/profile/">
+                <div class="accounts">
+                    <p style="font-size: 0.8rem;">Hello, {{user}}</p>
+                    <strong>
+                       Account  Info
+                    </strong>
+                </div>
+            </a>
     <ul class="dropdown">
         <li><a href="#">Browsing History</a></li>
         <li><a href="#">Your Account</a></li>
@@ -78,7 +85,16 @@
         <li><a href="#">Sign Out</a></li>
     </ul>
 </div>
-    <a class="returns" href="#">Returns &Orders</a>
+<a href="/main-page/orders/">
+    <div>
+        <p style="font-size: 0.8rem;">Returns</p>
+
+        <strong>
+
+            &Orders
+        </strong>
+    </div>
+</a>
     <a class="shopping" href="/main-page/cart/"><i class="fa fa-shopping-cart" style="font-size:24px"></i></a>
 </div>
     </section>
@@ -105,16 +121,16 @@
     <section class="main">
         <div class="selectoptions"> </div>  
         <div class="productimage"> <img src="{{ x.product.image }}" alt=""></div>
-        <div class="information" style="text-align: center;">
+        <div class="information">
             <!-- <h1>Title:</h1>
             <h1>Price:</h1>
             <h1>Name:</h1> -->
-            <h1><i>Order ID</i> : {{ x.id }}</h1>
-            <h1><i>Product ID</i> : {{ x.product.product_id }}</h1>
-            <h1><i>Product Name</i> : {{ x.product.product_name }}</h1>
-            <h1><i>Total Price</i> : {{ x.price_ht }}</h1>
-            <h1><i>Quantity</i> : {{ x.quantity }}</h1>
-            <h1><i>Company Name</i> : {{ x.product.company_name }}</h1>
+            <h1><h1>Order ID</i> : {{ x.id }}</h1>
+      
+            <h1><h1>Product Name</i> : {{ x.product.product_name }}</h1>
+            <h1><h1>Total Price</i> : {{ x.price_ht }}</h1>
+            <h1><h1>Quantity</i> : {{ x.quantity }}</h1>
+            <h1><h1>Company Name</i> : {{ x.product.company_name }}</h1>
             <!-- <h1><i>Availability</i> : {{ x.product.availability }}</h1> -->
             <div class="buttons">
 
@@ -151,8 +167,14 @@
         </div>
     </section>  
     {% endfor %}
-      
-
-    <script src="app_itempage.js"></script>
+    <!-- <script>
+        const dropdown = document.querySelector('.dropdown')
+        const list = document.querySelector('.list')
+       
+        const accounts = document.querySelector('.accounts')
+        accounts.addEventListener('click', function () {
+            dropdown.classList.toggle('comedown')
+            list.classList.toggle('addcolor')
+        })</script> -->
 </body>
 </html>

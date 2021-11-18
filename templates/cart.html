@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -27,7 +28,7 @@
         </div>
         <div class="options">
             <div class="list">
-                <a href="#">
+                <a href="/main-page/profile/">
                     <div class="accounts">
                        
                         <strong>
@@ -42,7 +43,7 @@
                     <li><a href="#">Sign Out</a></li>
                 </ul>
             </div>
-            <a href="#">
+            <a href="/main-page/orders/">
                 <div>
                     <p style="font-size: 0.8rem;">Returns</p>
 
@@ -109,14 +110,13 @@
             </div>
             <hr>
             {% endfor %}
-            <h2>Total Price : {{ total }}</h2>
-            
-            <form style="margin-left: 20%;" action="/main-page/cartall/pay/" method="POST">
+            <h2 style="width: 100%; display: flex; justify-content: center; margin-top: 0.2rem;">Total Price : {{ total }}</h2>
+            <form action="/main-page/orders/" style="margin-right: 20%;" method="POST">
                 {% csrf_token %}
-                <a href="/main-page/cartall/pay/">
+                <a style="width: 125%; margin-top: 0.5rem; margin-bottom: 0.5rem; display: flex; justify-content: center;" href="/main-page/orders/">
                     <button type="submit"
-                        style="border: none;background-color: rgb(253, 75, 10, 1);color: white;font-size: 1.1rem;"
-                        name="pay_product" value="{{ total }}">Buy All</button>
+                        style="border: none;background-color: rgb(253, 75, 10, 1);padding: 0.5rem; color: white; width: 250vh; font-size:2rem;"
+                        name="buyall" value="{{product}}">Buy All</button>
                 </a>
             </form>
 

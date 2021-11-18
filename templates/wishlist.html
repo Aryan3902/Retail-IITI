@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/style_modifiedcart.css' %}">
@@ -26,11 +27,11 @@
         </div>
         <div class="options">
             <div class="list">
-                <a href="#">
+                <a href="/main-page/profile/">
                     <div class="accounts">
                        
                         <strong>
-                            Account Info
+                           Account  Info
                         </strong>
                     </div>
                 </a>
@@ -41,7 +42,7 @@
                     <li><a href="#">Sign Out</a></li>
                 </ul>
             </div>
-            <a href="#">
+            <a href="/main-page/orders/">
                 <div>
                     <p style="font-size: 0.8rem;">Returns</p>
 
@@ -51,6 +52,8 @@
                     </strong>
                 </div>
             </a>
+                <div>
+            
             <a class="shopping" href="/main-page/cart/"><i class="fa fa-shopping-cart" style="font-size:24px"></i></a>
         </div>
     </section>

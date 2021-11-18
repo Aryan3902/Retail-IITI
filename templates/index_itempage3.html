@@ -117,7 +117,7 @@
         </div>
         <div class="options">
             <div class="list">
-                <a href="#">
+                <a href="/main-page/profile/">
                     <div class="accounts">
                         <p style="font-size: 0.8rem;">Hello, {{user1}}</p>
                         <strong>
@@ -135,7 +135,7 @@
                     <li><a href="#">Sign Out</a></li>
                 </ul>
             </div>
-            <a href="#">
+            <a href="/main-page/orders/">
                 <div>
                     <p style="font-size: 0.8rem;">Returns</p>
 
@@ -179,11 +179,11 @@
             <!-- <h1>Title:</h1>
             <h1>Price:</h1>
             <h1>Name:</h1> -->
-            <h1><i>Product ID</i> : {{ x.product_id }}</h1>
-            <h1><i>Product Name</i> : {{ x.product_name }}</h1>
-            <h1><i>Price</i> : {{ x.price }}</h1>
-            <h1><i>Company Name</i> : {{ x.company_name }}</h1>
-            <h1><i>Availability</i> : {{ x.availability }}</h1>
+     
+            <h1>h1>Product Name</i> : {{ x.product_name }}</h1>
+            <h1><h1>Price</i> : {{ x.price }}</h1>
+            <h1><h1>Company Name</i> : {{ x.company_name }}</h1>
+            <h1><h1>Availability</i> : {{ x.availability }}</h1>
             <div class="buttons">
 
                 <form style="margin-left: 20%;" action="/main-page/orders/" method="POST">
@@ -220,20 +220,14 @@
 
   
 </body>
-<script>
-    const burger = document.querySelector('.burger')
-const menu = document.querySelector('.menu')
+<!-- <script>
+   
 const dropdown = document.querySelector('.dropdown')
 const list = document.querySelector('.list')
-burger.addEventListener('click', function () {
-    burger.classList.toggle('toggle');
-    burger.classList.toggle('hiburger');
-    menu.classList.toggle('closemenu')
-});
 const accounts = document.querySelector('.accounts')
 accounts.addEventListener('click', function () {
     dropdown.classList.toggle('comedown')
     list.classList.toggle('addcolor')
 })
-</script>
+</script> -->
 </html>
