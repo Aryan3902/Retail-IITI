@@ -15,8 +15,8 @@ img{
     
 }
 
-body{
-    overflow: hidden;
+button {
+    border-radius: 7px;
 }
 .bigcontainer{
     display: flex;
@@ -258,12 +258,15 @@ color: black;
 }
 .account{
     margin-bottom: 1rem;
+    display: flex;
 }
 .menu{
+    background-color: pink;
     position: absolute;
     z-index: 1000;
     transition: all 0.5s ease;
-    left: -264px;
+    left: -290px;
+    padding: 1rem;
 }
 .menu a:hover{
     color: blue;
@@ -286,6 +289,7 @@ left: 0;
     position: absolute;
     display: none;
     transition: all 0.5s ease;
+    border-radius: 7px;
     color: white;
 }
 
@@ -304,7 +308,7 @@ left: 0;
 }
 .comedown{
     display: block;
-    top: 10vh;
+    top: 15vh;
 }
 .dropdown a:hover{
     border: none;
@@ -315,3 +319,20 @@ left: 0;
     color: rgb(196, 95, 0);
 }
 
+.last h2{
+    font-size: 1.5rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+padding: 0.5rem;
+  flex-direction: column;
+  justify-content: center;
+}
+.last form{
+    width: 100%;
+    display: flex;
+    align-items: center;
+font-size: 2rem;
+    flex-direction: column;
+    justify-content: center;
+  }
