@@ -119,12 +119,20 @@
             <div class="buttons">
 
 
-                <form style="margin-left: 20%;" action="/main-page/orders/" method="POST">
+                <!-- <form style="margin-left: 20%;" action="/main-page/orders/" method="POST">
                     {% csrf_token %}
                     <a class="buynow" href="/main-page/orders/">
                         <button type="submit"
                             style="border: none;background-color: rgb(253, 75, 10, 1);color: white;font-size: 1.1rem;"
                             name="order" value="{{ x.product_id }}">Buy Now</button>
+                    </a>
+                </form> -->
+                <form style="margin-left: 20%;" action="/main-page/cart/{{x.product_id}}/pay/" method="POST">
+                    {% csrf_token %}
+                    <a class="buynow" href="/main-page/cart/{{x.product_id}}/pay/">
+                        <button type="submit"
+                            style="border: none;background-color: rgb(253, 75, 10, 1);color: white;font-size: 1.1rem;"
+                            name="pay_product" value="{{ x.price_ht }}">Buy Now</button>
                     </a>
                 </form>
 

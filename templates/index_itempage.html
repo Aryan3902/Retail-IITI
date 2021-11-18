@@ -125,12 +125,12 @@
             <div class="buttons">
                 
                 {% if can_buy %}
-                    <form style="margin-left: 20%;" action="/main-page/orders/" method="POST">
+                    <form style="margin-left: 20%;" action="/main-page/{{x.product_id}}/pay/" method="POST">
                         {% csrf_token %}
-                        <a class="buynow" href="/main-page/orders/">
+                        <a class="buynow" href="/main-page/{{x.product_id}}/pay/">
                             <button type="submit"
                                 style="border: none;background-color: rgb(253, 75, 10, 1);color: white;font-size: 1.1rem;"
-                                name="order1" value="{{ x.product_id }}">Buy Now</button>
+                                name="pay_product" value="{{ x.price }}">Buy Now</button>
                         </a>
                     </form>
                 {% else %}
@@ -139,7 +139,7 @@
                         <a style="background-color: silver;" class="buynow" href="">
                             <button 
                                 style="border: none;background-color: silver;color: white;font-size: 1.1rem;"
-                                value="{{ x.product_id }}">Buy Now</button>
+                                value="{{ x.price }}">Buy Now</button>
                         </a>
                     </form>
                 {% endif %}

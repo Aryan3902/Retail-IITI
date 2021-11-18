@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     {% load static %}
@@ -28,7 +29,7 @@
             <div class="list">
                 <a href="#">
                     <div class="accounts">
-                        <p style="font-size: 0.8rem;">Hello, {{user}}</p>
+                       
                         <strong>
                             Account Info
                         </strong>
@@ -109,14 +110,14 @@
             <hr>
             {% endfor %}
             <h2>Total Price : {{ total }}</h2>
-            <form action="/main-page/orders/" style="margin-right: 20%;" method="POST">
+            
+            <form style="margin-left: 20%;" action="/main-page/cartall/pay/" method="POST">
                 {% csrf_token %}
-                <a href="/main-page/orders/">
+                <a href="/main-page/cartall/pay/">
                     <button type="submit"
                         style="border: none;background-color: rgb(253, 75, 10, 1);color: white;font-size: 1.1rem;"
-                        name="buyall" value="{{product}}">Buy All</button>
+                        name="pay_product" value="{{ total }}">Buy All</button>
                 </a>
-
             </form>
 
 
@@ -134,15 +135,10 @@
 
 </body>
 <script>
-    const burger = document.querySelector('.burger')
-    const menu = document.querySelector('.menu')
+
     const dropdown = document.querySelector('.dropdown')
     const list = document.querySelector('.list')
-    burger.addEventListener('click', function () {
-        burger.classList.toggle('toggle');
-        burger.classList.toggle('hiburger');
-        menu.classList.toggle('closemenu')
-    });
+
     const accounts = document.querySelector('.accounts')
     accounts.addEventListener('click', function () {
         dropdown.classList.toggle('comedown')

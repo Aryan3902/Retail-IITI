@@ -19,6 +19,7 @@ from login import views
 from shopapp.views import main_page, cart, wishlist, wishlist_product, main_page_product, main_page_cart_product, orders, main_page_order_product, aboutus, main_page_electronics, main_page_stationary, main_page_household, main_page_fashion, profile
 from Retailer.views import mainpage, update_product, add_product_form, add_product, update_product_form, delete_product, retailer_profile, retailer_orders, retailer_orders_product
 from django.urls import include
+from payments.views import initiate_payment, proceed_payment, cart_initiate_payment, cart_proceed_payment, cartall_initiate_payment, cartall_proceed_payment
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -31,6 +32,12 @@ urlpatterns = [
     path('resetpassword/', views.forgetview),
     path('ticket/', views.ticket, name='ticket'),
     path('main-page/', main_page),
+    path('main-page/<int:id>/pay/', initiate_payment),
+    path('main-page/cart/<int:id>/pay/', cart_initiate_payment),
+    path('main-page/cartall/pay/', cartall_initiate_payment),
+    path('main-page/<int:id>/pay/proceed/', proceed_payment),
+    path('main-page/cart/<int:id>/pay/proceed/', cart_proceed_payment),
+    path('main-page/cartall/pay/proceed/', cartall_proceed_payment),
     path('main-page/electronics/', main_page_electronics),
     path('main-page/stationary/', main_page_stationary),
     path('main-page/household/', main_page_household),
