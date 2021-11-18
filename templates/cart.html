@@ -111,12 +111,12 @@
             <hr>
             {% endfor %}
             <h2 style="width: 100%; display: flex; justify-content: center; margin-top: 0.2rem;">Total Price : {{ total }}</h2>
-            <form action="/main-page/orders/" style="margin-right: 20%;" method="POST">
+            <form action="/main-page/cartall/pay/" style="margin-right: 20%;" method="POST">
                 {% csrf_token %}
-                <a style="width: 125%; margin-top: 0.5rem; margin-bottom: 0.5rem; display: flex; justify-content: center;" href="/main-page/orders/">
+                <a style="width: 125%; margin-top: 0.5rem; margin-bottom: 0.5rem; display: flex; justify-content: center;" href="/main-page/cartall/pay/">
                     <button type="submit"
                         style="border: none;background-color: rgb(253, 75, 10, 1);padding: 0.5rem; color: white; width: 250vh; font-size:2rem;"
-                        name="buyall" value="{{product}}">Buy All</button>
+                        name="pay_product" value="{{total}}">Buy All</button>
                 </a>
             </form>
 
