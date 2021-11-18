@@ -572,6 +572,10 @@ def orders(request, *args, **kwargs):
         user = user1['name']
         total_order = ''''''
         total_retailer = ''''''
+        email = User.objects.filter(id=eid)
+        email1 = email[0]
+        email2 = email1.email
+        user2 = email1.name
         for x in range(len(list1)):
             abc = list1[x]
             abcd = abc['id']
@@ -608,17 +612,37 @@ def orders(request, *args, **kwargs):
                 Quantity: { quantity123 }
             '''
 
-            total_retailer += f'''
-            { x+1 }. Order Id: { order2.id }
+            # total_retailer += f'''
+            # { x+1 }. Order Id: { order2.id }
+            # Product Id: { id1 }
+            # Product Name: { name_product }
+            # Quantity: {quantity123}
+            # '''
+
+            subject = 'New Order'
+            message = f'''
+            Hi {retailer2}, your have a new order. 
+
+            Order Details: 
+            Order Id: { order2.id }
             Product Id: { id1 }
             Product Name: { name_product }
             Quantity: {quantity123}
+            Customer Name: {user2}
+            Gender: {user_gender}
+            Room No: {user_room}
+            Hostel Name: {user_hostel}
+            Address: Indian Institute of Technology, Indore, Madhya Pradesh
+            Phone: {user_phone}
             '''
+            email_from = settings.EMAIL_HOST_USER
+            recipient_list = [retailer1, ]
+            send_mail(subject, message, email_from, recipient_list)
 
-        email = User.objects.filter(id=eid)
-        email1 = email[0]
-        email2 = email1.email
-        user2 = email1.name
+        # email = User.objects.filter(id=eid)
+        # email1 = email[0]
+        # email2 = email1.email
+        # user2 = email1.name
 
         subject = 'Order Placed'
         message = f'''
@@ -631,23 +655,23 @@ def orders(request, *args, **kwargs):
         recipient_list = [email2, ]
         send_mail(subject, message, email_from, recipient_list)
 
-        subject = 'New Order'
-        message = f'''
-        Hi {retailer2}, your have a new order. 
+        # subject = 'New Order'
+        # message = f'''
+        # Hi {retailer2}, your have a new order. 
 
-        Order Details: 
-        { total_retailer }
+        # Order Details: 
+        # { total_retailer }
 
-        Customer Name: {user2}
-        Gender: {user_gender}
-        Room No: {user_room}
-        Hostel Name: {user_hostel}
-        Address: Indian Institute of Technology, Indore, Madhya Pradesh
-        Phone: {user_phone}
-        '''
-        email_from = settings.EMAIL_HOST_USER
-        recipient_list = [retailer1, ]
-        send_mail(subject, message, email_from, recipient_list)
+        # Customer Name: {user2}
+        # Gender: {user_gender}
+        # Room No: {user_room}
+        # Hostel Name: {user_hostel}
+        # Address: Indian Institute of Technology, Indore, Madhya Pradesh
+        # Phone: {user_phone}
+        # '''
+        # email_from = settings.EMAIL_HOST_USER
+        # recipient_list = [retailer1, ]
+        # send_mail(subject, message, email_from, recipient_list)
 
         delete_all = CartItem.objects.filter(user_id=eid).delete()
 
