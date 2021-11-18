@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     {% load static %}
@@ -29,7 +30,7 @@
         </div>
         <div class="options">
             <div class="list">
-                <a href="#">
+                <a href="/main-page/profile/">
                     <div class="accounts">
                         <p style="font-size: 0.8rem;">Hello, {{user1}}</p>
                         <strong>
@@ -47,7 +48,7 @@
                     <li><a href="#">Sign Out</a></li>
                 </ul>
             </div>
-            <a href="#">
+            <a href="/main-page/orders/">
                 <div>
                     <p style="font-size: 0.8rem;">Returns</p>
 
@@ -142,15 +143,10 @@
 
 </body>
 <script>
-    const burger = document.querySelector('.burger')
-    const menu = document.querySelector('.menu')
+    
     const dropdown = document.querySelector('.dropdown')
     const list = document.querySelector('.list')
-    burger.addEventListener('click', function () {
-        burger.classList.toggle('toggle');
-        burger.classList.toggle('hiburger');
-        menu.classList.toggle('closemenu')
-    });
+  
     const accounts = document.querySelector('.accounts')
     accounts.addEventListener('click', function () {
         dropdown.classList.toggle('comedown')

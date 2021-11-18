@@ -64,11 +64,11 @@
         </div>
         <div class="options">
             <div class="list">
-                <a href="#">
+                <a href="/main-page/profile/">
                     <div class="accounts">
                         <p style="font-size: 0.8rem;">Hello, {{user}}</p>
                         <strong>
-                            Account Info
+                           Account  Info
                         </strong>
                     </div>
                 </a>
@@ -82,7 +82,7 @@
                     <li><a href="#">Sign Out</a></li>
                 </ul>
             </div>
-            <a href="#">
+            <a href="/main-page/orders/">
                 <div>
                     <p style="font-size: 0.8rem;">Returns</p>
 
@@ -98,12 +98,8 @@
         </div>
     </section>
     <section class="navbar">
-        <div class="burger">
-            <span class="line1"></span>
-            <span class="line2"></span>
-            <span class="line3"></span>
-        </div>
-        <div class="itemslist">
+    
+         <div class="itemslist">
             <li><a style="background-color: white;color: black;padding: 0.25rem 0.4rem;" class="qwer"
                     href="/main-page/">Home</a></li>
             <li><a class="qwer" href="/main-page/electronics/">Electronics</a></li>
@@ -115,7 +111,7 @@
             <li><a class="qwer" href="/main-page/orders/">Orders</a></li>
             <li><a class="qwer" href="/main-page/profile/">Profile</a></li>
             <li><a class="qwer" href="/main-page/aboutUs/">About Us</a></li>
-        </div>
+        </div> 
     </section>
     <section class="main">
         <!-- <div class="searchbyoptions"></div> -->
@@ -160,16 +156,11 @@
             margin-bottom: 1rem;
         }
     </style>
-    <script>
-        const burger = document.querySelector('.burger')
-        const menu = document.querySelector('.menu')
+    <!-- <script>
+
         const dropdown = document.querySelector('.dropdown')
         const list = document.querySelector('.list')
-        burger.addEventListener('click', function () {
-            burger.classList.toggle('toggle');
-            burger.classList.toggle('hiburger');
-            menu.classList.toggle('closemenu')
-        });
+     
         const accounts = document.querySelector('.accounts')
         accounts.addEventListener('click', function () {
             dropdown.classList.toggle('comedown')
@@ -178,8 +169,8 @@
         function preventBack() { window.history.forward(); }
         setTimeout("preventBack()", 0);
         window.onunload = function () { null };
-    </script>
-    <script src="{% static 'js/app.js' %}"></script>
+    </script> -->
+    <!-- <script src="{% static 'js/app.js' %}"></script> -->
 </body>
 
 </html>

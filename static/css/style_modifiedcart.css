@@ -15,9 +15,7 @@ img{
     
 }
 
-body{
-    overflow: hidden;
-}
+
 .bigcontainer{
     display: flex;
 }

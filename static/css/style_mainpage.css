@@ -253,6 +253,8 @@ left: 0;
     transition: all 0.5s ease;
     color: white;
     z-index: 100;
+
+   
 }
 .dropdown li{
    
@@ -264,8 +266,7 @@ left: 0;
     color: white;
 }
 .comedown{
-    display: block;
-    top: 15vh;
+    display: none;
 }
 .dropdown a:hover{
     border: none;
