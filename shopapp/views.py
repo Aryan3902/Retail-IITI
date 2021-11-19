@@ -481,7 +481,7 @@ def orders(request, *args, **kwargs):
         Order Id: { order2.id }
         Product Id: { id }
         Product Name: { product }
-        Quantity: 1
+        Quantity: { quantity }
         Customer Name: {user2}
         Gender: {user_gender}
         Room No: {user_room}
